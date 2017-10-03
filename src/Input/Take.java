@@ -1,11 +1,13 @@
 package Input;
 
+import Character.Observer;
 /**
  * Created by EoinH on 27/09/2017.
  */
 public class Take implements Command {
-    public Take(){
-
+    Observer observer;
+    public Take(Observer o){
+        observer = o;
     }
 
     public boolean checkValid(){
@@ -16,4 +18,11 @@ public class Take implements Command {
     public void execute() {
 
     }
+    public void execute(String command) {
+        if (checkValid())
+            observer.update(command);
+
+
+    }
+
 }

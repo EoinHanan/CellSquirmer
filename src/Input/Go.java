@@ -1,24 +1,49 @@
 package Input;
 
+import Character.Observer;
 /**
  * Created by EoinH on 27/09/2017.
  */
-public class Go implements Command {
-    private String direction;
+public class Go implements Command, Subject {
+    private String[] validDirections = {"north","south","east","west"};
+    String validCommand;
+    Observer observer;
 
-    public Go(String direction){
-        this.direction=direction;
-        if (checkValid())
-            execute();
+    public Go(Observer o ){
+        register(o);
     }
 
     @Override
     public void execute() {
+        //Proxy method, just to be overridden
+    }
 
-
-
+    public void execute(String direction) {
+        //To do check direction.
+        boolean valid = false;
+        for (int i =0; i < validDirections.length && !valid;i++)
+            if (direction.equals(validDirections[i]))
+                valid=true;
+        if (valid){
+            validCommand = direction;
+        }
     }
     private boolean checkValid(){
         return true;
+    }
+
+    @Override
+    public void register(Observer o) {
+        observer = o;
+    }
+
+    @Override
+    public void unregister(Observer o) {
+        //To delete possibly?
+    }
+
+    @Override
+    public void notifyObserverLocation() {
+        observer.update(validCommand);
     }
 }

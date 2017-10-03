@@ -6,33 +6,43 @@ import java.util.Scanner;
  * Created by EoinH on 27/09/2017.
  */
 public class CommandLine {
-    Scanner in;
-    String ask = "Enter input\n";
-    String input;
-    String words[];
-    static Parser parser;
-    public CommandLine(){
-        Scanner in = new Scanner(System.in);
-        System.out.print(ask);
-        input =in.nextLine();
+    private Scanner in;
+    private String ask = "Enter input:", invalid = "Invalid, no input";
+    private String input;
+    private static Parser parser = new Parser();
+
+    public CommandLine() {
+        in = new Scanner(System.in);
+        boolean willContinue =true;
+
+
+        while (willContinue) {
+            System.out.println(ask);
+            input = in.nextLine();
+
+            willContinue = parser.checkEnd(input);
+            if (!willContinue)
+                break;
+
+            parser.validate(input);
+        }
+    }
+}
+
+        /*
         int inputNumber=howMany(input);
         if (inputNumber == 0){
-            System.out.print("Invalid, no input");
+            System.out.println();
 
         }
         else if(inputNumber > 1 ) {
             divide(input);
         }
 
-        parser.validate(input);
-
-        if(words.length == 1){
-
-        }else if(words.length > 2){
-
-        }else{
-            System.out.print("Too many words chosen");
-        }
+        if(parser.validate(input))
+            System.out.println("Valid input");
+        else
+            System.out.println("Invalid input");
     }
     private Command sort(String firstInput, String secondInput){
         Command command = new Go("");
@@ -60,4 +70,4 @@ public class CommandLine {
         return words;
     }
 
-}
+}*/
