@@ -9,6 +9,8 @@ public class Parser{
     private Go goCommand;
     private Take takeCommand;
     private Investigate investigateCommand;
+    private String firstWord;
+    private String secondWord;
 
     Proxy proxy = new Proxy();
 
@@ -22,7 +24,8 @@ public class Parser{
     public void validate(String input){
         input = normalise(input);
         if (checkList(input)) {
-            makeCommand(input);
+            split(input);
+            makeCommand();
         }
 
     }
@@ -33,14 +36,13 @@ public class Parser{
         return word;
     }
 
-    private void makeCommand(String commandString){
-        String firstWord = commandString.substring(0,commandString.indexOf(" "));
-        String secondWord = commandString.substring(commandString.indexOf(" "));
+    private void makeCommand(){
 
         switch (firstWord){
-            case "go":goCommand.execute(commandString); ;break;
-            case "investigate":investigateCommand.execute() ;break;
-            case "take":takeCommand.execute() ;break;
+            case "go":goCommand.execute(secondWord); System.out.println("Go command");break;
+            case "investigate":investigateCommand.execute(secondWord);System.out.println("Investigate command") ;break;
+            case "take":takeCommand.execute(secondWord); System.out.println("Take command") ;break;
+            default:System.out.println("No command accepted");
 
         }
     }
@@ -59,10 +61,21 @@ public class Parser{
 
         return valid;
     }
+    private void split(String input){
+        if (input.indexOf(" ") > -1){
+            firstWord = input.substring(0,input.indexOf(" "));
+            secondWord = input.substring(input.indexOf(" "));
+        }
+        else {
+            firstWord = input;
+            secondWord = "ignore";
+        }
+    }
 
     public boolean checkEnd(String word){
         if (word.equals("End"))
+            return false;
+        else
             return true;
-        else return false;
     }
 }

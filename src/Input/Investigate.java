@@ -13,7 +13,7 @@ public class Investigate implements Command, Subject {
     }
 
     @Override
-    public void execute() {
+    public void execute(String secondWord) {
         if (checkValid())
             observer.update(validCommand);
 
@@ -36,7 +36,7 @@ public class Investigate implements Command, Subject {
     }
 
     @Override
-    public void notifyObserverLocation() {
+    public void notifyObserver() {
 
     }
 }

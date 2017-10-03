@@ -14,10 +14,6 @@ public class Go implements Command, Subject {
     }
 
     @Override
-    public void execute() {
-        //Proxy method, just to be overridden
-    }
-
     public void execute(String direction) {
         //To do check direction.
         boolean valid = false;
@@ -26,6 +22,9 @@ public class Go implements Command, Subject {
                 valid=true;
         if (valid){
             validCommand = direction;
+        }
+        else{
+
         }
     }
     private boolean checkValid(){
@@ -43,7 +42,7 @@ public class Go implements Command, Subject {
     }
 
     @Override
-    public void notifyObserverLocation() {
+    public void notifyObserver() {
         observer.update(validCommand);
     }
 }

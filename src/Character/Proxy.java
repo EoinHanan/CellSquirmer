@@ -4,10 +4,6 @@ package Character;
  * Created by EoinH on 03/10/2017.
  */
 public class Proxy implements Observer {
-    @Override
-    public void update() {
-
-    }
 
     @Override
     public void update(String Command) {
