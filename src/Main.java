@@ -1,10 +1,12 @@
 import Input.CommandLine;
+import Character.Proxy;
 
 /**
  * Created by EoinH on 28/09/2017.
  */
 public class Main {
     public static void main(String [] args){
-        CommandLine input = new CommandLine();
+        Proxy proxy = new Proxy();
+        CommandLine input = new CommandLine(proxy);
     }
 }

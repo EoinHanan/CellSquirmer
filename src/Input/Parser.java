@@ -12,10 +12,8 @@ public class Parser{
     private String firstWord;
     private String secondWord;
 
-    Proxy proxy = new Proxy();
 
-
-    public Parser (){
+    public Parser (Proxy proxy){
         goCommand = new Go(proxy);
         takeCommand = new Take(proxy);
         investigateCommand = new Investigate(proxy);

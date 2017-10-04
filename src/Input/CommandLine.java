@@ -1,4 +1,5 @@
 package Input;
+import Character.Proxy;
 
 import java.util.Scanner;
 
@@ -9,9 +10,10 @@ public class CommandLine {
     private Scanner in;
     private String ask = "Enter input:", invalid = "Invalid, no input";
     private String input;
-    private static Parser parser = new Parser();
+    private static Parser parser;
 
-    public CommandLine() {
+    public CommandLine(Proxy p) {
+        parser = new Parser(p);
         in = new Scanner(System.in);
         boolean willContinue =true;
 
