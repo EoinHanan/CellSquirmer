@@ -10,7 +10,6 @@ public class Take implements Command, Subject {
 
     public Take(Observer o){
         register(o);
-
     }
 
     public boolean checkValid(){
@@ -35,7 +34,6 @@ public class Take implements Command, Subject {
     public void unregister(Observer o) {
 
     }
-
     @Override
     public void notifyObserver() {
 
