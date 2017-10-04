@@ -16,6 +16,12 @@ public class Go implements Command, Subject {
     @Override
     public void execute(String direction) {
         //To do check direction.
+        if(checkValid(direction))
+                observer.update(direction);
+        else
+            System.out.println("Invalid direction");
+    }
+    private boolean checkValid(String direction){
         boolean valid = false;
         for (int i =0; i < validDirections.length && !valid;i++)
             if (direction.equals(validDirections[i]))
@@ -26,8 +32,6 @@ public class Go implements Command, Subject {
         else{
 
         }
-    }
-    private boolean checkValid(){
         return true;
     }
 

@@ -25,6 +25,8 @@ public class Parser{
             split(input);
             makeCommand();
         }
+        else
+            System.out.println("Invalid selection");
 
     }
 
@@ -35,13 +37,11 @@ public class Parser{
     }
 
     private void makeCommand(){
-
         switch (firstWord){
             case "go":goCommand.execute(secondWord); System.out.println("Go command");break;
             case "investigate":investigateCommand.execute(secondWord);System.out.println("Investigate command") ;break;
             case "take":takeCommand.execute(secondWord); System.out.println("Take command") ;break;
             default:System.out.println("No command accepted");
-
         }
     }
 
@@ -54,7 +54,7 @@ public class Parser{
         int i;
 
         for (i=0;i < commandList.length && valid==false;i++)
-            if (word.matches(commandList[i]))
+            if (word.contains(commandList[i]))
                 valid =true;
 
         return valid;

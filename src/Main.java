@@ -6,7 +6,7 @@ import Character.Proxy;
  */
 public class Main {
     public static void main(String [] args){
-        Proxy proxy = new Proxy();
+        Proxy proxy = new Proxy("Name");
         CommandLine input = new CommandLine(proxy);
     }
 }

@@ -14,6 +14,7 @@ public class CommandLine {
 
     public CommandLine(Proxy p) {
         parser = new Parser(p);
+
         in = new Scanner(System.in);
         boolean willContinue =true;
 

@@ -14,6 +14,7 @@ public class Investigate implements Command, Subject {
 
     @Override
     public void execute(String secondWord) {
+        System.out.println("Execute method called for Take");
         if (checkValid())
             observer.update(validCommand);
 

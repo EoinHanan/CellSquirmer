@@ -10,17 +10,19 @@ public class Take implements Command, Subject {
 
     public Take(Observer o){
         register(o);
+
     }
 
     public boolean checkValid(){
-        return false;
+        return true;
     }
 
     @Override
     public void execute(String command) {
         if (checkValid())
             observer.update(command);
-
+        else
+            System.out.print("Validity test failed");
 
     }
 
