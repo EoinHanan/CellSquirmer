@@ -1,6 +1,8 @@
 package Input;
 
-import Character.Observer;
+import Communication.Observer;
+import Communication.Subject;
+
 /**
  * Created by EoinH on 27/09/2017.
  */

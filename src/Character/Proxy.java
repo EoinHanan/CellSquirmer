@@ -1,5 +1,7 @@
 package Character;
 
+import Communication.Observer;
+
 /**
  * Created by EoinH on 03/10/2017.
  */

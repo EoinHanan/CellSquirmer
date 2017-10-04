@@ -1,10 +1,12 @@
 package Input;
 
-import Character.Observer;
+import Communication.Observer;
+import Communication.Colleague;
+
 /**
  * Created by EoinH on 27/09/2017.
  */
-public class Go implements Command, Subject {
+public class Go extends Colleague implements Command  {
     private String[] validDirections = {"north","south","east","west"};
     String validCommand;
     Observer observer;

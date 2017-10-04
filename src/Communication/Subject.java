@@ -1,6 +1,5 @@
-package Input;
+package Communication;
 
-import Character.Observer;
 /**
  * Created by EoinH on 02/10/2017.
  */
