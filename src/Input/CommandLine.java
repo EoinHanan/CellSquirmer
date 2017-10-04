@@ -1,4 +1,5 @@
 package Input;
+import Character.Proxy;
 
 import java.util.Scanner;
 
@@ -6,58 +7,27 @@ import java.util.Scanner;
  * Created by EoinH on 27/09/2017.
  */
 public class CommandLine {
-    Scanner in;
-    String ask = "Enter input\n";
-    String input;
-    String words[];
-    static Parser parser;
-    public CommandLine(){
-        Scanner in = new Scanner(System.in);
-        System.out.print(ask);
-        input =in.nextLine();
-        int inputNumber=howMany(input);
-        if (inputNumber == 0){
-            System.out.print("Invalid, no input");
+    private Scanner in;
+    private String ask = "Enter input:", invalid = "Invalid, no input";
+    private String input;
+    private static Parser parser;
 
-        }
-        else if(inputNumber > 1 ) {
-            divide(input);
-        }
+    public CommandLine(Proxy p) {
+        parser = new Parser(p);
 
-        parser.validate(input);
+        in = new Scanner(System.in);
+        boolean willContinue =true;
 
-        if(words.length == 1){
 
-        }else if(words.length > 2){
+        while (willContinue) {
+            System.out.println(ask);
+            input = in.nextLine();
 
-        }else{
-            System.out.print("Too many words chosen");
+            willContinue = parser.checkEnd(input);
+            if (!willContinue)
+                break;
+
+            parser.validate(input);
         }
     }
-    private Command sort(String firstInput, String secondInput){
-        Command command = new Go("");
-
-        switch (firstInput) {
-            case "go": command = new Go(secondInput);break;
-            case "investigate": command = new Investigate();break;
-            case "take": command = new Take();break;
-
-        }
-        return command;
-    }
-
-    private int howMany(String line){
-
-        words = line.split(" ");
-        return words.length;
-    }
-
-    private String[] divide(String line){
-        String words[];
-
-        words = line.split(" ");
-
-        return words;
-    }
-
 }
