@@ -10,7 +10,7 @@ public class Inventory {
     private int itemsHeld = 0;
 
     public Inventory(){
-        //inventory = new Item[10];
+        inventory = new Item[10];
     }
 
     public void addItem(Item myItem){
