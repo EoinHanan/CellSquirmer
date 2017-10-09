@@ -9,6 +9,34 @@ package World;
  *
  * @author Gerry
  */
-public class Cell {
+public abstract class Cell {
+    private int positionX;
+    private int positionY;
+    private String description;
+    
+    
+    public int getPositionX(){
+        return positionX;
+    }
+    
+    public void setPositionX(int newPositionX){
+        positionX = newPositionX;
+    }
+    
+    public int getPositionY(){
+        return positionY;
+    }
+    
+    public void setPositionY(int newPositionY){
+        positionY = newPositionY;
+    }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String newDescription){
+        description = newDescription;
+    }
     
 }

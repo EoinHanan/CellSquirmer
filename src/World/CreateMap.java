@@ -9,6 +9,6 @@ package World;
  *
  * @author Gerry
  */
-public class Dungeon {
+public class CreateMap {
     
 }

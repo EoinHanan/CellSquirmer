@@ -1,0 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package World;
+
+/**
+ *
+ * @author Gerry
+ */
+public class CellFactory {
+    
+    public Cell makeCell(String newCellType, int positionX, int positionY){
+        Cell newCell = null;
+        
+        if (newCellType.equals("G")){
+            return new GoalCell(positionX, positionY);
+        }
+        
+        if (newCellType.equals("T")){
+            return new TrapCell(positionX, positionY);
+        }
+        
+        if (newCellType.equals("R")){
+            return new RegularCell(positionX, positionY);
+        }
+        
+        else return null;
+    }
+    
+}
