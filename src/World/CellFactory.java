@@ -11,22 +11,19 @@ package World;
  */
 public class CellFactory {
     
-    public Cell makeCell(String newCellType, int positionX, int positionY){
+    public Cell makeCell(int newCellType, int positionX, int positionY){
         Cell newCell = null;
         
-        if (newCellType.equals("G")){
-            return new GoalCell(positionX, positionY);
+        switch (newCellType) {
+            case 1:
+                return new RegularCell(positionX, positionY);  
+            case 2:
+                return new TrapCell(positionX, positionY);
+            case 3:
+                return new GoalCell(positionX, positionY);
+            default:
+                return newCell;
         }
-        
-        if (newCellType.equals("T")){
-            return new TrapCell(positionX, positionY);
-        }
-        
-        if (newCellType.equals("R")){
-            return new RegularCell(positionX, positionY);
-        }
-        
-        else return null;
     }
     
 }

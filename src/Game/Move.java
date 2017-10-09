@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package World;
+package Game;
 
 /**
  *
  * @author Gerry
  */
-public class CreateMap {
+public class Move {
     
 }
