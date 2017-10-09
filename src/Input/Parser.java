@@ -1,6 +1,5 @@
 package Input;
 
-import Character.Proxy;
 /**
  * Created by EoinH on 27/09/2017.
  */
@@ -13,7 +12,7 @@ public class Parser{
     private String secondWord;
 
 
-    public Parser (Proxy proxy){
+    public Parser (Character.CommandProxy proxy){
         goCommand = new Go(proxy);
         takeCommand = new Take(proxy);
         investigateCommand = new Investigate(proxy);

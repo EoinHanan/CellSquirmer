@@ -1,20 +1,24 @@
 package Input;
 
-import Character.Observer;
+import Communication.Colleague;
+import Communication.Mediator;
+import Communication.Observer;
+import Communication.Subject;
+
 /**
  * Created by EoinH on 27/09/2017.
  */
-public class Investigate implements Command, Subject {
+public class Investigate extends Colleague implements Command {
     Observer observer;
     String validCommand;
 
-    public Investigate(Observer o){
-        register(o);
+    public Investigate(Mediator mediator) {
+        super(mediator);
     }
+
 
     @Override
     public void execute(String secondWord) {
-        System.out.println("Execute method called for Take");
         if (checkValid())
             observer.update(validCommand);
 
@@ -26,18 +30,4 @@ public class Investigate implements Command, Subject {
         return true;
     }
 
-    @Override
-    public void register(Observer o) {
-        observer = o;
-    }
-
-    @Override
-    public void unregister(Observer o) {
-        //To be deleted?
-    }
-
-    @Override
-    public void notifyObserver() {
-
-    }
 }

@@ -1,23 +1,25 @@
 package Input;
 
-import Character.Observer;
+import Communication.Mediator;
+import Communication.Observer;
+import Communication.Colleague;
+
 /**
  * Created by EoinH on 27/09/2017.
  */
-public class Go implements Command, Subject {
+public class Go extends Colleague implements Command  {
     private String[] validDirections = {"north","south","east","west"};
     String validCommand;
-    Observer observer;
 
-    public Go(Observer o ){
-        register(o);
+    public Go(Mediator mediator) {
+        super(mediator);
     }
 
     @Override
     public void execute(String direction) {
         //To do check direction.
         if(checkValid(direction))
-                observer.update(direction);
+                ;
         else
             System.out.println("Invalid direction");
     }
@@ -35,18 +37,4 @@ public class Go implements Command, Subject {
         return true;
     }
 
-    @Override
-    public void register(Observer o) {
-        observer = o;
-    }
-
-    @Override
-    public void unregister(Observer o) {
-        //To delete possibly?
-    }
-
-    @Override
-    public void notifyObserver() {
-        observer.update(validCommand);
-    }
 }
