@@ -1,17 +1,19 @@
 package Input;
 
+import Communication.Colleague;
+import Communication.Mediator;
 import Communication.Observer;
 import Communication.Subject;
 
 /**
  * Created by EoinH on 27/09/2017.
  */
-public class Take implements Command, Subject {
+public class Take extends Colleague implements Command {
     Observer observer;
     String validCommand;
 
-    public Take(Observer o){
-        register(o);
+    public Take(Mediator mediator) {
+        super(mediator);
     }
 
     public boolean checkValid(){
@@ -24,20 +26,6 @@ public class Take implements Command, Subject {
             observer.update(command);
         else
             System.out.print("Validity test failed");
-
-    }
-
-    @Override
-    public void register(Observer o) {
-        observer = o;
-    }
-
-    @Override
-    public void unregister(Observer o) {
-
-    }
-    @Override
-    public void notifyObserver() {
 
     }
 }

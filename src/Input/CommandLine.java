@@ -1,5 +1,4 @@
 package Input;
-import Character.Proxy;
 
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ public class CommandLine {
     private String input;
     private static Parser parser;
 
-    public CommandLine(Proxy p) {
+    public CommandLine(Character.CommandProxy p) {
         parser = new Parser(p);
 
         in = new Scanner(System.in);
