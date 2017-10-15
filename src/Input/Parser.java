@@ -1,5 +1,7 @@
 package Input;
 
+import Communication.Mediator;
+
 /**
  * Created by EoinH on 27/09/2017.
  */
@@ -11,11 +13,10 @@ public class Parser{
     private String firstWord;
     private String secondWord;
 
-
-    public Parser (Character.CommandProxy proxy){
-        goCommand = new Go(proxy);
-        takeCommand = new Take(proxy);
-        investigateCommand = new Investigate(proxy);
+    public Parser (Mediator mediator){
+        goCommand = new Go(mediator);
+        takeCommand = new Take(mediator);
+        investigateCommand = new Investigate(mediator);
     }
 
     public void validate(String input){

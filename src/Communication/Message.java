@@ -1,32 +1,36 @@
 package Communication;
 
 /**
- * Created by EoinH on 09/10/2017.
+ * Created by EoinH on 11/10/2017.
  */
 public class Message {
+    private String destination;
+    private String source;
+    private String content;
 
-    private String message;
-
-    //Message code is a unique indicator to distinguish each individual message, from code is to distinguish where is it coming from, and to code is to show where is going to
-    private int messageCode, fromCode, toCode;
-
-    public Message(String message, int messageCode, int fromCode, int toCode){
-        this.message = message;
-        this.messageCode = messageCode;
-        this.fromCode = fromCode;
-        this.toCode = toCode;
+    public Message(String destination, String source, String content){
+        this.destination = destination;
+        this.source = source;
+        this.content = content;
     }
 
-    public String getMessage(){
-        return message;
+    public void setDestination(String destination){
+        this.destination = destination;
     }
-    public int getMessageCode(){
-        return messageCode;
+    public void setSource(String source){
+        this.source = source;
     }
-    public int getFromCode(){
-        return fromCode;
+    public void setContent(String content){
+        this.content= content;
     }
-    public int getToCode(){
-        return toCode;
+
+    public String getDestination(){
+        return destination;
+    }
+    public String getSource(){
+        return source;
+    }
+    public String getContent(){
+        return content;
     }
 }

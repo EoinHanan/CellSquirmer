@@ -1,6 +1,7 @@
 package Input;
 
 import Communication.Mediator;
+import Communication.Message;
 import Communication.Observer;
 import Communication.Colleague;
 
@@ -9,17 +10,27 @@ import Communication.Colleague;
  */
 public class Go extends Colleague implements Command  {
     private String[] validDirections = {"north","south","east","west"};
-    String validCommand;
+    private String validCommand;
+    private String destination= "[Char]";
+    private String source = "[go]";
+
 
     public Go(Mediator mediator) {
         super(mediator);
     }
 
     @Override
+    public void receive(Message message) {
+
+    }
+
+
+    @Override
     public void execute(String direction) {
+        Message message = new Message("To do replace", "Replace this", "Needs to be replaced");
         //To do check direction.
         if(checkValid(direction))
-                ;
+                this.send(message);
         else
             System.out.println("Invalid direction");
     }

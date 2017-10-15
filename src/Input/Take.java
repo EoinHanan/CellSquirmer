@@ -1,9 +1,6 @@
 package Input;
 
-import Communication.Colleague;
-import Communication.Mediator;
-import Communication.Observer;
-import Communication.Subject;
+import Communication.*;
 
 /**
  * Created by EoinH on 27/09/2017.
@@ -15,6 +12,12 @@ public class Take extends Colleague implements Command {
     public Take(Mediator mediator) {
         super(mediator);
     }
+
+    @Override
+    public void receive(Message message) {
+
+    }
+
 
     public boolean checkValid(){
         return true;
