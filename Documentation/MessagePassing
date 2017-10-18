@@ -1,0 +1,8 @@
+GUI ->Input [input:"details"]
+Input ->GUI [Error:"details"]
+Input ->World [CheckPosition:"x y"]
+Input ->World [CheckInvestigate:"x y"]
+World ->GUI [move:"details"]
+World ->Character [move:"details"]
+World ->GUI [investigate:"details"]
+World ->Game [state:"details"]
