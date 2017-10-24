@@ -5,10 +5,28 @@
  */
 package Game;
 
+import World.Map;
+import World.Cell;
+
 /**
  *
  * @author Gerry
  */
 public class Play {
+
+    private int sizeofmap;
+
+    public void play(int sizeofmap){
+        Cell currentmap [];
+        Map map = new Map();
+        currentmap = map.CreateMap(sizeofmap);
+        int i = 0;
+        int state = 0;
+        while(state != -1 || state != 1){
+
+        }
+
+    }
+
     
 }
