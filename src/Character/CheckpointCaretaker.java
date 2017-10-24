@@ -1,7 +1,7 @@
 package Character;
 import java.util.ArrayList;
 
-class Caretaker {
+class CheckpointCaretaker {
 
     // Where all mementos are saved
 

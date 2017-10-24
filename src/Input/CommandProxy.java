@@ -17,7 +17,7 @@ public class CommandProxy extends Colleague {
 
     @Override
     public void receive(Message message) {
-        if (message.getSource().equals("Output") && message.getAction().equals("Input")){
+        if (message.getSource().equals("Output") && message.getAction().equals("UserInput")){
             parser.validate(message);
         }
     }
