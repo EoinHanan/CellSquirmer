@@ -9,6 +9,7 @@ public class GameProxy extends Colleague {
 
     public GameProxy(Mediator mediator) {
         super(mediator);
+        setColleagueCode("Game");
     }
 
     @Override

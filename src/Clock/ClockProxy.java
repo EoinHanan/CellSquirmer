@@ -10,9 +10,11 @@ import Communication.Message;
 public class ClockProxy extends Colleague {
     Clock clock;
 
+
     public ClockProxy (Mediator mediator){
         super(mediator);
         clock = new Clock();
+        setColleagueCode("Clock");
     }
     @Override
     public void receive(Message message) {

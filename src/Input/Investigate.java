@@ -1,14 +1,12 @@
 package Input;
 
-import Communication.*;
-
 /**
  * Created by EoinH on 27/09/2017.
  */
 public class Investigate implements Command {
-    private CommandProxy commandProxy;
+    private InputProxy commandProxy;
 
-    public Investigate(CommandProxy commandProxy) {
+    public Investigate(InputProxy commandProxy) {
         this.commandProxy = commandProxy;
     }
 

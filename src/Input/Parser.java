@@ -1,6 +1,5 @@
 package Input;
 
-import Communication.Mediator;
 import Communication.Message;
 
 /**
@@ -13,7 +12,7 @@ public class Parser{
     private Investigate investigateCommand;
     private String firstWord;
     private String secondWord;
-    CommandProxy commandProxy;
+    InputProxy commandProxy;
 
     public Parser (){
         goCommand = new Go(commandProxy);
@@ -61,6 +60,7 @@ public class Parser{
 
         return valid;
     }
+
     private void split(String input){
         if (input.indexOf(" ") > -1){
             firstWord = input.substring(0,input.indexOf(" "));
@@ -70,12 +70,5 @@ public class Parser{
             firstWord = input;
             secondWord = "ignore";
         }
-    }
-
-    public boolean checkEnd(String word){
-        if (word.equals("End"))
-            return false;
-        else
-            return true;
     }
 }
