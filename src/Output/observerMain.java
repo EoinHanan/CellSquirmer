@@ -50,5 +50,4 @@ public class observerMain implements Subject {
         this.changed=true;
         notifyObservers();
     }
-
 }
