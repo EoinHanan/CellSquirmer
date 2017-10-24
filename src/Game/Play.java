@@ -5,29 +5,51 @@
  */
 package Game;
 
+import Clock.Clock;
+import Communication.ConcreteMediator;
+import Communication.Mediator;
+import Input.InputProxy;
+import Output.OutputProxy;
 import World.Map;
 import World.Cell;
+import Clock.ClockProxy;
 
 /**
  *
  * @author Gerry
  */
 public class Play {
+    private static ClockProxy clockProxy;
+    private static GameProxy gameProxy;
+    private static InputProxy inputProxy;
+    private static OutputProxy outputProxy;
+
+    private static ConcreteMediator concreteMediator;
+
 
     private int sizeofmap;
 
-    public void play(int sizeofmap){
+    public Play(int sizeofmap){
+        concreteMediator = new ConcreteMediator();
+        clockProxy = new ClockProxy(concreteMediator);
+        gameProxy = new GameProxy(concreteMediator);
+        inputProxy = new InputProxy(concreteMediator);
+        outputProxy = new OutputProxy(concreteMediator);
+
+
+
         Cell currentmap [];
         Map map = new Map();
         currentmap = map.CreateMap(sizeofmap);
+
         int i = 0;
         int state = 0;
         while(state != -1 || state != 1){
 
 
-            //if recieved message is go, work through Move Class
-
-            //else if recieved message is investigate, work through State Class
+            //if received message is go, work through Move Class
+            outputProxy.lookForInput();
+            //else if received message is investigate, work through State Class
 
         }
 

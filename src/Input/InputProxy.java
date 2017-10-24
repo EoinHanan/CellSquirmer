@@ -13,8 +13,9 @@ public class InputProxy extends Colleague {
 
     public InputProxy(Mediator mediator){
         super(mediator);
+
         setColleagueCode("Input");
-        parser = new Parser();
+        parser = new Parser(this);
     }
 
     @Override
@@ -32,14 +33,17 @@ public class InputProxy extends Colleague {
 
     public void executeGo(String direction){
         message = new Message("Game",this.getColleagueCode(), direction,"Go");
+        System.out.println("Go is gone!");
         this.send(message);
     }
     public void executeTake(){
         message = new Message("Game",this.getColleagueCode(), "NULL","Take");
+        System.out.println("Take is gone!");
         this.send(message);
     }
     public void executeInvestigate(){
         message = new Message("Game",this.getColleagueCode(), "NULL","Investigate");
+        System.out.println("investigate is gone!");
         this.send(message);
     }
 }

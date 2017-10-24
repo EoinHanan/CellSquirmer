@@ -8,12 +8,15 @@ import Communication.Message;
  * Created by Patrick on 18/10/2017.
  */
 public class OutputProxy extends Colleague {
-    private String colleagueCode;
     private TakeInput takeInput;
     public OutputProxy(Mediator mediator) {
         super(mediator);
-        colleagueCode = "Output";
+        setColleagueCode("Output");
         takeInput = new TakeInput();
+    }
+    public void lookForInput(){
+        String userInput =         takeInput.userinput();
+        execute(userInput);
     }
 
     @Override
@@ -21,13 +24,13 @@ public class OutputProxy extends Colleague {
         switch (message.getSource()){
             case "Input":
                 if (message.getAction().equals("Error"))
-                    System.out.println(message.getContent());
+                    System.out.println("Output through GUI: " + message.getContent());
                 break;
         }
     }
 
-    public void execute(String inText){
-        Message message = new Message("Input", colleagueCode, inText, "UserInput");
+    private void execute(String inText){
+        Message message = new Message("Input", this.getColleagueCode(), inText, "UserInput");
         send(message);
     }
 }
