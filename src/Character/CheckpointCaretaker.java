@@ -6,7 +6,7 @@ Created on 02/10/17 by KieranF
 Completely refactored on 24/10/17 by KieranF
  */
 
-class CheckpointCaretaker {
+public class CheckpointCaretaker {
 
     private Stack mementoStack;
     private Stack originatorStack;

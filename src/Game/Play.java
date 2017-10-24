@@ -7,6 +7,7 @@ package Game;
 
 import World.Map;
 import World.Cell;
+import Character.*;
 
 /**
  *
@@ -22,6 +23,8 @@ public class Play {
         currentmap = map.CreateMap(sizeofmap);
         int i = 0;
         int state = 0;
+        Position myPosition = new Position(0,0);
+        CheckpointCaretaker c = new CheckpointCaretaker();
         while(state != -1 || state != 1){
 
 
