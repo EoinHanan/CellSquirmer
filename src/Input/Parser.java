@@ -1,6 +1,7 @@
 package Input;
 
 import Communication.Mediator;
+import Communication.Message;
 
 /**
  * Created by EoinH on 27/09/2017.
@@ -12,14 +13,16 @@ public class Parser{
     private Investigate investigateCommand;
     private String firstWord;
     private String secondWord;
+    CommandProxy commandProxy;
 
-    public Parser (Mediator mediator){
-        goCommand = new Go(mediator);
-        takeCommand = new Take(mediator);
-        investigateCommand = new Investigate(mediator);
+    public Parser (){
+        goCommand = new Go(commandProxy);
+        takeCommand = new Take(commandProxy);
+        investigateCommand = new Investigate(commandProxy);
     }
 
-    public void validate(String input){
+    public void validate(Message message){
+        String input = message.getAction();
         input = normalise(input);
         if (checkList(input)) {
             split(input);
@@ -32,7 +35,6 @@ public class Parser{
 
     private String normalise(String word){
         word = word.toLowerCase();
-
         return word;
     }
 

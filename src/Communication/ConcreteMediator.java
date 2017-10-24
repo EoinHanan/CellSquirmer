@@ -14,9 +14,9 @@ public class ConcreteMediator implements Mediator{
         colleagues.add(colleague);
     }
     public void send(Message message, Colleague originator) {
-        //let all other screens know that this screen has changed
+
         for(Colleague colleague: colleagues) {
-            //don't tell ourselves
+
             if(colleague != originator) {
                 colleague.receive(message);
             }
