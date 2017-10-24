@@ -35,9 +35,11 @@ public class Move {
         this.moveY = moveY;
     }
 
-    public void validateMove(int vMoveX, int vMoveY){
+    public void validateMove(int vMoveX, int vMoveY, Play play){
             int cpX;
             int cpY;
+            cpX = play.getcX();
+            cpY = play.getcY();
             //cpX = c.getXValue();
     }
 }

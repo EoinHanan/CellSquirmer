@@ -6,10 +6,16 @@ import Communication.Message;
 
 public class GameProxy extends Colleague {
     private Message message;
+    private Play play;
 
-    public GameProxy(Mediator mediator) {
+    public GameProxy(Mediator mediator, Play play) {
         super(mediator);
+
         setColleagueCode("Game");
+    }
+
+    public void updatePlay(Play play){
+        this.play = play;
     }
 
     @Override
@@ -24,7 +30,7 @@ public class GameProxy extends Colleague {
                     switch(direction){
                         case "north":
                             Move northMove = new Move(0, 1);
-                            northMove.validateMove(0, 1);
+                            northMove.validateMove(0, 1, play);
                             break;
                         case "east":
                             new Move(1, 0);

@@ -41,7 +41,7 @@ public class Play {
 
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
-        gameProxy = new GameProxy(concreteMediator);
+        gameProxy = new GameProxy(concreteMediator, this);
         inputProxy = new InputProxy(concreteMediator);
         outputProxy = new OutputProxy(concreteMediator);
 
@@ -51,15 +51,36 @@ public class Play {
         this.sizeOfMap = sizeOfMap;
     }
 
+    public void setcX(int cX) {
+        this.cX = cX;
+    }
+
+    public void setcY(int cY) {
+        this.cY = cY;
+    }
+
+    public int getSizeOfMap(){
+        return this.sizeOfMap;
+    }
+
+    public int getcX(){
+        return this.cX;
+    }
+
+    public int getcY() {
+        return cY;
+    }
+
     public void start() {
         Cell currentmap[];
         Map map = new Map();
-        currentmap = map.CreateMap(sizeOfMap);
+        currentmap  = map.CreateMap(sizeOfMap);
         int i = 0;
         int state = 0;
         Position myPosition = new Position(cX, cY);
         CheckpointCaretaker c = new CheckpointCaretaker();
         while (state != -1 || state != 1) {
+            gameProxy.updatePlay(this);
             cX = c.getXValue();
             cY = c.getYValue();
             outputProxy.lookForInput();
