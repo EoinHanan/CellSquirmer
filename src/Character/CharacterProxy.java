@@ -9,8 +9,9 @@ import Communication.Message;
  */
 public class CharacterProxy extends Colleague {
 
-        public CharacterProxy(Mediator mediator) {
+    public CharacterProxy(Mediator mediator) {
         super(mediator);
+        setColleagueCode("Character");
     }
 
     @Override

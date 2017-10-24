@@ -9,17 +9,19 @@ import Communication.Message;
  */
 public class OutputProxy extends Colleague {
     private String colleagueCode;
+    private TakeInput takeInput;
     public OutputProxy(Mediator mediator) {
         super(mediator);
         colleagueCode = "Output";
+        takeInput = new TakeInput();
     }
 
     @Override
     public void receive(Message message) {
         switch (message.getSource()){
             case "Input":
-                if (message.getAction().equals(""))
-                    ;
+                if (message.getAction().equals("Error"))
+                    System.out.println(message.getContent());
                 break;
         }
     }

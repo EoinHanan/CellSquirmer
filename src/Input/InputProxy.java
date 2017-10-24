@@ -7,37 +7,39 @@ import Communication.Message;
 /**
  * Created by EoinH on 24/10/2017.
  */
-public class CommandProxy extends Colleague {
+public class InputProxy extends Colleague {
     private Message message;
     private Parser parser;
 
-    public CommandProxy (Mediator mediator){
+    public InputProxy(Mediator mediator){
         super(mediator);
+        setColleagueCode("Input");
+        parser = new Parser();
     }
 
     @Override
     public void receive(Message message) {
-        if (message.getSource().equals("Output") && message.getAction().equals("Input")){
+        if (message.getSource().equals("Output") && message.getAction().equals("UserInput")){
             parser.validate(message);
         }
     }
 
         //message = new Message("To","From", "Content","Action");
     public void sendError(){
-        message = new Message("Output","From", "Content","Action");
+        message = new Message("Output",this.getColleagueCode(), "Invalid Input","Error");
         this.send(message);
     }
 
-    public void executeGo(){
-        message = new Message("","From", "Content","Action");
+    public void executeGo(String direction){
+        message = new Message("Game",this.getColleagueCode(), direction,"Go");
         this.send(message);
     }
     public void executeTake(){
-        message = new Message("To","From", "Content","Action");
+        message = new Message("Game",this.getColleagueCode(), "NULL","Take");
         this.send(message);
     }
     public void executeInvestigate(){
-        message = new Message("To","From", "Content","Action");
+        message = new Message("Game",this.getColleagueCode(), "NULL","Investigate");
         this.send(message);
     }
 }

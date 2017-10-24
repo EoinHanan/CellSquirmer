@@ -1,22 +1,17 @@
 package Input;
 
-import Communication.Mediator;
-import Communication.Message;
-import Communication.Observer;
-import Communication.Colleague;
-
 /**
  * Created by EoinH on 27/09/2017.
  */
 public class Go implements Command  {
-    private CommandProxy commandProxy;
+    private InputProxy commandProxy;
 
-    public Go(CommandProxy commandProxy) {
+    public Go(InputProxy commandProxy) {
         this.commandProxy = commandProxy;
     }
 
     @Override
     public void execute(String direction) {
-       commandProxy.executeGo();
+       commandProxy.executeGo(direction);
     }
 }

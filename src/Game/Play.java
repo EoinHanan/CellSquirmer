@@ -23,7 +23,7 @@ public class Play {
         int i = 0;
         int state = 0;
         while(state != -1 || state != 1){
-            //recieve(message);
+
 
             //if recieved message is go, work through Move Class
 
