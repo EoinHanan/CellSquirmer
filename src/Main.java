@@ -5,9 +5,10 @@ import Output.TakeInput;
  */
 public class Main {
     public static void main(String [] args){
-        TakeInput input = new TakeInput();
-        String usertext = input.userinput();
-        System.out.println(usertext);
-
+        while(true) {
+            TakeInput input = new TakeInput();
+            String usertext = input.userinput();
+            System.out.println(usertext);
+        }
     }
 }
