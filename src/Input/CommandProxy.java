@@ -11,7 +11,7 @@ public class CommandProxy extends Colleague {
     private Message message;
     private Parser parser;
 
-    CommandProxy (Mediator mediator){
+    public CommandProxy (Mediator mediator){
         super(mediator);
     }
 
