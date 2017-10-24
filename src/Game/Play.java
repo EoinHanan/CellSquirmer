@@ -15,17 +15,32 @@ import Character.*;
  */
 public class Play {
 
-    private int sizeofmap;
+    private int sizeOfMap;
+    private int cX;
+    private int cY;
 
-    public void play(int sizeofmap){
-        Cell currentmap [];
+    public Play(int sizeOfMap, int x, int y) {
+        this.cX = x;
+        this.cY = y;
+        this.sizeOfMap = sizeOfMap;
+
+    }
+
+    public void setSizeOfMap(int sizeOfMap) {
+        this.sizeOfMap = sizeOfMap;
+    }
+
+    public void start() {
+        Cell currentmap[];
         Map map = new Map();
-        currentmap = map.CreateMap(sizeofmap);
+        currentmap = map.CreateMap(sizeOfMap);
         int i = 0;
         int state = 0;
-        Position myPosition = new Position(0,0);
+        Position myPosition = new Position(cX, cY);
         CheckpointCaretaker c = new CheckpointCaretaker();
-        while(state != -1 || state != 1){
+        while (state != -1 || state != 1) {
+            cX = c.getXValue();
+            cY = c.getYValue();
 
 
             //if recieved message is go, work through Move Class
@@ -33,8 +48,5 @@ public class Play {
             //else if recieved message is investigate, work through State Class
 
         }
-
     }
-
-    
 }

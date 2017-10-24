@@ -23,20 +23,25 @@ public class GameProxy extends Colleague {
                     direction = message.getContent();
                     switch(direction){
                         case "north":
+                            Move northMove = new Move(0, 1);
+                            northMove.validateMove(0, 1);
                             break;
                         case "east":
+                            new Move(1, 0);
                             break;
                         case "south":
+                            new Move(0, -1);
                             break;
                         case "west":
+                            new Move(1, 0);
                             break;
                     }
                     break;
                 case "investigate":
                     //Call the State class
+
                     break;
 
-                //Call the State class
                 case "take":
                 //Not used yet
                     break;
