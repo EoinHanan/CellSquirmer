@@ -10,25 +10,26 @@ public class Parser{
     private Go goCommand;
     private Take takeCommand;
     private Investigate investigateCommand;
+    private Error errorCommand;
     private String firstWord;
     private String secondWord;
-    InputProxy commandProxy;
 
-    public Parser (){
-        goCommand = new Go(commandProxy);
-        takeCommand = new Take(commandProxy);
-        investigateCommand = new Investigate(commandProxy);
+    public Parser (InputProxy inputProxy){
+        goCommand = new Go(inputProxy);
+        takeCommand = new Take(inputProxy);
+        investigateCommand = new Investigate(inputProxy);
+        errorCommand = new Error(inputProxy);
     }
 
     public void validate(Message message){
-        String input = message.getAction();
+        String input = message.getContent();
         input = normalise(input);
         if (checkList(input)) {
             split(input);
             makeCommand();
         }
         else
-            System.out.println("Invalid selection");
+            errorCommand.execute("");
 
     }
 
@@ -39,9 +40,9 @@ public class Parser{
 
     private void makeCommand(){
         switch (firstWord){
-            case "go":goCommand.execute(secondWord); System.out.println("Go command");break;
-            case "investigate":investigateCommand.execute(secondWord);System.out.println("Investigate command") ;break;
-            case "take":takeCommand.execute(secondWord); System.out.println("Take command") ;break;
+            case "go":goCommand.execute(secondWord);break;
+            case "investigate":investigateCommand.execute(secondWord) ;break;
+            case "take":takeCommand.execute(secondWord) ;break;
             default:System.out.println("No command accepted");
         }
     }

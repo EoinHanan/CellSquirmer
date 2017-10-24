@@ -5,6 +5,15 @@
  */
 package Game;
 
+import Clock.Clock;
+import Communication.ConcreteMediator;
+import Communication.Mediator;
+import Input.InputProxy;
+import Output.OutputProxy;
+import Clock.ClockProxy;
+import Communication.ConcreteMediator;
+import Input.InputProxy;
+import Output.OutputProxy;
 import World.Map;
 import World.Cell;
 import Character.*;
@@ -14,6 +23,12 @@ import Character.*;
  * @author Gerry
  */
 public class Play {
+    private static ClockProxy clockProxy;
+    private static GameProxy gameProxy;
+    private static InputProxy inputProxy;
+    private static OutputProxy outputProxy;
+    private static ConcreteMediator concreteMediator;
+
 
     private int sizeOfMap;
     private int cX;
@@ -23,6 +38,12 @@ public class Play {
         this.cX = x;
         this.cY = y;
         this.sizeOfMap = sizeOfMap;
+
+        concreteMediator = new ConcreteMediator();
+        clockProxy = new ClockProxy(concreteMediator);
+        gameProxy = new GameProxy(concreteMediator);
+        inputProxy = new InputProxy(concreteMediator);
+        outputProxy = new OutputProxy(concreteMediator);
 
     }
 
@@ -41,12 +62,15 @@ public class Play {
         while (state != -1 || state != 1) {
             cX = c.getXValue();
             cY = c.getYValue();
-
+            outputProxy.lookForInput();
 
             //if recieved message is go, work through Move Class
 
             //else if recieved message is investigate, work through State Class
 
         }
+
     }
+
+    
 }

@@ -9,6 +9,8 @@ public abstract class Colleague{
 
     public Colleague(Mediator mediator) {
         this.mediator = mediator;
+
+        mediator.addColleague(this);
     }
 
     public void send(Message message) {

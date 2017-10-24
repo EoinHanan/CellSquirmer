@@ -1,14 +1,9 @@
-import java.util.Scanner;
-import Output.TakeInput;
+import Game.Play;
 /**
  * Created by EoinH on 28/09/2017.
  */
 public class Main {
     public static void main(String [] args){
-        while(true) {
-            TakeInput input = new TakeInput();
-            String usertext = input.userinput();
-            System.out.println(usertext);
-        }
+        Play play = new Play(10);
     }
 }

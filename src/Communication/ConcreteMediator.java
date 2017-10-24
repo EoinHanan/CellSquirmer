@@ -14,9 +14,7 @@ public class ConcreteMediator implements Mediator{
         colleagues.add(colleague);
     }
     public void send(Message message, Colleague originator) {
-
         for(Colleague colleague: colleagues) {
-
             if(colleague != originator) {
                 colleague.receive(message);
             }
