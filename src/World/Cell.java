@@ -12,6 +12,7 @@ package World;
 public abstract class Cell {
     private int positionX;
     private int positionY;
+    private int state;
     private String description;
     
     
@@ -37,6 +38,14 @@ public abstract class Cell {
     
     public void setDescription(String newDescription){
         description = newDescription;
+    }
+
+    public int getState(){
+        return state;
+    }
+
+    public void setState(int newState){
+        state = newState;
     }
     
 }

@@ -3,6 +3,8 @@ package World;
 import java.util.Random;
 
 public class Map {
+
+    private Map map;
     
     public Cell[] CreateMap(int size)
     {
