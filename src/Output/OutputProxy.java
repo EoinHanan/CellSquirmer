@@ -3,6 +3,7 @@ package Output;
 import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  * Created by Patrick on 18/10/2017.
@@ -15,7 +16,8 @@ public class OutputProxy extends Colleague {
         takeInput = new TakeInput();
     }
     public void lookForInput(){
-        String userInput =         takeInput.userinput();
+        System.out.print("Looking for input");
+        String userInput = takeInput.userinput();
         execute(userInput);
     }
 
