@@ -12,7 +12,6 @@ import Input.InputProxy;
 import Output.OutputProxy;
 import World.Map;
 import World.Cell;
-import Clock.ClockProxy;
 
 /**
  *
@@ -29,27 +28,21 @@ public class Play {
 
     private int sizeofmap;
 
-    public Play(int sizeofmap){
-        concreteMediator = new ConcreteMediator();
-        clockProxy = new ClockProxy(concreteMediator);
-        gameProxy = new GameProxy(concreteMediator);
-        inputProxy = new InputProxy(concreteMediator);
-        outputProxy = new OutputProxy(concreteMediator);
-
-
-
+    public void play(int sizeofmap){
         Cell currentmap [];
         Map map = new Map();
         currentmap = map.CreateMap(sizeofmap);
 
         int i = 0;
         int state = 0;
+        Position myPosition = new Position(0,0);
+        CheckpointCaretaker c = new CheckpointCaretaker();
         while(state != -1 || state != 1){
 
 
-            //if received message is go, work through Move Class
-            outputProxy.lookForInput();
-            //else if received message is investigate, work through State Class
+            //if recieved message is go, work through Move Class
+
+            //else if recieved message is investigate, work through State Class
 
         }
 

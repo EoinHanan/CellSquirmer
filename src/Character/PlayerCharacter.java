@@ -8,11 +8,11 @@ import Communication.Mediator;
 public class PlayerCharacter {
     public Position currentPosition;
     public Inventory playerInventory;
-    private static CharacterProxy characterProxy;
+    private static CharacterProxy commandProxy;
 
     public PlayerCharacter(Position startingPosition, Mediator mediator){
         currentPosition = startingPosition;
         playerInventory = new Inventory();
-        characterProxy = new CharacterProxy(mediator);
+        commandProxy = new CharacterProxy(mediator);
     }
 }
