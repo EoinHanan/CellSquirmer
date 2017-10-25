@@ -12,12 +12,13 @@ public class CheckpointCaretaker {
     private Stack originatorStack;
     private Position p;
 
-    public CheckpointCaretaker(){
+    public CheckpointCaretaker(Position p){
         mementoStack = new Stack();
         originatorStack = new Stack();
+        this.p= p;
     }
 
-    public void setWidget(Position p) {
+    public void setPosition(Position p) {
         this.p = p;
     }
 

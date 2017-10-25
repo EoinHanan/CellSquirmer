@@ -4,6 +4,7 @@ import Game.Play;
  */
 public class Main {
     public static void main(String [] args){
-        Play play = new Play(10);
+        Play play = new Play(10,1,1);
+        play.start();
     }
 }

@@ -78,7 +78,7 @@ public class Play {
         int i = 0;
         int state = 0;
         Position myPosition = new Position(cX, cY);
-        CheckpointCaretaker c = new CheckpointCaretaker();
+        CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
         while (state != -1 || state != 1) {
             gameProxy.updatePlay(this);
             cX = c.getXValue();

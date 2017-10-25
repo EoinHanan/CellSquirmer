@@ -37,12 +37,10 @@ public class InputProxy extends Colleague {
     }
     public void executeTake(){
         message = new Message("Game",this.getColleagueCode(), "NULL","Take");
-
         this.send(message);
     }
     public void executeInvestigate(){
         message = new Message("Game",this.getColleagueCode(), "NULL","Investigate");
-
         this.send(message);
     }
 }
