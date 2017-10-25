@@ -70,7 +70,15 @@ public class GameProxy extends Colleague {
                     break;
                 case "investigate":
                     //Call the State class
-
+                    int check;
+                    State state = new State();
+                    check = state.checkState(play);
+                    if(check == -1)
+                        outputState("You lose, try again");
+                    if(check == 0)
+                        outputState("No update to state");
+                    else if(check == 1)
+                        outputState("You win. Congratualtions");
                     break;
 
                 case "take":
@@ -94,6 +102,11 @@ public class GameProxy extends Colleague {
 
     private void executeUnValid(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
+        send(message);
+    }
+
+    private void outputState(String inText){
+        Message message = new Message("Output", this.getColleagueCode(), inText, "OutputState");
         send(message);
     }
 }

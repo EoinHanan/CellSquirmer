@@ -6,6 +6,7 @@
 package Game;
 
 import Character.Position;
+import World.Cell;
 
 
 /**
@@ -14,8 +15,27 @@ import Character.Position;
  */
 public class State {
 
+
     //get current position, check map for that position, retrieve state
 
-    public int currentPositionX, currentPostionY;
+    public State(){
+
+    }
+
+    public int checkState(Play play){
+        int cpX;
+        int cpY;
+        int state = 0;
+        cpX = play.getcX();
+        cpY = play.getcY();
+        Cell[] currentMap = play.getMap();
+        for(int i = 0; i < play.getMap().length; i++) {
+
+            if(cpX == currentMap[i].getPositionX() && cpY == currentMap[i].getPositionY())
+                state = currentMap[i].getState();
+
+        }
+        return state;
+    }
 
 }
