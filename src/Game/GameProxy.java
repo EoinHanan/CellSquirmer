@@ -58,7 +58,7 @@ public class GameProxy extends Colleague {
     }
 
     public void sendError(){
-        message = new Message("Output","From", "Content","Action");
+        message = new Message("GUI","From", "Content","Action");
         this.send(message);
     }
 }

@@ -1,4 +1,4 @@
-package Input;
+package CommandParser;
 
 import Communication.Message;
 
@@ -64,8 +64,12 @@ public class Parser{
 
     private void split(String input){
         if (input.indexOf(" ") > -1){
-            firstWord = input.substring(0,input.indexOf(" "));
-            secondWord = input.substring(input.indexOf(" "));
+            if (input.indexOf(" ") != input.lastIndexOf(" ")) {
+                firstWord = input.substring(0, input.indexOf(" "));
+                secondWord = input.substring(input.indexOf(" "));
+            }
+            else
+                errorCommand.execute("");
         }
         else {
             firstWord = input;

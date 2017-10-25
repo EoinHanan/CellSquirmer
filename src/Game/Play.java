@@ -5,15 +5,10 @@
  */
 package Game;
 
-import Clock.Clock;
 import Communication.ConcreteMediator;
-import Communication.Mediator;
-import Input.InputProxy;
-import Output.OutputProxy;
+import CommandParser.InputProxy;
+import GUI.GUIProxy;
 import Clock.ClockProxy;
-import Communication.ConcreteMediator;
-import Input.InputProxy;
-import Output.OutputProxy;
 import World.Map;
 import World.Cell;
 import Character.*;
@@ -26,7 +21,7 @@ public class Play {
     private static ClockProxy clockProxy;
     private static GameProxy gameProxy;
     private static InputProxy inputProxy;
-    private static OutputProxy outputProxy;
+    private static GUIProxy outputProxy;
     private static ConcreteMediator concreteMediator;
 
 
@@ -43,7 +38,7 @@ public class Play {
         clockProxy = new ClockProxy(concreteMediator);
         gameProxy = new GameProxy(concreteMediator, this);
         inputProxy = new InputProxy(concreteMediator);
-        outputProxy = new OutputProxy(concreteMediator);
+        outputProxy = new GUIProxy(concreteMediator);
 
     }
 

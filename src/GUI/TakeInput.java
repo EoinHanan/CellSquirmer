@@ -1,4 +1,4 @@
-package Output;
+package GUI;
 
 import java.util.Scanner;
 
