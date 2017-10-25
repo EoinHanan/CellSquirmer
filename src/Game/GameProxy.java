@@ -21,8 +21,8 @@ public class GameProxy extends Colleague {
     @Override
     public void receive(Message message) {
         String command, direction;
-        Boolean valid = true;
-        if (message.getSource().equals("input")){
+        if (message.getSource().equals("CommandParser")){
+            System.out.println("Reaching the Game Proxy");
             command = message.getAction();
             switch(command){
                 case "go":
@@ -31,40 +31,16 @@ public class GameProxy extends Colleague {
                     switch(direction){
                         case "north":
                             Move northMove = new Move(0, 1);
-                            valid = northMove.validateMove(0, 1, play);
-                            if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved north.");
-
+                            northMove.validateMove(0, 1, play);
                             break;
                         case "east":
-                            Move eastMove = new Move(1, 0);
-                            valid = eastMove.validateMove(1, 0, play);
-                            if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved north.");
+                            new Move(1, 0);
                             break;
                         case "south":
-                            Move southMove = new Move(0, -1);
-                            valid = southMove.validateMove(0, -1, play);
-                            if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved north.");
+                            new Move(0, -1);
                             break;
                         case "west":
-                            Move westMove = new Move(-1, 0);
-                            valid = westMove.validateMove(-1, 0, play);
-                            if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved north.");
+                            new Move(1, 0);
                             break;
                     }
                     break;
@@ -83,17 +59,7 @@ public class GameProxy extends Colleague {
     }
 
     public void sendError(){
-        message = new Message("GUI","From", "Content","Action");
+        message = new Message("Output","From", "Content","Action");
         this.send(message);
-    }
-
-    private void executeValid(String inText){
-        Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
-        send(message);
-    }
-
-    private void executeUnValid(String inText){
-        Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
-        send(message);
     }
 }

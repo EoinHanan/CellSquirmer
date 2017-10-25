@@ -7,11 +7,11 @@ import Communication.Message;
 /**
  * Created by EoinH on 24/10/2017.
  */
-public class InputProxy extends Colleague {
+public class CommandParserProxy extends Colleague {
     private Message message;
     private Parser parser;
 
-    public InputProxy(Mediator mediator){
+    public CommandParserProxy(Mediator mediator){
         super(mediator);
 
         setColleagueCode("CommandParser");

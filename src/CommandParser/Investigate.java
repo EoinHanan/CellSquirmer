@@ -4,9 +4,9 @@ package CommandParser;
  * Created by EoinH on 27/09/2017.
  */
 public class Investigate implements Command {
-    private InputProxy commandProxy;
+    private CommandParserProxy commandProxy;
 
-    public Investigate(InputProxy commandProxy) {
+    public Investigate(CommandParserProxy commandProxy) {
         this.commandProxy = commandProxy;
     }
 
