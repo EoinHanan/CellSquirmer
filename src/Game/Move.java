@@ -6,6 +6,8 @@
 package Game;
 
 import Character.CheckpointCaretaker;
+import World.Cell;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 /**
  *
@@ -35,11 +37,20 @@ public class Move {
         this.moveY = moveY;
     }
 
-    public void validateMove(int vMoveX, int vMoveY, Play play){
+    public boolean validateMove(int vMoveX, int vMoveY, Play play){
+            Boolean valid = false;
             int cpX;
             int cpY;
-            cpX = play.getcX();
-            cpY = play.getcY();
-            //cpX = c.getXValue();
+            int cmX, cmY;
+            cpX = play.getcX() + vMoveX;
+            cpY = play.getcY() + vMoveY;
+            Cell [] currentMap = play.getMap();
+            for(int i = 0; i < play.getMap().length; i++){
+                cmX = currentMap[i].getPositionX();
+                cmY = currentMap[i].getPositionY();
+                if(cpX == cmX && cpY ==cmY)
+                    valid = true;
+            }
+            return valid;
     }
 }
