@@ -1,4 +1,4 @@
-package Output;
+package GUI;
 
 public class observerSubscriber implements Observer {
 

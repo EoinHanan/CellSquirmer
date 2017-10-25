@@ -1,4 +1,4 @@
-package Input;
+package CommandParser;
 
 /**
  * Created by EoinH on 27/09/2017.

@@ -8,12 +8,10 @@ package Game;
 import Clock.Clock;
 import Communication.ConcreteMediator;
 import Communication.Mediator;
-import Input.InputProxy;
-import Output.OutputProxy;
+import GUI.GUIProxy;
+import CommandParser.CommandParserProxy;
 import Clock.ClockProxy;
 import Communication.ConcreteMediator;
-import Input.InputProxy;
-import Output.OutputProxy;
 import World.Map;
 import World.Cell;
 import Character.*;
@@ -25,30 +23,30 @@ import Character.*;
 public class Play {
     private static ClockProxy clockProxy;
     private static GameProxy gameProxy;
-    private static InputProxy inputProxy;
-    private static OutputProxy outputProxy;
+    private static CommandParserProxy commandParserProxy;
+    private static GUIProxy guiProxy;
     private static ConcreteMediator concreteMediator;
 
 
     private int sizeOfMap;
     private int cX;
     private int cY;
-    private Cell map[];
+    private Cell map [];
 
-    public Play(int sizeOfMap, int x, int y, Cell currentmap[]) {
+    public Play(int sizeOfMap, int x, int y, Cell [] currentMap) {
         this.cX = x;
         this.cY = y;
         this.sizeOfMap = sizeOfMap;
-        this.map = currentmap;
+        this.map = currentMap;
 
 
         Map map = new Map();
-        currentmap  = map.CreateMap(sizeOfMap);
+        currentMap = map.CreateMap(sizeOfMap);
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
         gameProxy = new GameProxy(concreteMediator, this);
-        inputProxy = new InputProxy(concreteMediator);
-        outputProxy = new OutputProxy(concreteMediator);
+        guiProxy = new GUIProxy(concreteMediator);
+        commandParserProxy = new CommandParserProxy(concreteMediator);
 
     }
 
@@ -76,18 +74,18 @@ public class Play {
         return cY;
     }
 
-    public void setMap(Cell currentMap[]){
-        this.map = currentMap;
-    }
-
     public Cell[] getMap(){
         return this.map;
     }
 
+    public void setMap(Cell currentMap[]){
+        this.map = currentMap;
+    }
+
     public void start() {
-        //Cell currentmap[];
-        //Map map = new Map();
-        //currentmap  = map.CreateMap(sizeOfMap);
+        Cell currentmap[];
+        Map map = new Map();
+        currentmap  = map.CreateMap(sizeOfMap);
         int i = 0;
         int state = 0;
         Position myPosition = new Position(cX, cY);
@@ -96,7 +94,7 @@ public class Play {
             gameProxy.updatePlay(this);
             cX = c.getXValue();
             cY = c.getYValue();
-            outputProxy.lookForInput();
+            guiProxy.lookForInput();
 
             //if recieved message is go, work through Move Class
 
@@ -105,6 +103,9 @@ public class Play {
         }
 
     }
+
+
+
 
     
 }

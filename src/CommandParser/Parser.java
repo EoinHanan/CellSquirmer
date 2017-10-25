@@ -1,4 +1,4 @@
-package Input;
+package CommandParser;
 
 import Communication.Message;
 
@@ -14,11 +14,11 @@ public class Parser{
     private String firstWord;
     private String secondWord;
 
-    public Parser (InputProxy inputProxy){
-        goCommand = new Go(inputProxy);
-        takeCommand = new Take(inputProxy);
-        investigateCommand = new Investigate(inputProxy);
-        errorCommand = new Error(inputProxy);
+    public Parser (CommandParserProxy commandParserProxy){
+        goCommand = new Go(commandParserProxy);
+        takeCommand = new Take(commandParserProxy);
+        investigateCommand = new Investigate(commandParserProxy);
+        errorCommand = new Error(commandParserProxy);
     }
 
     public void validate(Message message){
@@ -43,7 +43,7 @@ public class Parser{
             case "go":goCommand.execute(secondWord);break;
             case "investigate":investigateCommand.execute(secondWord) ;break;
             case "take":takeCommand.execute(secondWord) ;break;
-            default:System.out.println("No command accepted");
+            default:errorCommand.execute("Too many words");
         }
     }
 
@@ -64,8 +64,15 @@ public class Parser{
 
     private void split(String input){
         if (input.indexOf(" ") > -1){
-            firstWord = input.substring(0,input.indexOf(" "));
-            secondWord = input.substring(input.indexOf(" "));
+            if (input.indexOf(" ") == input.lastIndexOf(" ")) {
+                firstWord = input.substring(0, input.indexOf(" "));
+                secondWord = input.substring(input.indexOf(" "));
+            }
+            else {
+
+                firstWord = "Error";
+            }
+
         }
         else {
             firstWord = input;

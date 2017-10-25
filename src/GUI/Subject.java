@@ -1,4 +1,4 @@
-package Output;
+package GUI;
 
 public interface Subject {
 
