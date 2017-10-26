@@ -27,24 +27,24 @@ public class CommandParserProxy extends Colleague {
 
         //message = new Message("To","From", "Content","Action");
     public void sendError(){
-        System.out.println("Error pressed");
+        //System.out.println("Error pressed");
         message = new Message("GUI",this.getColleagueCode(), "Invalid Input","Error");
         this.send(message);
     }
 
     public void executeGo(String direction){
-        System.out.println("Go pressed");
-        message = new Message("Game",this.getColleagueCode(), direction,"Go");
+        //System.out.println("Go pressed");
+        message = new Message("Game",this.getColleagueCode(), direction,"go");
         this.send(message);
     }
     public void executeTake(){
-        System.out.println("Take pressed");
-        message = new Message("Game",this.getColleagueCode(), "NULL","Take");
+        //System.out.println("Take pressed");
+        message = new Message("Game",this.getColleagueCode(), "NULL","take");
         this.send(message);
     }
     public void executeInvestigate(){
-        System.out.println("Execute pressed");
-        message = new Message("Game",this.getColleagueCode(), "NULL","Investigate");
+        //System.out.println("Execute pressed");
+        message = new Message("Game",this.getColleagueCode(), "NULL","investigate");
         this.send(message);
     }
 }

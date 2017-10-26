@@ -22,7 +22,7 @@ public class GameProxy extends Colleague {
     public void receive(Message message) {
         String command, direction;
         Boolean valid = true;
-        if (message.getSource().equals("input")){
+        if (message.getSource().equals("CommandParser")){
             command = message.getAction();
             switch(command){
                 case "go":
@@ -35,8 +35,10 @@ public class GameProxy extends Colleague {
                             if (valid = false){
                                 executeUnValid("This is not a valid move. Choose another direction.");
                             }
-                            else
+                            else{
                                 executeValid("You moved north.");
+                            }
+
 
                             break;
                         case "east":
@@ -46,7 +48,7 @@ public class GameProxy extends Colleague {
                                 executeUnValid("This is not a valid move. Choose another direction.");
                             }
                             else
-                                executeValid("You moved north.");
+                                executeValid("You moved East.");
                             break;
                         case "south":
                             Move southMove = new Move(0, -1);
@@ -55,7 +57,7 @@ public class GameProxy extends Colleague {
                                 executeUnValid("This is not a valid move. Choose another direction.");
                             }
                             else
-                                executeValid("You moved north.");
+                                executeValid("You moved South.");
                             break;
                         case "west":
                             Move westMove = new Move(-1, 0);
@@ -64,7 +66,7 @@ public class GameProxy extends Colleague {
                                 executeUnValid("This is not a valid move. Choose another direction.");
                             }
                             else
-                                executeValid("You moved north.");
+                                executeValid("You moved West.");
                             break;
                     }
                     break;
