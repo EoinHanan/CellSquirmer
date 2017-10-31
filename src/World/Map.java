@@ -13,7 +13,7 @@ public class Map {
         for(int i = 0; i <= size; i++)
         { 
             Random rand = new Random();
-            int n = rand.nextInt(3) + 1;
+            int n = rand.nextInt(4) + 1;
             gameMap[i] = mapLayout.makeCell(n, 0, i);
         }
         return gameMap;

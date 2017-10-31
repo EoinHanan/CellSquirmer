@@ -19,6 +19,8 @@ public class RegularCell extends Cell {
         setPositionY(positionY);
 
         setState(0);
+
+        setType(1);
     }
     
 }

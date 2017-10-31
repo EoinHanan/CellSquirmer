@@ -14,6 +14,7 @@ public abstract class Cell {
     private int positionY;
     private int state;
     private String description;
+    private int type;
     
     
     public int getPositionX(){
@@ -47,5 +48,12 @@ public abstract class Cell {
     public void setState(int newState){
         state = newState;
     }
-    
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 }

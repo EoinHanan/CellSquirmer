@@ -19,6 +19,8 @@ public class GoalCell extends Cell {
         setPositionY(positionY);
 
         setState(1);
+
+        setType(3);
     }
     
     

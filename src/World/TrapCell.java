@@ -19,6 +19,8 @@ public class TrapCell extends Cell {
         setPositionY(positionY);
 
         setState(-1);
+
+        setType(2);
     }
     
 }

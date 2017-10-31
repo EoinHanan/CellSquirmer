@@ -16,14 +16,21 @@ public class CellFactory {
         
         switch (newCellType) {
             case 1:
-                return new RegularCell(positionX, positionY);  
+                newCell = new RegularCell(positionX, positionY);
+                break;
             case 2:
-                return new TrapCell(positionX, positionY);
+                newCell = new TrapCell(positionX, positionY);
+                break;
             case 3:
-                return new GoalCell(positionX, positionY);
+                newCell = new GoalCell(positionX, positionY);
+                break;
+            case 4:
+                newCell = new SwitchCell(positionX, positionY);
+                break;
             default:
                 return newCell;
         }
+        return newCell;
     }
     
 }
