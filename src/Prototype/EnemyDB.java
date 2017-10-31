@@ -8,25 +8,18 @@ public class EnemyDB {
 
     public static Enemy getEnemyID(String EnemyID) {
         Enemy cachedEnemy = shapeMap.get(EnemyID);
+        System.out.println(cachedEnemy);
         return (Enemy) cachedEnemy.clone();
     }
 
-    public static void loadCache() {
-        BasicEnemy basicEnemy = new BasicEnemy();
-        basicEnemy.setId("1");
-        basicEnemy.setHealth(1);
-        System.out.println(basicEnemy.getHealth());
+    public static void loadBasic(BasicEnemy basicEnemy) {
+
         shapeMap.put(basicEnemy.getId(), basicEnemy);
-        basicEnemy.Details();
 
-        BasicEnemy basicEnemy2 = new BasicEnemy();
-        basicEnemy2.setId("2");
-        basicEnemy.setHealth(1);
-        shapeMap.put(basicEnemy2.getId(), basicEnemy2);
+    }
+    public static void loadAdvanced(AdvancedEnemy advancedEnemy) {
 
-        AdvancedEnemy advancedEnemy = new AdvancedEnemy();
-        advancedEnemy.setId("3");
-        advancedEnemy.setHealth(2);
         shapeMap.put(advancedEnemy.getId(), advancedEnemy);
+
     }
 }

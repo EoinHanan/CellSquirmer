@@ -4,6 +4,7 @@ public class AdvancedEnemy extends Enemy {
 
     public AdvancedEnemy(){
         type = "AdvancedEnemy";
+        health = 2;
     }
 
     @Override
