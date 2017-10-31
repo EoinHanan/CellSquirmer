@@ -11,7 +11,7 @@ package World;
  */
 public class RegularCell extends Cell {
     
-    public  RegularCell(int positionX, int positionY){
+    public  RegularCell(int positionX, int positionY, boolean createEnemy){
         setDescription("Just a regular cell. There's nothing interesting here.");
         
         setPositionX(positionX);
@@ -21,6 +21,11 @@ public class RegularCell extends Cell {
         setState(0);
 
         setType(1);
+
+        if(createEnemy){
+            //create an enemy & set it in room.
+
+        }
     }
     
 }

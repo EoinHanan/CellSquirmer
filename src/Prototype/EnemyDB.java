@@ -26,7 +26,7 @@ public class EnemyDB {
 
         AdvancedEnemy advancedEnemy = new AdvancedEnemy();
         advancedEnemy.setId("3");
-        basicEnemy.setHealth(2);
+        advancedEnemy.setHealth(2);
         shapeMap.put(advancedEnemy.getId(), advancedEnemy);
     }
 }

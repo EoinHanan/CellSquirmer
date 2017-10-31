@@ -11,7 +11,7 @@ package World;
  */
 public class GoalCell extends Cell {
     
-    public  GoalCell(int positionX, int positionY){
+    public  GoalCell(int positionX, int positionY, boolean createEnemy){
         setDescription("You have found the goal. Congratulations!");
         
         setPositionX(positionX);
@@ -21,6 +21,11 @@ public class GoalCell extends Cell {
         setState(1);
 
         setType(3);
+
+        if(createEnemy){
+            //create an enemy & set it in room.
+
+        }
     }
     
     

@@ -5,27 +5,29 @@
  */
 package World;
 
+import Prototype.Enemy;
+
 /**
  *
  * @author Gerry
  */
 public class CellFactory {
     
-    public Cell makeCell(int newCellType, int positionX, int positionY){
+    public Cell makeCell(int newCellType, int positionX, int positionY, boolean createEnemy){
         Cell newCell = null;
         
         switch (newCellType) {
             case 1:
-                newCell = new RegularCell(positionX, positionY);
+                newCell = new RegularCell(positionX, positionY, createEnemy);
                 break;
             case 2:
-                newCell = new TrapCell(positionX, positionY);
+                newCell = new TrapCell(positionX, positionY, createEnemy);
                 break;
             case 3:
-                newCell = new GoalCell(positionX, positionY);
+                newCell = new GoalCell(positionX, positionY, createEnemy);
                 break;
             case 4:
-                newCell = new SwitchCell(positionX, positionY);
+                newCell = new SwitchCell(positionX, positionY, createEnemy);
                 break;
             default:
                 return newCell;

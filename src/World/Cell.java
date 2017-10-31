@@ -5,6 +5,9 @@
  */
 package World;
 
+import Prototype.Enemy;
+import Prototype.EnemyDB;
+
 /**
  *
  * @author Gerry
@@ -15,6 +18,7 @@ public abstract class Cell {
     private int state;
     private String description;
     private int type;
+    private Enemy enemy;
     
     
     public int getPositionX(){
@@ -55,5 +59,13 @@ public abstract class Cell {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
     }
 }

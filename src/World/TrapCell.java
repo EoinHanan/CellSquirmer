@@ -11,7 +11,7 @@ package World;
  */
 public class TrapCell extends Cell {
     
-    public  TrapCell(int positionX, int positionY){
+    public  TrapCell(int positionX, int positionY, boolean createEnemy){
         setDescription("You have entered into a Trap Cell. Game Over!");
         
         setPositionX(positionX);
@@ -21,6 +21,11 @@ public class TrapCell extends Cell {
         setState(-1);
 
         setType(2);
+
+        if(createEnemy){
+            //create an enemy & set it in room.
+
+        }
     }
     
 }
