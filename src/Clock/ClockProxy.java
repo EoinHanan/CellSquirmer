@@ -18,8 +18,7 @@ public class ClockProxy extends Colleague {
     }
     @Override
     public void receive(Message message) {
-
-        //To do Eoin code for Mediator interaction here.
-
+        if(message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("Time Request"))
+            this.send(new Message("GUI", this.getColleagueCode(),clock.getTime().toString(),"Time Print"));
     }
 }

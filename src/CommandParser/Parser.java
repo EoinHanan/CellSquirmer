@@ -66,7 +66,7 @@ public class Parser{
         if (input.indexOf(" ") > -1){
             if (input.indexOf(" ") == input.lastIndexOf(" ")) {
                 firstWord = input.substring(0, input.indexOf(" "));
-                secondWord = input.substring(input.indexOf(" "));
+                secondWord = input.substring(input.indexOf(" ") + 1);
             }
             else {
 

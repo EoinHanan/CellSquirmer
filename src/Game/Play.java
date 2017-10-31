@@ -40,8 +40,7 @@ public class Play {
         this.map = currentMap;
 
 
-        Map map = new Map();
-        currentMap = map.CreateMap(sizeOfMap);
+        //Map map = new Map();
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
         gameProxy = new GameProxy(concreteMediator, this);
@@ -83,9 +82,9 @@ public class Play {
     }
 
     public void start() {
-        Cell currentmap[];
+        /*Cell currentmap[];
         Map map = new Map();
-        currentmap  = map.CreateMap(sizeOfMap);
+        currentmap  = map.CreateMap(sizeOfMap);*/
         int i = 0;
         int state = 0;
         Position myPosition = new Position(cX, cY);

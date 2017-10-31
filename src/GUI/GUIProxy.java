@@ -26,6 +26,7 @@ public class GUIProxy extends Colleague {
                 if (message.getAction().equals("Error"))
                     System.out.println("Output through GUI: " + message.getContent());
                 break;
+            case "Game": System.out.println(message.getContent()); break;
         }
     }
 
