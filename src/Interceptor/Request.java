@@ -1,6 +1,6 @@
 package Interceptor;
 
-public interface MoveRequest {
+public interface Request {
 
     String getErrorMessage();
 

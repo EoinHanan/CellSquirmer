@@ -3,19 +3,28 @@ package GUI;
 import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
+import Interceptor.Interceptor;
+import Interceptor.Request;
+
+import java.util.ArrayList;
 
 /**
  * Created by Patrick on 18/10/2017.
  */
-public class GUIProxy extends Colleague {
+public class GUIProxy extends Colleague implements Interceptor{
     private TakeInput takeInput;
+    ArrayList interceptors;
+
     public GUIProxy(Mediator mediator) {
         super(mediator);
         setColleagueCode("GUI");
         takeInput = new TakeInput();
+        interceptors = new ArrayList();
     }
+
+
     public void lookForInput(){
-        String userInput = takeInput.userinput();
+        InputRequest userInput = takeInput.userinput();
         execute(userInput);
     }
 
@@ -30,8 +39,39 @@ public class GUIProxy extends Colleague {
         }
     }
 
-    private void execute(String inText){
-        Message message = new Message("CommandParser", this.getColleagueCode(), inText, "UserInput");
-        send(message);
+    private void execute(InputRequest request){
+        if (request.getCombat()){
+            Message message = new Message("CommandParser", this.getColleagueCode(), request.getInput(), "UserInput");
+            send(message);
+        }
+        else {
+            Message message = new Message("CommandParser", this.getColleagueCode(), request.getInput(), "UserInput");
+            send(message);
+        }
     }
+
+    public void registerErrorMessageInterceptor(Interceptor InterceptorObject) {
+        interceptors.add(InterceptorObject);
+    }
+
+    public  void unregisterErrorMessageInterceptor(Interceptor InterceptorObject) {
+        interceptors.remove(InterceptorObject);
+    }
+
+    @Override
+    public void errorMessageReceiver(Request context) {
+        ArrayList interceptorList;
+
+        /*
+        interceptorList = (ArrayList) this.interceptors.clone();
+        context.setFinalErrorMessage(context.getErrorMessage());
+        Interceptor.Move move = new Interceptor.Move(getClass().getName());
+
+        context.setFinalErrorMessage(context.getErrorMessage());
+        move.printError(context.getFinalErrorMessage());*/
+
+
+    }
+
+
 }

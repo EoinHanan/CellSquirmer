@@ -6,21 +6,21 @@ public class testapp {
         System.out.println("main");
 
 
-        MoveInterceptor interceptor = new MoveInterceptor() {
+        Interceptor interceptor = new Interceptor() {
             Move log = new Move(getClass().getName());
 
 //            System.out.println(log.getClass().getName());
 //            System.out.println("in main");
 
             @Override
-            public void errorMessageReceiver(MoveRequest context) {
+            public void errorMessageReceiver(Request context) {
                 log.printError(context.getFinalErrorMessage());
             }
         };
         // Needs to be in void
-        MoveDispatcher.getInstance().registerErrorMessageInterceptor(interceptor);
+        Dispatcher.getInstance().registerErrorMessageInterceptor(interceptor);
 
-        MoveDispatcher.getInstance().errorMessageReceiver(new ConcreteMove("Invalid direction Input."));
-        MoveDispatcher.getInstance().unregisterErrorMessageInterceptor(interceptor);
+        Dispatcher.getInstance().errorMessageReceiver(new ConcreteMove("Invalid direction Input."));
+        Dispatcher.getInstance().unregisterErrorMessageInterceptor(interceptor);
     }
 }

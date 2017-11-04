@@ -28,30 +28,28 @@ public class Play {
     private static ConcreteMediator concreteMediator;
 
 
-    private int sizeOfMap;
+
     private int cX;
     private int cY;
-    private Cell map [];
+    private static Map map;
 
-    public Play(int sizeOfMap, int x, int y, Cell [] currentMap) {
+    public Play(int sizeOfMap, int x, int y) {
         this.cX = x;
         this.cY = y;
-        this.sizeOfMap = sizeOfMap;
-        this.map = currentMap;
+        map = Map.getInstance();
+        map.createMap(sizeOfMap);
+
 
 
         //Map map = new Map();
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
-        gameProxy = new GameProxy(concreteMediator, this);
+        gameProxy = new GameProxy(concreteMediator, map);
         guiProxy = new GUIProxy(concreteMediator);
         commandParserProxy = new CommandParserProxy(concreteMediator);
 
     }
 
-    public void setSizeOfMap(int sizeOfMap) {
-        this.sizeOfMap = sizeOfMap;
-    }
 
     public void setcX(int cX) {
         this.cX = cX;
@@ -59,10 +57,6 @@ public class Play {
 
     public void setcY(int cY) {
         this.cY = cY;
-    }
-
-    public int getSizeOfMap(){
-        return this.sizeOfMap;
     }
 
     public int getcX(){
@@ -73,13 +67,6 @@ public class Play {
         return cY;
     }
 
-    public Cell[] getMap(){
-        return this.map;
-    }
-
-    public void setMap(Cell currentMap[]){
-        this.map = currentMap;
-    }
 
     public void start() {
         int i = 0;

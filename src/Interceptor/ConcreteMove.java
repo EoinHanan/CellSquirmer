@@ -1,6 +1,6 @@
 package Interceptor;
 
-public class ConcreteMove implements MoveRequest {
+public class ConcreteMove implements Request {
 
     private String Errormessage;
 

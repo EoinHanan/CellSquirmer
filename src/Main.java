@@ -7,10 +7,8 @@ import World.Map;
  */
 public class Main {
     public static void main(String [] args){
-        Map map = new Map();
-        Cell currentMap [] = new Cell[10];
-        currentMap = map.CreateMap(10);
-        Play play = new Play(10,1,1, currentMap);
+
+        Play play = new Play(10, 1,1);
         play.start();
     }
 }

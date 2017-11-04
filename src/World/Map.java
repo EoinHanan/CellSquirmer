@@ -4,18 +4,31 @@ import java.util.Random;
 import Prototype.EnemyDB;
 
 public class Map {
+    private Cell cells[];
 
-    private Map map;
-    
-    public Cell[] CreateMap(int size)
+    private static Map firstInstance = null;
+
+    private Map(){}
+
+    public static Map getInstance(){
+        if (firstInstance == null){
+            firstInstance = new Map();
+            System.out.println("New Map created");
+        }
+        else
+            System.out.println("Here is the same old map");
+        return firstInstance;
+    }
+
+    public void createMap(int size)
     {
+        cells = new Cell[size];
         CellFactory mapLayout = new CellFactory();
-        Cell[] gameMap = new Cell[size + 1];
         Random rand = new Random();
         Random r = new Random();
         boolean createEnemy;
         int enemyCount = 0;
-        for(int i = 0; i <= size; i++)
+        for(int i = 0; i < size; i++)
         {
             createEnemy = false;
             float chance = r.nextFloat();
@@ -25,12 +38,22 @@ public class Map {
                 enemyCount++;
             }
             int n = rand.nextInt(4) + 1;
-            gameMap[i] = mapLayout.makeCell(n, 0, i, createEnemy, enemyCount);
+            cells[i] = mapLayout.makeCell(n, 0, i, createEnemy, enemyCount);
         }
-        System.out.println(gameMap[1]);
+        //System.out.println(cells[1]);
 
-        System.out.println(gameMap[1].getEnemy());
-        return gameMap;
+        //System.out.println(cells[1].getEnemy());
     }
-    
+
+    public int getSize(){
+        return cells.length;
+    }
+
+    public Cell getCell(int x, int y){
+        return cells[y];
+    }
+
+    public void changeMap(Cell[] cells){
+        this.cells = cells;
+    }
 }

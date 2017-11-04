@@ -2,34 +2,34 @@ package Interceptor;
 import java.util.*;
 
 
-public class MoveDispatcher implements MoveInterceptor {
+public class Dispatcher implements Interceptor {
 
-    private static MoveDispatcher dispatcher;
+    private static Dispatcher dispatcher;
     ArrayList interceptors;
 
-    private MoveDispatcher() {
+    private Dispatcher() {
         interceptors = new ArrayList();
     }
 
-    public static MoveDispatcher getInstance() {
+    public static Dispatcher getInstance() {
         if (dispatcher == null) {
-            dispatcher = new MoveDispatcher();
+            dispatcher = new Dispatcher();
         }
         return dispatcher;
     }
 
-    public void registerErrorMessageInterceptor(MoveInterceptor InterceptorObject) {
+    public void registerErrorMessageInterceptor(Interceptor InterceptorObject) {
         interceptors.add(InterceptorObject);
 
     }
 
-    public  void unregisterErrorMessageInterceptor(MoveInterceptor InterceptorObject) {
+    public  void unregisterErrorMessageInterceptor(Interceptor InterceptorObject) {
 
         interceptors.remove(InterceptorObject);
     }
 
     @Override
-    public void errorMessageReceiver(MoveRequest context) {
+    public void errorMessageReceiver(Request context) {
         ArrayList interceptorList;
 
         interceptorList = (ArrayList) this.interceptors.clone();
