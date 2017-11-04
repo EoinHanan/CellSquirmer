@@ -50,6 +50,8 @@ public class Move {
                 cmY = currentMap[i].getPositionY();
                 if(cpX == cmX && cpY ==cmY)
                     valid = true;
+                    play.setcX(cpX);
+                    play.setcY(cpY);
             }
             return valid;
     }

@@ -82,9 +82,6 @@ public class Play {
     }
 
     public void start() {
-        /*Cell currentmap[];
-        Map map = new Map();
-        currentmap  = map.CreateMap(sizeOfMap);*/
         int i = 0;
         int state = 0;
         Position myPosition = new Position(cX, cY);
@@ -94,6 +91,8 @@ public class Play {
             cX = c.getXValue();
             cY = c.getYValue();
             guiProxy.lookForInput();
+            c.setXValue(cX);
+            c.setYValue(cY);
 
             //if recieved message is go, work through Move Class
 

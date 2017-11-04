@@ -3,6 +3,7 @@ package Game;
 import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
+import Character.Position;
 
 public class GameProxy extends Colleague {
     private Message message;
@@ -33,7 +34,7 @@ public class GameProxy extends Colleague {
                             Move northMove = new Move(0, 1);
                             valid = northMove.validateMove(0, 1, play);
                             if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
+                                executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else{
                                 executeValid("You moved north.");
@@ -45,7 +46,7 @@ public class GameProxy extends Colleague {
                             Move eastMove = new Move(1, 0);
                             valid = eastMove.validateMove(1, 0, play);
                             if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
+                                executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else
                                 executeValid("You moved East.");
@@ -54,7 +55,7 @@ public class GameProxy extends Colleague {
                             Move southMove = new Move(0, -1);
                             valid = southMove.validateMove(0, -1, play);
                             if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
+                                executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else
                                 executeValid("You moved South.");
@@ -63,7 +64,7 @@ public class GameProxy extends Colleague {
                             Move westMove = new Move(-1, 0);
                             valid = westMove.validateMove(-1, 0, play);
                             if (valid = false){
-                                executeUnValid("This is not a valid move. Choose another direction.");
+                                executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else
                                 executeValid("You moved West.");
@@ -102,7 +103,7 @@ public class GameProxy extends Colleague {
         send(message);
     }
 
-    private void executeUnValid(String inText){
+    private void executeInValid(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);
     }
