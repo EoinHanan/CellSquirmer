@@ -4,6 +4,8 @@ public class BasicEnemy extends Enemy {
 
     public BasicEnemy(){
         type = "BasicEnemy";
+        health = 1;
+
     }
 
     @Override

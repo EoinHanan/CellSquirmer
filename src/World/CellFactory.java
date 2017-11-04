@@ -13,21 +13,21 @@ import Prototype.Enemy;
  */
 public class CellFactory {
     
-    public Cell makeCell(int newCellType, int positionX, int positionY, boolean createEnemy){
+    public Cell makeCell(int newCellType, int positionX, int positionY, boolean createEnemy, int enemyCount){
         Cell newCell = null;
         
         switch (newCellType) {
             case 1:
-                newCell = new RegularCell(positionX, positionY, createEnemy);
+                newCell = new RegularCell(positionX, positionY, createEnemy, enemyCount);
                 break;
             case 2:
-                newCell = new TrapCell(positionX, positionY, createEnemy);
+                newCell = new TrapCell(positionX, positionY, createEnemy, enemyCount);
                 break;
             case 3:
-                newCell = new GoalCell(positionX, positionY, createEnemy);
+                newCell = new GoalCell(positionX, positionY, createEnemy, enemyCount);
                 break;
             case 4:
-                newCell = new SwitchCell(positionX, positionY, createEnemy);
+                newCell = new SwitchCell(positionX, positionY, createEnemy, enemyCount);
                 break;
             default:
                 return newCell;
