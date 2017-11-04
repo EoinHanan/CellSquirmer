@@ -41,7 +41,7 @@ public class GUIProxy extends Colleague implements Interceptor{
 
     private void execute(InputRequest request){
         if (request.getCombat()){
-            Message message = new Message("CommandParser", this.getColleagueCode(), request.getInput(), "UserInput");
+            Message message = new Message("CombatParser", this.getColleagueCode(), request.getInput(), "UserInput");
             send(message);
         }
         else {
