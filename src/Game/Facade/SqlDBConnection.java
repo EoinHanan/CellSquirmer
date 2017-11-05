@@ -73,7 +73,13 @@ public class SqlDBConnection {
 
         for(i = 0; i < map.getSize(); i++){
             for(j = 0; j < map.getSize(); j++){
-                PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO `table` ('CellId',`MapId`, `CellType`, `IntX`, `IntY`, `CreateEnemy`, `EnemyCount`, `mapName`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO `table` ('CellId',`MapId`, `CellType`, `IntX`, `IntY`, `CreateEnemy`, `EnemyCount`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+                pstmt2.setInt(1, mapId);
+                pstmt2.setInt(2,map.getCell(i, j).getType());
+                pstmt2.setInt(3,map.getCell(i, j).getPositionX());
+                pstmt2.setInt(4,map.getCell(i, j).getPositionY());
+                pstmt2.setBoolean(5,map.getCell(i, j).getIsEnemy());
+                pstmt2.setInt(6,map.getCell(i, j).getEnemyCount());
             }
         }
     }

@@ -29,12 +29,13 @@ public class SwitchCell extends Cell {
                 basicEnemy.setId(Integer.toString(enemyCount));
                 EnemyDB.loadBasic(basicEnemy);
                 setEnemy(basicEnemy);
+                setIsEnemy(true);
             } else {
                 AdvancedEnemy advancedEnemy = new AdvancedEnemy();
                 advancedEnemy.setId(Integer.toString(enemyCount));
                 EnemyDB.loadAdvanced(advancedEnemy);
                 setEnemy(advancedEnemy);
-
+                setIsEnemy(true);
             }
         }
     }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class FacadeUtility {
 
         public static void readMap(DBTypes dbType, int mapId, String mapName, Map map) throws SQLException {
-            Connection con;
+            //Connection con;
             //Map map;
             //map = play.getMap();
             switch (dbType){
@@ -32,14 +32,14 @@ public class FacadeUtility {
             }
         }
 
-    public static void writeMap(DBTypes dbType, Map map) throws SQLException {
-        Connection con = null;
+    public static void writeMap(DBTypes dbType, Map map, String mapName) throws SQLException {
+        //Connection con = null;
         switch (dbType) {
             case MYSQL:
                 SqlDBConnection DBcon = new SqlDBConnection();
-                con = DBcon.getConnection();
+                //con = DBcon.getConnection();
 
-                DBcon.writeMySqlMap(map);
+                DBcon.writeMySqlMap(map, mapName);
         }
     }
 

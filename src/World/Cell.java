@@ -19,6 +19,8 @@ public abstract class Cell {
     private String description;
     private int type;
     private Enemy enemy;
+    private boolean isEnemy;
+    private int enemyCount;
     
     
     public int getPositionX(){
@@ -67,5 +69,21 @@ public abstract class Cell {
 
     public void setEnemy(Enemy enemy) {
         this.enemy = enemy;
+    }
+
+    public void setIsEnemy(boolean isEnemy){
+        this.isEnemy = isEnemy;
+    }
+
+    public boolean getIsEnemy() {
+        return isEnemy;
+    }
+
+    public int getEnemyCount() {
+        return enemyCount;
+    }
+
+    public void setEnemyCount(int enemyCount) {
+        this.enemyCount = enemyCount;
     }
 }
