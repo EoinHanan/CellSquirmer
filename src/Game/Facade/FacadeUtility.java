@@ -6,12 +6,15 @@ import java.sql.SQLException;
 
 public class FacadeUtility {
 
-        public static void readMap(DBTypes dbType, int mapId, String mapName, Map map) throws SQLException {
+    public FacadeUtility(){
+
+    }
+
+        public static void readMap(String dbType, Map map, String mapName) throws SQLException {
             //Connection con;
             //Map map;
             //map = play.getMap();
-            switch (dbType){
-                case MYSQL:
+           if(dbType.equals("MySql")){
                     SqlDBConnection DBcon = new SqlDBConnection();
                     //con = DBcon.getConnection();
                     map.changeMap(DBcon.readMySqlMap(mapName, map));
@@ -32,23 +35,17 @@ public class FacadeUtility {
             }
         }
 
-    public static void writeMap(DBTypes dbType, Map map, String mapName) throws SQLException {
+    public static void writeMap(String dbType, Map map, String mapName) throws SQLException {
         //Connection con = null;
-        switch (dbType) {
-            case MYSQL:
+        if(dbType.equals("MySql")) {
                 SqlDBConnection DBcon = new SqlDBConnection();
                 //con = DBcon.getConnection();
-
                 DBcon.writeMySqlMap(map, mapName);
         }
     }
 
-        public static enum DBTypes{
+        /*public static enum DBTypes{
             MYSQL,ORACLE;
-        }
-
-        public static enum ReportTypes{
-            HTML,PDF;
-        }
+        }*/
     }
 
