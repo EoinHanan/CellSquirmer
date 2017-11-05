@@ -9,6 +9,7 @@ public class Investigate implements Command {
 
     public Investigate(CommandParserProxy commandProxy) {
         this.commandProxy = commandProxy;
+        name = "investigate";
     }
 
     @Override

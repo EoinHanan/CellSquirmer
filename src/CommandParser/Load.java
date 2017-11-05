@@ -9,12 +9,12 @@ public class Load implements Command {
 
     public Load(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "Load";
+        name = "load";
     }
 
     @Override
-    public void execute(String saveName) {
-        commandProxy.executeLoad(saveName);
+    public void execute(String messageText) {
+        commandProxy.executeLoad(messageText);
     }
 
     @Override

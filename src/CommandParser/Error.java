@@ -9,7 +9,7 @@ public class Error implements Command {
 
     public Error(CommandParserProxy commandProxy) {
         this.commandParserProxy = commandProxy;
-        name = "Error";
+        name = "error";
     }
 
     @Override

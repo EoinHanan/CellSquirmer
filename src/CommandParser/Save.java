@@ -9,11 +9,11 @@ public class Save implements Command {
 
     public Save(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "Save";
+        name = "save";
     }
     @Override
-    public void execute(String saveName) {
-        commandProxy.executeSave(saveName);
+    public void execute(String messageText) {
+        commandProxy.executeSave(messageText);
     }
 
     @Override

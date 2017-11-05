@@ -9,7 +9,7 @@ public class Go implements Command  {
 
     public Go(CommandParserProxy commandProxy) {
         this.commandProxy = commandProxy;
-        name = "Go";
+        name = "go";
     }
 
     @Override
@@ -19,6 +19,6 @@ public class Go implements Command  {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 }

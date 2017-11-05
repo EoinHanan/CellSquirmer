@@ -41,9 +41,12 @@ public class Parser{
     private void makeCommand(){
         boolean found = false;
         int i = 0;
-        for (;i < commands.length && !found;i++)
+        while(i < commands.length && !found){
             if (commands[i].getName().equals(firstWord))
                 found = true;
+            else
+                i++;
+        }
 
         commands[i].execute(secondWord);
     }
@@ -53,28 +56,53 @@ public class Parser{
         boolean valid = false;
         int i;
 
-        for (i=0;i < commands.length && valid==false;i++)
+        for (i=0;i < commands.length && valid==false;i++) {
             if (word.contains(commands[i].getName()))
-                valid =true;
+                valid = true;
+        }
 
         return valid;
     }
 
     private void split(String input){
-        if (input.indexOf(" ") > -1){
+        String words[] = input.split(" ");
+        if (words.length == 1){
+            firstWord = input;
+            secondWord = null;
+        }
+        else if (words.length == 2){
+            firstWord = words[0];
+            secondWord = words[1];
+        }
+        else if (words.length == 3){
+            if (words[1].matches("mysql")||words[1].matches("oracle")) {
+                firstWord = words[0];
+                secondWord = words[1] + ";" + words[2];
+            }
+            else{
+                firstWord = "error";
+                secondWord = "error";
+            }
+        }
+        else{
+            firstWord = "error";
+            secondWord = "error";
+        }
+        /*if (input.indexOf(" ") > -1){
             if (input.indexOf(" ") == input.lastIndexOf(" ")) {
                 firstWord = input.substring(0, input.indexOf(" "));
                 secondWord = input.substring(input.indexOf(" ") + 1);
             }
             else {
-
-                firstWord = "Error";
+                firstWord = input.substring(0, input.indexOf(" "));
+                secondWord = input.substring(input.indexOf(" ") + 1, input.lastIndexOf(" ") );
+                thirdWord = input.substring(input.lastIndexOf(" ") + 1);
             }
 
         }
         else {
             firstWord = input;
             secondWord = "ignore";
-        }
+        }*/
     }
 }

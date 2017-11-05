@@ -9,7 +9,7 @@ public class Take implements Command {
 
     public Take(CommandParserProxy commandProxy) {
         this.commandProxy = commandProxy;
-        name = "Take";
+        name = "take";
     }
 
     @Override
