@@ -14,7 +14,7 @@ public class FacadeUtility {
             //Connection con;
             //Map map;
             //map = play.getMap();
-           if(dbType.equals("MySql")){
+           if(dbType.equals("mysql")){
                     SqlDBConnection DBcon = new SqlDBConnection();
                     //con = DBcon.getConnection();
                     map.changeMap(DBcon.readMySqlMap(mapName, map));
@@ -37,7 +37,7 @@ public class FacadeUtility {
 
     public static void writeMap(String dbType, Map map, String mapName) throws SQLException {
         //Connection con = null;
-        if(dbType.equals("MySql")) {
+        if(dbType.equals("mysql")) {
                 SqlDBConnection DBcon = new SqlDBConnection();
                 //con = DBcon.getConnection();
                 DBcon.writeMySqlMap(map, mapName);
