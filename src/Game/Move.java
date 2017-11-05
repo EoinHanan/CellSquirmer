@@ -55,7 +55,7 @@ public class Move {
                     play.setcY(cpY);
             }*/
 
-            if (cpY > 0 && cpY < map.getSize()){
+            if (cpY > 0 && cpY < map.getSize() && cpX > 0 && cpX < map.getSize()){
                 play.setcX(cpX);
                 play.setcY(cpY);
                 valid = true;

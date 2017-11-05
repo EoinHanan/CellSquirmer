@@ -13,9 +13,8 @@ public class FacadeUtility {
             switch (dbType){
                 case MYSQL:
                     SqlDBConnection DBcon = new SqlDBConnection();
-                    con = DBcon.getConnection();
-
-                          //map.changeMap(DBcon.readMySqlMap(mapName, mapId));
+                    //con = DBcon.getConnection();
+                    map.changeMap(DBcon.readMySqlMap(mapName, map));
 
                 /*case ORACLE:
                  *  con = OracleHelper.getOracleDBConnection();

@@ -26,23 +26,30 @@ public class SqlDBConnection {
         //get MySql DB connection using connection parameters
     }
 
-    public Cell[] readMySqlMap(String mapName, int mapId) throws SQLException {
+    public Cell[][] readMySqlMap(String mapName, Map map) throws SQLException {
         String query;
-        query = "SELECT * FROM `Cells` WHERE" + mapId + " = (select" + mapId + "from map where name = " + mapName + ");";
+        query = "SELECT * FROM `Cells` WHERE mapId = (select mapId from map where name = " + mapName + ");";
         resultSet = statement.executeQuery(query);
         resultSet.last();
         int size = resultSet.getRow();
         int i = 0;
+        int j = 0;
         resultSet.beforeFirst();
-        Cell[] cells = new Cell[size];
+        Cell[][] cells = new Cell[size][size];
         CellFactory loadMap = new CellFactory();
 
         while (resultSet.next()){
-            //System.out.print(resultSet.getInt("ColumnName"));
-            //System.out.print(resultSet.getString("AnotherColumnName"));
-            cells[i] = loadMap.makeCell(resultSet.getInt("CellType") , resultSet.getInt("XValue"),resultSet.getInt("YValue"), resultSet.getBoolean("createEnemy"), resultSet.getInt("enemyCount"));
+                //System.out.print(resultSet.getInt("ColumnName"));
+                //System.out.print(resultSet.getString("AnotherColumnName"));
+                cells[i][j] = loadMap.makeCell(resultSet.getInt("CellType"), resultSet.getInt("XValue"), resultSet.getInt("YValue"), resultSet.getBoolean("createEnemy"), resultSet.getInt("enemyCount"));
 
-            i++;
+            if (j == map.getSize() - 1)
+            {
+                i++;
+                j = 0;
+            }
+            else
+                j++;
         }
         //get data from table and generate pdf report
         return cells;
