@@ -28,7 +28,7 @@ public class SqlDBConnection {
 
     public Cell[][] readMySqlMap(String mapName, Map map) throws SQLException {
         String query;
-        query = "SELECT * FROM `Cells` WHERE mapId = (select mapId from map where name = " + mapName + ");";
+        query = "SELECT * FROM `Cells` WHERE MapId = (select MapId from map where name = " + mapName + ");";
         resultSet = statement.executeQuery(query);
         resultSet.last();
         int size = resultSet.getRow();
@@ -55,15 +55,26 @@ public class SqlDBConnection {
         return cells;
     }
 
-    public void writeMySqlMap(Map map){
-        try{
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `table` (`id`,`Info`) VALUES (?, ?)");
-            pstmt.setInt(1, 1);
+    public void writeMySqlMap(Map map, String mapName) throws SQLException {
+        int i, j;
+        int mapId;
+        String query;
+
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `table` (`mapId`,`mapName`) VALUES (?, ?)");
+            pstmt.setString(2, mapName);
             //pstmt.setString(2, info);
 
             pstmt.executeUpdate();
-        }catch (Exception ex){
-            System.out.println("Error: " + ex);
+
+        query = "SELECT MapId FROM `maps` WHERE Name = " + mapName;
+
+        resultSet = statement.executeQuery(query);
+        mapId = resultSet.getInt("MapId");
+
+        for(i = 0; i < map.getSize(); i++){
+            for(j = 0; j < map.getSize(); j++){
+                PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO `table` ('CellId',`MapId`, `CellType`, `IntX`, `IntY`, `CreateEnemy`, `EnemyCount`, `mapName`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+            }
         }
     }
 
