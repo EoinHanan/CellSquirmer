@@ -4,7 +4,10 @@ import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
 import Character.Position;
+import Game.Facade.FacadeUtility;
 import World.Map;
+
+import java.sql.SQLException;
 
 public class GameProxy extends Colleague {
     private Message message;
@@ -22,9 +25,11 @@ public class GameProxy extends Colleague {
     }
 
     @Override
-    public void receive(Message message) {
+    public void receive(Message message){
+        FacadeUtility facade = new FacadeUtility();
         String command, direction;
         Boolean valid = true;
+        String DbType, mapName;
         if (message.getSource().equals("CommandParser")){
             command = message.getAction();
             switch(command){
@@ -35,7 +40,7 @@ public class GameProxy extends Colleague {
                         case "north":
                             Move northMove = new Move(0, 1);
                             valid = northMove.validateMove(0, 1, play, map);
-                            if (valid == false){
+                            if (!valid){
                                 executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else{
@@ -47,7 +52,7 @@ public class GameProxy extends Colleague {
                         case "east":
                             Move eastMove = new Move(1, 0);
                             valid = eastMove.validateMove(1, 0, play, map);
-                            if (valid == false){
+                            if (!valid){
                                 executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else
@@ -56,7 +61,7 @@ public class GameProxy extends Colleague {
                         case "south":
                             Move southMove = new Move(0, -1);
                             valid = southMove.validateMove(0, -1, play, map);
-                            if (valid == false){
+                            if (!valid){
                                 executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else
@@ -65,7 +70,7 @@ public class GameProxy extends Colleague {
                         case "west":
                             Move westMove = new Move(-1, 0);
                             valid = westMove.validateMove(-1, 0, play, map);
-                            if (valid == false){
+                            if (!valid){
                                 executeInValid("This is not a valid move. Choose another direction.");
                             }
                             else
@@ -88,6 +93,30 @@ public class GameProxy extends Colleague {
 
                 case "take":
                 //Not used yet
+                    break;
+
+                case "save":
+                    String[] saveType = message.getContent().split(";");
+                    DbType = saveType[0];
+                    mapName = saveType[1];
+                    try {
+                        facade.writeMap(DbType, map, mapName);
+                    }catch (Exception e)
+                    {
+                        System.out.print(e);
+                    }
+                    break;
+
+                case "load":
+                    String[] loadType = message.getContent().split(";");
+                    DbType = loadType[0];
+                    mapName = loadType[1];
+                    try {
+                        facade.readMap(DbType, map, mapName);
+                    }catch (Exception e)
+                    {
+                        System.out.print(e);
+                    }
                     break;
             }
 
