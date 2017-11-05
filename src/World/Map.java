@@ -34,7 +34,7 @@ public class Map {
                 createEnemy = false;
                 float chance = r.nextFloat();
                 // Changed to .90 from .10 for testing
-                if (chance <= 0.90f) {
+                if (chance <= 0.10f) {
                     createEnemy = true;
                     enemyCount++;
                 }

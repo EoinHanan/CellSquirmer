@@ -6,19 +6,19 @@ import Communication.Message;
  * Created by EoinH on 27/09/2017.
  */
 public class Parser{
-    private String[] commandList ={"go","take","investigate"};
-    private Go goCommand;
-    private Take takeCommand;
-    private Investigate investigateCommand;
-    private Error errorCommand;
+    private Command[] commands;
     private String firstWord;
     private String secondWord;
 
     public Parser (CommandParserProxy commandParserProxy){
-        goCommand = new Go(commandParserProxy);
-        takeCommand = new Take(commandParserProxy);
-        investigateCommand = new Investigate(commandParserProxy);
-        errorCommand = new Error(commandParserProxy);
+        commands = new Command[6];
+        commands[0]= new Go(commandParserProxy);
+        commands[1]= new Take(commandParserProxy);
+        commands[2]= new Investigate(commandParserProxy);
+        commands[3]= new Save(commandParserProxy);
+        commands[4]= new Load(commandParserProxy);
+        commands[5]= new Error(commandParserProxy);
+
     }
 
     public void validate(Message message){
@@ -29,7 +29,7 @@ public class Parser{
             makeCommand();
         }
         else
-            errorCommand.execute("");
+            commands[5].execute("");
 
     }
 
@@ -39,24 +39,22 @@ public class Parser{
     }
 
     private void makeCommand(){
-        switch (firstWord){
-            case "go":goCommand.execute(secondWord);break;
-            case "investigate":investigateCommand.execute(secondWord) ;break;
-            case "take":takeCommand.execute(secondWord) ;break;
-            default:errorCommand.execute("Too many words");
-        }
+        boolean found = false;
+        int i = 0;
+        for (;i < commands.length && !found;i++)
+            if (commands[i].getName().equals(firstWord))
+                found = true;
+
+        commands[i].execute(secondWord);
     }
 
-    public String[] giveCommandList(){
-        return commandList;
-    }
 
     private boolean checkList(String word){
         boolean valid = false;
         int i;
 
-        for (i=0;i < commandList.length && valid==false;i++)
-            if (word.contains(commandList[i]))
+        for (i=0;i < commands.length && valid==false;i++)
+            if (word.contains(commands[i].getName()))
                 valid =true;
 
         return valid;

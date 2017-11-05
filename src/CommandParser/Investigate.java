@@ -5,6 +5,7 @@ package CommandParser;
  */
 public class Investigate implements Command {
     private CommandParserProxy commandProxy;
+    private String name;
 
     public Investigate(CommandParserProxy commandProxy) {
         this.commandProxy = commandProxy;
@@ -13,5 +14,11 @@ public class Investigate implements Command {
     @Override
     public void execute(String secondWord) {
        commandProxy.executeInvestigate();
+       name="Investigate";
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -1,20 +1,20 @@
 package CommandParser;
 
 /**
- * Created by EoinH on 27/09/2017.
+ * Created by EoinH on 05/11/2017.
  */
-public class Take implements Command {
+public class Load implements Command {
     private CommandParserProxy commandProxy;
     private String name;
 
-    public Take(CommandParserProxy commandProxy) {
+    public Load(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "Take";
+        name = "Load";
     }
 
     @Override
-    public void execute(String command) {
-        commandProxy.executeTake();
+    public void execute(String saveName) {
+        commandProxy.executeLoad(saveName);
     }
 
     @Override
