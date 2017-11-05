@@ -96,6 +96,7 @@ public class GameProxy extends Colleague {
                     break;
 
                 case "save":
+                    System.out.println("Reached Save: " + message.getContent());
                     String[] saveType = message.getContent().split(";");
                     DbType = saveType[0];
                     mapName = saveType[1];
@@ -108,6 +109,7 @@ public class GameProxy extends Colleague {
                     break;
 
                 case "load":
+                    System.out.println("Reached Load");
                     String[] loadType = message.getContent().split(";");
                     DbType = loadType[0];
                     mapName = loadType[1];

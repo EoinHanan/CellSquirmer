@@ -47,4 +47,13 @@ public class CommandParserProxy extends Colleague {
         message = new Message("Game",this.getColleagueCode(), "NULL","investigate");
         this.send(message);
     }
+    public void executeSave(String messageText){
+        //System.out.println("Execute pressed");
+        message = new Message("Game",this.getColleagueCode(), messageText,"save");
+        this.send(message);
+    }public void executeLoad(String messageText){
+        //System.out.println("Execute pressed");
+        message = new Message("Game",this.getColleagueCode(), messageText,"load");
+        this.send(message);
+    }
 }

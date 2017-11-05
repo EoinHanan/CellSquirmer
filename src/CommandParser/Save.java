@@ -1,20 +1,19 @@
 package CommandParser;
 
 /**
- * Created by EoinH on 27/09/2017.
+ * Created by EoinH on 05/11/2017.
  */
-public class Go implements Command  {
+public class Save implements Command {
     private CommandParserProxy commandProxy;
     private String name;
 
-    public Go(CommandParserProxy commandProxy) {
+    public Save(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "go";
+        name = "save";
     }
-
     @Override
-    public void execute(String direction) {
-       commandProxy.executeGo(direction);
+    public void execute(String messageText) {
+        commandProxy.executeSave(messageText);
     }
 
     @Override
