@@ -17,7 +17,7 @@ public class SqlDBConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CellSquirmerMap", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cellsquirmermaps", "root", "");
 
             statement = connection.createStatement();
         } catch (Exception ex) {
@@ -28,7 +28,7 @@ public class SqlDBConnection {
 
     public Cell[][] readMySqlMap(String mapName, Map map) throws SQLException {
         String query;
-        query = "SELECT * FROM `Cells` WHERE MapId = (select MapId from map where name = " + mapName + ");";
+        query = "SELECT * FROM `Cells` WHERE MapId = (select MapId from maps where Name = \"" + mapName + "\");";
         resultSet = statement.executeQuery(query);
         resultSet.last();
         int size = resultSet.getRow();
@@ -41,8 +41,7 @@ public class SqlDBConnection {
         while (resultSet.next()){
                 //System.out.print(resultSet.getInt("ColumnName"));
                 //System.out.print(resultSet.getString("AnotherColumnName"));
-                cells[i][j] = loadMap.makeCell(resultSet.getInt("CellType"), resultSet.getInt("XValue"), resultSet.getInt("YValue"), resultSet.getBoolean("createEnemy"), resultSet.getInt("enemyCount"));
-
+                cells[i][j] = loadMap.makeCell(resultSet.getInt("CellType"), resultSet.getInt("IntX"), resultSet.getInt("IntY"), resultSet.getInt("enemyCount") > 0, resultSet.getInt("enemyCount"));
             if (j == map.getSize() - 1)
             {
                 i++;
@@ -60,26 +59,33 @@ public class SqlDBConnection {
         int mapId;
         String query;
 
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `table` (`mapId`,`mapName`) VALUES (?, ?)");
-            pstmt.setString(2, mapName);
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `maps` (`MapId`,`Name`) VALUES (null, ?)");
+            pstmt.setString(1, mapName);
             //pstmt.setString(2, info);
 
             pstmt.executeUpdate();
-
-        query = "SELECT MapId FROM `maps` WHERE Name = " + mapName;
+        //System.out.println("SELECT MapId FROM `maps` WHERE Name = `" + mapName + );
+        query = "SELECT * FROM `maps` WHERE Name = \"" + mapName +"\"";
 
         resultSet = statement.executeQuery(query);
+        System.out.println("Getting here");
+        resultSet.next();
         mapId = resultSet.getInt("MapId");
+        int boolToTiny = 0;
 
         for(i = 0; i < map.getSize(); i++){
             for(j = 0; j < map.getSize(); j++){
-                PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO `table` ('CellId',`MapId`, `CellType`, `IntX`, `IntY`, `CreateEnemy`, `EnemyCount`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+                boolToTiny = 0;
+                if(map.getCell(i, j).getIsEnemy()== true)
+                    boolToTiny = 1;
+                //System.out.println("Cell:" + mapId + ", " + map.getCell(i, j).getType() + ", " + map.getCell(i, j).getPositionX() + ", " + map.getCell(i, j).getPositionY() + ", " + map.getCell(i, j).getEnemyCount());
+                PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO `cells` (`CellId`,`MapId`, `CellType`, `IntX`, `IntY`, `EnemyCount`) VALUES (NULL, ?, ?, ?, ?, ?);");
                 pstmt2.setInt(1, mapId);
                 pstmt2.setInt(2,map.getCell(i, j).getType());
                 pstmt2.setInt(3,map.getCell(i, j).getPositionX());
                 pstmt2.setInt(4,map.getCell(i, j).getPositionY());
-                pstmt2.setBoolean(5,map.getCell(i, j).getIsEnemy());
-                pstmt2.setInt(6,map.getCell(i, j).getEnemyCount());
+                pstmt2.setInt(5,map.getCell(i, j).getEnemyCount());
+                pstmt2.executeUpdate();
             }
         }
     }

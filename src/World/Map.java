@@ -32,6 +32,7 @@ public class Map {
         {
             for(int j = 0; j < size; j++) {
                 createEnemy = false;
+                enemyCount = 0;
                 float chance = r.nextFloat();
                 // Changed to .90 from .10 for testing
                 if (chance <= 0.10f) {
@@ -39,7 +40,7 @@ public class Map {
                     enemyCount++;
                 }
                 int n = rand.nextInt(4) + 1;
-                cells[i][j] = mapLayout.makeCell(n, 0, i, createEnemy, enemyCount);
+                cells[i][j] = mapLayout.makeCell(n, i, j, createEnemy, enemyCount);
             }
         }
         //System.out.println(cells[1]);
