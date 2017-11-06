@@ -6,22 +6,7 @@ import Prototype.EnemyDB;
 public class Map {
     private Cell cells[][];
 
-    private static Map firstInstance = null;
-
-    private Map(){}
-
-    public static Map getInstance(){
-        if (firstInstance == null){
-            firstInstance = new Map();
-            System.out.println("New Map created");
-        }
-        else
-            System.out.println("Here is the same old map");
-        return firstInstance;
-    }
-
-    public void createMap(int size)
-    {
+    public Map(int size){
         cells = new Cell[size][size];
         CellFactory mapLayout = new CellFactory();
         Random rand = new Random();

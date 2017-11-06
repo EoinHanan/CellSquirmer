@@ -18,7 +18,6 @@ public class Parser{
         commands[3]= new Save(commandParserProxy);
         commands[4]= new Load(commandParserProxy);
         commands[5]= new Error(commandParserProxy);
-
     }
 
     public void validate(Message message){

@@ -29,19 +29,13 @@ public class Play {
 
 
 
-    private int cX;
-    private int cY;
     private static Map map;
+    private PlayerCharacter character;
 
     public Play(int sizeOfMap, int x, int y) {
-        this.cX = x;
-        this.cY = y;
-        map = Map.getInstance();
-        map.createMap(sizeOfMap);
+        character = new PlayerCharacter(new Position(x,y));
 
-
-
-        //Map map = new Map();
+        map = new Map(sizeOfMap);
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
         gameProxy = new GameProxy(concreteMediator, map);
@@ -50,37 +44,18 @@ public class Play {
 
     }
 
-
-    public void setcX(int cX) {
-        this.cX = cX;
-    }
-
-    public void setcY(int cY) {
-        this.cY = cY;
-    }
-
-    public int getcX(){
-        return this.cX;
-    }
-
-    public int getcY() {
-        return cY;
-    }
-
-
     public void start() {
         int i = 0;
         int state = 0;
-        Position myPosition = new Position(cX, cY);
+        Position myPosition = character.getPosition();
         CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
         while (state != -1 || state != 1) {
             gameProxy.updatePlay(this);
-            cX = c.getXValue();
-            cY = c.getYValue();
+            myPosition.setX(c.getXValue());
+            myPosition.setY(c.getYValue());
             guiProxy.lookForInput();
-            c.setXValue(cX);
-            c.setYValue(cY);
-
+            c.setPosition(myPosition);
+            state = gameProxy.getCheck();
             //if recieved message is go, work through Move Class
 
             //else if recieved message is investigate, work through State Class

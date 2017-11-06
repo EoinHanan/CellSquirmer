@@ -15,14 +15,14 @@ public class Attack {
     ArrayList cellsEnemies = new ArrayList();
     ArrayList cellsEnemiesHealth = new ArrayList();
 
-    public Attack(){
+    public Attack(Map map){
         //x = Position.getX();
         x = 1;
         y = 1;
         System.out.println("Attack made");
 
         //Find out what enemies are at the current position
-        currentCell = Map.getCell(x, y); //Need the non-static run time map
+        currentCell = map.getCell(x, y); //Need the non-static run time map
 
         //Populate the enemy arraylist with enemies
         enemyCount = currentCell.getEnemyCount();
