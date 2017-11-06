@@ -73,14 +73,14 @@ public class Play {
         int state = 0;
         Position myPosition = new Position(cX, cY);
         CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
-        while (state != -1 || state != 1) {
+        while (state != -1 && state != 1) {
             gameProxy.updatePlay(this);
             cX = c.getXValue();
             cY = c.getYValue();
             guiProxy.lookForInput();
             c.setXValue(cX);
             c.setYValue(cY);
-
+            state = gameProxy.getCheck();
             //if recieved message is go, work through Move Class
 
             //else if recieved message is investigate, work through State Class
