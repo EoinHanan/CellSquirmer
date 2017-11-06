@@ -49,7 +49,7 @@ public class Play {
         int state = 0;
         Position myPosition = character.getPosition();
         CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
-        while (state != -1 || state != 1) {
+        while (state != -1 && state != 1) {
             gameProxy.updatePlay(this);
             myPosition.setX(c.getXValue());
             myPosition.setY(c.getYValue());
