@@ -1,5 +1,7 @@
 package Interceptor;
 import java.util.*;
+import Character.CheckpointCaretaker;
+import Game.Play;
 
 
 public class Dispatcher implements Interceptor {
@@ -41,4 +43,22 @@ public class Dispatcher implements Interceptor {
 
 
     }
+
+    public void updateMomento(ConcreteMomentoInterceptor context){
+        System.out.println("update Momento");
+//        CheckpointCaretaker cartakerObject = play.getCaretaker();
+//        int cX = cartakerObject.getXValue();
+//        int cY = cartakerObject.getYValue();
+//        System.out.println(context.getX());
+//        System.out.println(context.getY());
+//        System.out.println(context.getXValue());
+//        System.out.println(context.getYValue());
+        System.out.println(context.getX());
+        System.out.println(context.getY());
+        context.setX(context.getX());
+        context.setY(context.getY());
+//        c.setYValue(cY);
+
+    }
+
 }
