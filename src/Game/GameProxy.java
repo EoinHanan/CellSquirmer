@@ -122,6 +122,7 @@ public class GameProxy extends Colleague {
 
         Message message = new Message("Output", this.getColleagueCode(), mapString, "Print");
         send(message);
+        //Push it real
     }
 
     public void sendError(){
