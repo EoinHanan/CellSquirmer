@@ -55,7 +55,7 @@ public class Parser{
         boolean valid = false;
         int i;
 
-        for (i=0;i < commands.length && valid==false;i++) {
+        for (i=0; i < commands.length && !valid; i++) {
             if (word.contains(commands[i].getName()))
                 valid = true;
         }

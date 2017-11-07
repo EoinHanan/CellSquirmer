@@ -15,11 +15,15 @@ public class GameProxy extends Colleague {
     private Play play;
     private Map map;
     private int check;
+    private RequestHandler requestHandler;
+    private FacadeUtility facade;
 
     public GameProxy(Mediator mediator, Map map) {
         super(mediator);
         this.map = map;
         setColleagueCode("Game");
+        requestHandler = new RequestHandler(this);
+        facade = new FacadeUtility();
     }
 
     public void updatePlay(Play play){
@@ -28,101 +32,92 @@ public class GameProxy extends Colleague {
 
     @Override
     public void receive(Message message){
-        FacadeUtility facade = new FacadeUtility();
-        String command, direction;
-        Boolean valid = true;
-        String mapName;
-        if (message.getSource().equals("CommandParser")){
-            command = message.getAction();
-            switch(command){
-                case "go":
-                //we have the command so now we call the Move Class
-                    direction = message.getContent();
-                    switch(direction){
-                        case "north":
-                            Move northMove = new Move(0, 1);
-                            valid = northMove.validateMove(0, 1, play, map);
-                            if (!valid){
-                                executeInValid("This is not a valid move. Choose another direction.");
-                            }
-                            else{
-                                executeValid("You moved north.");
-                            }
-
-
-                            break;
-                        case "east":
-                            Move eastMove = new Move(1, 0);
-                            valid = eastMove.validateMove(1, 0, play, map);
-                            if (!valid){
-                                executeInValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved East.");
-                            break;
-                        case "south":
-                            Move southMove = new Move(0, -1);
-                            valid = southMove.validateMove(0, -1, play, map);
-                            if (!valid){
-                                executeInValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved South.");
-                            break;
-                        case "west":
-                            Move westMove = new Move(-1, 0);
-                            valid = westMove.validateMove(-1, 0, play, map);
-                            if (!valid){
-                                executeInValid("This is not a valid move. Choose another direction.");
-                            }
-                            else
-                                executeValid("You moved West.");
-                            break;
-                    }
-                    break;
-                case "investigate":
-                    //Call the State class
-
-                    State state = new State();
-                    this.check = state.checkState(map,play);
-                    if(this.check == -1)
-                        outputState("You lose, try again");
-                    if(this.check == 0)
-                        outputState("No update to state");
-                    else if(this.check == 1)
-                        outputState("You win. Congratualtions");
-                    break;
-
-                case "take":
-                //Not used yet
-                    break;
-
-                case "save":
-                    mapName = message.getContent();
-                    try {
-                        facade.writeMap(map, mapName);
-                    }catch (Exception e)
-                    {
-                        System.out.print(e);
-                    }
-                    break;
-
-                case "load":
-                    mapName = message.getContent();
-                    try {
-                        facade.readMap(map, mapName);
-                    }catch (Exception e)
-                    {
-                        System.out.print(e);
-                    }
-                    break;
-            }
-
-
+        if (message.getSource().equals("CommandParser")) {
+            requestHandler.handle(message);
         }
-        else if (message.getSource().equals("Attack")){
+    }
 
+    public void executeGo(String direction){
+        Boolean valid;
+        switch(direction){
+            case "north":
+                Move northMove = new Move(0, 1);
+                valid = northMove.validateMove(0, 1, play, map);
+                if (!valid){
+                    executeInValid("This is not a valid move. Choose another direction.");
+                }
+                else{
+                    executeValid("You moved north.");
+                }
+                break;
+            case "east":
+                Move eastMove = new Move(1, 0);
+                valid = eastMove.validateMove(1, 0, play, map);
+                if (!valid){
+                    executeInValid("This is not a valid move. Choose another direction.");
+                }
+                else
+                    executeValid("You moved East.");
+                break;
+            case "south":
+                Move southMove = new Move(0, -1);
+                valid = southMove.validateMove(0, -1, play, map);
+                if (!valid){
+                    executeInValid("This is not a valid move. Choose another direction.");
+                }
+                else
+                    executeValid("You moved South.");
+                break;
+            case "west":
+                Move westMove = new Move(-1, 0);
+                valid = westMove.validateMove(-1, 0, play, map);
+                if (!valid){
+                    executeInValid("This is not a valid move. Choose another direction.");
+                }
+                else
+                    executeValid("You moved West.");
+                break;
         }
+    }
+    public void executeInvestigate(){
+        State state = new State();
+        this.check = state.checkState(map,play);
+        if(this.check == -1)
+            outputState("You lose, try again");
+        if(this.check == 0)
+            outputState("No update to state");
+        else if(this.check == 1)
+            outputState("You win. Congratualtions");
+    }
+
+    public void executeSave(String mapName){
+        try {
+            facade.writeMap(map, mapName);
+        }catch (Exception e)
+        {
+            System.out.print(e);
+        }
+    }
+
+    public void executeLoad(String mapName){
+        mapName = message.getContent();
+        try {
+            facade.readMap(map, mapName);
+        }catch (Exception e)
+        {
+            System.out.print(e);
+        }
+    }
+
+    public void executePrint(){
+        String mapString = "";
+
+        for (int i =0; i < map.getSize();i++)
+            for (int j =0; j < map.getSize();j++)
+                mapString+=map.getCell(i,j).getDescription();
+
+        Message message = new Message("Output", this.getColleagueCode(), mapString, "Print");
+        send(message);
     }
 
     public void sendError(){
