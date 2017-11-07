@@ -3,8 +3,7 @@ package GUI;
 import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
-import Interceptor.Interceptor;
-import Interceptor.Request;
+
 
 import java.util.ArrayList;
 
@@ -13,13 +12,11 @@ import java.util.ArrayList;
  */
 public class GUIProxy extends Colleague{
     private TakeInput takeInput;
-    ArrayList interceptors;
 
     public GUIProxy(Mediator mediator) {
         super(mediator);
         setColleagueCode("GUI");
         takeInput = new TakeInput();
-        interceptors = new ArrayList();
 
     }
 
@@ -41,7 +38,7 @@ public class GUIProxy extends Colleague{
         }
     }
 
-    private void execute(InputRequest request, boolean inCombat){
+    private void execute(boolean inCombat){
         System.out.println("In combat:" + inCombat);
         if (inCombat){
             Message message = new Message("Attack", this.getColleagueCode(), request.getInput(), "UserInput");
