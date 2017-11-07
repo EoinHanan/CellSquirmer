@@ -125,6 +125,9 @@ public class GameProxy extends Colleague {
 
 
         }
+        else if (message.getSource().equals("Attack")){
+
+        }
     }
 
     public void sendError(){
