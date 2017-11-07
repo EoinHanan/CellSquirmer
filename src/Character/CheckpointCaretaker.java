@@ -31,7 +31,6 @@ public class CheckpointCaretaker {
         // push the current state of the widget onto the stack
         mementoStack.push(p.createMemento());
         originatorStack.push(p);
-        // do stuff
         p.setX(value);
     }
 
@@ -39,7 +38,6 @@ public class CheckpointCaretaker {
         // push the current state of the widget onto the stack
         mementoStack.push(p.createMemento());
         originatorStack.push(p);
-        // do stuff
         p.setY(value);
     }
 
