@@ -8,6 +8,7 @@ import Game.Facade.FacadeUtility;
 import World.Map;
 
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 
 public class GameProxy extends Colleague {
     private Message message;
@@ -133,21 +134,41 @@ public class GameProxy extends Colleague {
     public void sendError(){
         message = new Message("Output","From", "Content","Action");
         this.send(message);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void executeValid(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void executeInValid(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void outputState(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputState");
         send(message);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setCheck(int c){

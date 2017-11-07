@@ -28,7 +28,7 @@ public class Parser{
             makeCommand();
         }
         else
-            commands[5].execute("");
+            commands[5].execute("There is an error");
 
     }
 
@@ -65,29 +65,7 @@ public class Parser{
 
     private void split(String input){
         String words[] = input.split(" ");
-        if (words.length == 1){
-            firstWord = input;
-            secondWord = null;
-        }
-        else if (words.length == 2){
-            firstWord = words[0];
-            secondWord = words[1];
-        }
-        else if (words.length == 3){
-            if (words[1].matches("mysql")||words[1].matches("oracle")) {
-                firstWord = words[0];
-                secondWord = words[1] + ";" + words[2];
-            }
-            else{
-                firstWord = "error";
-                secondWord = "error";
-            }
-        }
-        else{
-            firstWord = "error";
-            secondWord = "error";
-        }
-        /*if (input.indexOf(" ") > -1){
+        if (input.contains(" ")){
             if (input.indexOf(" ") == input.lastIndexOf(" ")) {
                 firstWord = input.substring(0, input.indexOf(" "));
                 secondWord = input.substring(input.indexOf(" ") + 1);
@@ -95,13 +73,11 @@ public class Parser{
             else {
                 firstWord = input.substring(0, input.indexOf(" "));
                 secondWord = input.substring(input.indexOf(" ") + 1, input.lastIndexOf(" ") );
-                thirdWord = input.substring(input.lastIndexOf(" ") + 1);
             }
-
         }
         else {
             firstWord = input;
             secondWord = "ignore";
-        }*/
+        }
     }
 }

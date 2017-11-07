@@ -20,10 +20,11 @@ public class Map {
                 enemyCount = 0;
                 float chance = r.nextFloat();
                 // Changed to .90 from .10 for testing
-                if (chance <= 0.10f) {
+                if (chance <= .50f) {
                     createEnemy = true;
                     enemyCount++;
                 }
+
                 int n = rand.nextInt(4) + 1;
                 cells[i][j] = mapLayout.makeCell(n, i, j, createEnemy, enemyCount);
             }
@@ -31,6 +32,8 @@ public class Map {
         //System.out.println(cells[1]);
 
         //System.out.println(cells[1].getEnemy());
+
+       // printAll();
     }
 
     public int getSize(){
@@ -43,5 +46,13 @@ public class Map {
 
     public void changeMap(Cell[][] cells){
         this.cells = cells;
+    }
+
+    public void printAll(){
+        for (int i =0; i < cells.length;i++){
+            for (int j =0; j < cells.length;j++){
+                System.out.println(i + "," + j + ": " + cells[i][j].getEnemy().getHealth());
+            }
+        }
     }
 }

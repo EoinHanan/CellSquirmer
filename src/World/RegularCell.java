@@ -29,9 +29,10 @@ public class RegularCell extends Cell {
         setType(1);
 
         if (createEnemy) {
-
+            //System.out.println("We're creating the enemy");
             Random rand = new Random();
             int enemyType = rand.nextInt(1) + 1;
+            setEnemyCount(enemyCount);
 
             if (enemyType == 1) {
                 BasicEnemy basicEnemy = new BasicEnemy();

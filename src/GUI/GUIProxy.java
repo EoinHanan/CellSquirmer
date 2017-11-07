@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Patrick on 18/10/2017.
  */
-public class GUIProxy extends Colleague implements Interceptor{
+public class GUIProxy extends Colleague{
     private TakeInput takeInput;
     ArrayList interceptors;
 
@@ -20,6 +20,7 @@ public class GUIProxy extends Colleague implements Interceptor{
         setColleagueCode("GUI");
         takeInput = new TakeInput();
         interceptors = new ArrayList();
+
     }
 
 
@@ -36,12 +37,14 @@ public class GUIProxy extends Colleague implements Interceptor{
                     System.out.println("Output through GUI: " + message.getContent());
                 break;
             case "Game": System.out.println(message.getContent()); break;
+            case "Attack": System.out.println(message.getContent());break;
         }
     }
 
     private void execute(InputRequest request, boolean inCombat){
+        System.out.println("In combat:" + inCombat);
         if (inCombat){
-            Message message = new Message("CombatParser", this.getColleagueCode(), request.getInput(), "UserInput");
+            Message message = new Message("Attack", this.getColleagueCode(), request.getInput(), "UserInput");
             send(message);
         }
         else {
@@ -49,29 +52,7 @@ public class GUIProxy extends Colleague implements Interceptor{
             send(message);
         }
     }
-
-    public void registerErrorMessageInterceptor(Interceptor InterceptorObject) {
-        interceptors.add(InterceptorObject);
-    }
-
-    public  void unregisterErrorMessageInterceptor(Interceptor InterceptorObject) {
-        interceptors.remove(InterceptorObject);
-    }
-
-    @Override
-    public void errorMessageReceiver(Request context) {
-        ArrayList interceptorList;
-
-        /*
-        interceptorList = (ArrayList) this.interceptors.clone();
-        context.setFinalErrorMessage(context.getErrorMessage());
-        Interceptor.Move move = new Interceptor.Move(getClass().getName());
-
-        context.setFinalErrorMessage(context.getErrorMessage());
-        move.printError(context.getFinalErrorMessage());*/
-
+    public static void inCombat(){
 
     }
-
-
 }

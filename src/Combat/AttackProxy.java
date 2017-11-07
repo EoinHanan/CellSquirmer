@@ -8,7 +8,6 @@ import Prototype.Enemy;
 import World.Cell;
 
 public class AttackProxy extends Colleague{
-    private Attack currentEnemy;
     private Enemy enemy;
     private Parser parser;
     private boolean inCombat;
@@ -18,24 +17,29 @@ public class AttackProxy extends Colleague{
         super(mediator);
         setColleagueCode("Attack");
         inCombat = false;
+        parser = new Parser();
         //currentEnemy = new Attack(enemy);
     }
 
     @Override
     public void receive(Message message) {
-        if(message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("Attack")) {
+        if(message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("UserInput")) {
             if (parser.validate(message)) {
-                this.send(new Message("GUI", this.getColleagueCode(), "Damage done, enemy has " + currentEnemy.getHealth(), "Attack Print"));
-                if (currentEnemy.getHealth() == 0) {
+                enemy.setHealth(enemy.getHealth() - 1);
+                this.send(new Message("GUI", this.getColleagueCode(), "Damage done, enemy has " + enemy.getHealth(), "Attack Print"));
+
+                if (enemy.getHealth() == 0) {
                     this.send(new Message("Game", this.getColleagueCode(), "Enemy Defeated", "Combat End"));
                     inCombat = false;
                 }
             }
             else
-                this.send(new Message("GUI", this.getColleagueCode(), "Invalid inpu", "Invalid"));
+                this.send(new Message("GUI", this.getColleagueCode(), "Invalid input", "Invalid"));
         }
     }
     public void setCurrentEnemy(Enemy enemy){
+        System.out.println("Current enemy is created with " + enemy.getHealth());
+
         this.enemy = enemy;
         inCombat = true;
     }
