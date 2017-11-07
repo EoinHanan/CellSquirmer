@@ -5,10 +5,10 @@ package CommandParser;
  */
 public class Print implements Command {
     private String name;
-    CommandParserProxy commandProxy;
+    private CommandParserProxy commandProxy;
     public Print(CommandParserProxy commandProxy) {
         this.commandProxy = commandProxy;
-        name = "take";
+        name = "print";
     }
 
     @Override

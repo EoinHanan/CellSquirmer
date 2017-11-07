@@ -110,11 +110,15 @@ public class GameProxy extends Colleague {
     }
 
     public void executePrint(){
-        String mapString = "";
+        String mapString = "\t\t1\t\t2\t\t3\t\t4\t\t5\t\t6\t\t7\t\t8\t\t9\t\t10\n";
 
-        for (int i =0; i < map.getSize();i++)
-            for (int j =0; j < map.getSize();j++)
-                mapString+=map.getCell(i,j).getDescription();
+        for (int i =0; i < map.getSize();i++) {
+            mapString += (i + 1) + "\t\t";
+            for (int j = 0; j < map.getSize(); j++) {
+                mapString += map.getCell(i, j).icon(play.getcX(),play.getcY()) + "\t\t";
+            }
+            mapString+="\n\n";
+        }
 
         Message message = new Message("Output", this.getColleagueCode(), mapString, "Print");
         send(message);
@@ -158,10 +162,6 @@ public class GameProxy extends Colleague {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setCheck(int c){
-        this.check = c;
     }
 
     public int getCheck() {

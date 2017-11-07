@@ -1,6 +1,5 @@
 package Game.GameCommands;
 
-import CommandParser.CommandParserProxy;
 import Game.GameProxy;
 
 /**

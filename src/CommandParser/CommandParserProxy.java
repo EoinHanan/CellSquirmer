@@ -22,7 +22,7 @@ public class CommandParserProxy extends Colleague {
 
     @Override
     public void receive(Message message) {
-        if (message.getSource().equals("GUI") &&message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("UserInput")){
+        if (message.getSource().equals("GUI") && message.getDestination().equals(this.getColleagueCode())){
             parser.validate(message);
         }
     }

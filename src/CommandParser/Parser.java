@@ -11,16 +11,18 @@ public class Parser{
     private String secondWord;
 
     public Parser (CommandParserProxy commandParserProxy){
-        commands = new Command[6];
+        commands = new Command[7];
         commands[0]= new Go(commandParserProxy);
         commands[1]= new Take(commandParserProxy);
         commands[2]= new Investigate(commandParserProxy);
         commands[3]= new Save(commandParserProxy);
         commands[4]= new Load(commandParserProxy);
-        commands[5]= new Error(commandParserProxy);
+        commands[5]= new Print(commandParserProxy);
+        commands[6]= new Error(commandParserProxy);
     }
 
     public void validate(Message message){
+        System.out.println("Reaching the validate statement");
         String input = message.getContent();
         input = normalise(input);
         if (checkList(input)) {
