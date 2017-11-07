@@ -31,7 +31,7 @@ public class GameProxy extends Colleague {
         FacadeUtility facade = new FacadeUtility();
         String command, direction;
         Boolean valid = true;
-        String DbType, mapName;
+        String mapName;
         if (message.getSource().equals("CommandParser")){
             command = message.getAction();
             switch(command){
@@ -98,12 +98,9 @@ public class GameProxy extends Colleague {
                     break;
 
                 case "save":
-                    System.out.println("Reached Save: " + message.getContent());
-                    String[] saveType = message.getContent().split(";");
-                    DbType = saveType[0];
-                    mapName = saveType[1];
+                    mapName = message.getContent();
                     try {
-                        facade.writeMap(DbType, map, mapName);
+                        facade.writeMap(map, mapName);
                     }catch (Exception e)
                     {
                         System.out.print(e);
@@ -111,12 +108,9 @@ public class GameProxy extends Colleague {
                     break;
 
                 case "load":
-                    System.out.println("Reached Load");
-                    String[] loadType = message.getContent().split(";");
-                    DbType = loadType[0];
-                    mapName = loadType[1];
+                    mapName = message.getContent();
                     try {
-                        facade.readMap(DbType, map, mapName);
+                        facade.readMap(map, mapName);
                     }catch (Exception e)
                     {
                         System.out.print(e);
