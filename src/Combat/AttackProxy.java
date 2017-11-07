@@ -38,8 +38,6 @@ public class AttackProxy extends Colleague{
         }
     }
     public void setCurrentEnemy(Enemy enemy){
-        System.out.println("Current enemy is created with " + enemy.getHealth());
-
         this.enemy = enemy;
         inCombat = true;
     }
