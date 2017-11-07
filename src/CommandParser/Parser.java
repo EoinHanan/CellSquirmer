@@ -11,14 +11,16 @@ public class Parser{
     private String secondWord;
 
     public Parser (CommandParserProxy commandParserProxy){
-        commands = new Command[7];
+        commands = new Command[9];
         commands[0]= new Go(commandParserProxy);
         commands[1]= new Take(commandParserProxy);
         commands[2]= new Investigate(commandParserProxy);
         commands[3]= new Save(commandParserProxy);
         commands[4]= new Load(commandParserProxy);
-        commands[5]= new Print(commandParserProxy);
-        commands[6]= new Error(commandParserProxy);
+        commands[5]= new Update(commandParserProxy);
+        commands[6]= new Delete(commandParserProxy);
+        commands[7]= new Print(commandParserProxy);
+        commands[8]= new Error(commandParserProxy);
     }
 
     public void validate(Message message){
@@ -30,7 +32,7 @@ public class Parser{
             makeCommand();
         }
         else
-            commands[5].execute("There is an error");
+            commands[8].execute("There is an error");
 
     }
 

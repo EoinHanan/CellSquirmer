@@ -100,9 +100,26 @@ public class GameProxy extends Colleague {
     }
 
     public void executeLoad(String mapName){
-        mapName = message.getContent();
         try {
             facade.readMap(map, mapName);
+        }catch (Exception e)
+        {
+            System.out.print(e);
+        }
+    }
+
+    public void executeUpdate(String mapName){
+        try {
+            facade.updateMap(map, mapName);
+        }catch (Exception e)
+        {
+            System.out.print(e);
+        }
+    }
+
+    public void executeDelete(String mapName){
+        try {
+            facade.deleteMap(mapName);
         }catch (Exception e)
         {
             System.out.print(e);
@@ -133,6 +150,12 @@ public class GameProxy extends Colleague {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void sendCombatMessage(){
+        //Content is blank so user can send the attack themselves but we're still put in combat
+        Message message = new Message("Attack", this.getColleagueCode(), "", "UserInput");
+        send(message);
     }
 
     private void executeValid(String inText){
