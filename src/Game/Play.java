@@ -32,8 +32,6 @@ public class Play {
     private static GUIProxy guiProxy;
     private static ConcreteMediator concreteMediator;
 
-
-
     private int cX;
     private int cY;
     private Position myPosition;
@@ -48,8 +46,6 @@ public class Play {
         myPosition = new Position(cX, cY);
         c = new CheckpointCaretaker(myPosition);
 
-
-        //Map map = new Map();
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
         gameProxy = new GameProxy(concreteMediator, map);
@@ -59,21 +55,12 @@ public class Play {
 
     }
 
-
-    public void setcX(int cX) {
-        this.cX = cX;
-    }
-
-    public void setcY(int cY) {
-        this.cY = cY;
-    }
-
     public int getcX(){
         return this.cX;
     }
 
     public int getcY() {
-        return cY;
+        return this.cY;
     }
 
     public CheckpointCaretaker getCaretaker(){
@@ -117,5 +104,13 @@ public class Play {
         guiProxy.lookForInput(inCombat);
         c.setXValue(cX);
         c.setYValue(cY);
+    }
+
+    public void setPosition(Position position){
+        c.setPosition(position);
+    }
+
+    public Position getPosition(){
+        return c.getPosition();
     }
 }

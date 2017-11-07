@@ -22,6 +22,10 @@ public class CheckpointCaretaker {
         this.p = p;
     }
 
+    public Position getPosition() {
+        return this.p;
+    }
+
     public void undoOperation() {
         Originator o = (Originator)originatorStack.pop();
         o = (Originator)originatorStack.pop();

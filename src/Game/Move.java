@@ -8,7 +8,7 @@ package Game;
 import Character.CheckpointCaretaker;
 import World.Cell;
 import World.Map;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import Character.Position;
 
 /**
  *
@@ -17,6 +17,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 public class Move {
     private int moveX;
     private int moveY;
+    private Position position;
      //check character to see if that is a valid move -> if so, update position in Character.
     public Move(int newMoveX, int newMoveY){
         this.moveX = newMoveX;
@@ -38,13 +39,13 @@ public class Move {
         this.moveY = moveY;
     }
 
-    public boolean validateMove(int vMoveX, int vMoveY, Play play, Map map){
+    public boolean validateMove(int vMoveX, int vMoveY, Position position, Map map){
             boolean valid = false;
             int cpX;
             int cpY;
             int cmX, cmY;
-            cpX = play.getcX() + vMoveX;
-            cpY = play.getcY() + vMoveY;
+            cpX = position.getX() + vMoveX;
+            cpY = position.getY() + vMoveY;
 
             /*for(int i = 0; i < map.getSize(); i++){
                 cmX = currentMap[i].getPositionX();
@@ -56,11 +57,15 @@ public class Move {
             }*/
 
             if (cpY > 0 && cpY < map.getSize() && cpX > 0 && cpX < map.getSize()){
-                play.setcX(cpX);
-                play.setcY(cpY);
+                position.setX(cpX);
+                position.setY(cpY);
                 valid = true;
             }
 
             return valid;
+    }
+
+    public Position getPostition(){
+        return position;
     }
 }

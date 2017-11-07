@@ -16,6 +16,7 @@ public class GameProxy extends Colleague {
     private Map map;
     private int check;
     private RequestHandler requestHandler;
+    private MoveRequestHandler moveRequestHandler;
     private FacadeUtility facade;
 
     public GameProxy(Mediator mediator, Map map) {
@@ -23,6 +24,7 @@ public class GameProxy extends Colleague {
         this.map = map;
         setColleagueCode("Game");
         requestHandler = new RequestHandler(this);
+        moveRequestHandler = new MoveRequestHandler(this);
         facade = new FacadeUtility();
     }
 
@@ -38,46 +40,8 @@ public class GameProxy extends Colleague {
     }
 
     public void executeGo(String direction){
-        Boolean valid;
-        switch(direction){
-            case "north":
-                Move northMove = new Move(0, 1);
-                valid = northMove.validateMove(0, 1, play, map);
-                if (!valid){
-                    executeInValid("This is not a valid move. Choose another direction.");
-                }
-                else{
-                    executeValid("You moved north.");
-                }
-                break;
-            case "east":
-                Move eastMove = new Move(1, 0);
-                valid = eastMove.validateMove(1, 0, play, map);
-                if (!valid){
-                    executeInValid("This is not a valid move. Choose another direction.");
-                }
-                else
-                    executeValid("You moved East.");
-                break;
-            case "south":
-                Move southMove = new Move(0, -1);
-                valid = southMove.validateMove(0, -1, play, map);
-                if (!valid){
-                    executeInValid("This is not a valid move. Choose another direction.");
-                }
-                else
-                    executeValid("You moved South.");
-                break;
-            case "west":
-                Move westMove = new Move(-1, 0);
-                valid = westMove.validateMove(-1, 0, play, map);
-                if (!valid){
-                    executeInValid("This is not a valid move. Choose another direction.");
-                }
-                else
-                    executeValid("You moved West.");
-                break;
-        }
+        moveRequestHandler.handle(direction, map ,play.getPosition() );
+
     }
     public void executeInvestigate(){
         State state = new State();
@@ -135,9 +99,10 @@ public class GameProxy extends Colleague {
         }
     }
 
-    private void executeValid(String inText){
+    public void executeValid(String inText, Move move){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);
+        play.setPosition(move.getPostition());
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -145,7 +110,7 @@ public class GameProxy extends Colleague {
         }
     }
 
-    private void executeInValid(String inText){
+    public void executeInValid(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);
         try {
