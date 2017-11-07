@@ -13,6 +13,7 @@ public class GameProxy extends Colleague {
     private Message message;
     private Play play;
     private Map map;
+    private int check;
 
     public GameProxy(Mediator mediator, Map map) {
         super(mediator);
@@ -80,14 +81,14 @@ public class GameProxy extends Colleague {
                     break;
                 case "investigate":
                     //Call the State class
-                    int check;
+
                     State state = new State();
-                    check = state.checkState(map,play);
-                    if(check == -1)
+                    this.check = state.checkState(map,play);
+                    if(this.check == -1)
                         outputState("You lose, try again");
-                    if(check == 0)
+                    if(this.check == 0)
                         outputState("No update to state");
-                    else if(check == 1)
+                    else if(this.check == 1)
                         outputState("You win. Congratualtions");
                     break;
 
@@ -124,6 +125,9 @@ public class GameProxy extends Colleague {
 
 
         }
+        else if (message.getSource().equals("Attack")){
+
+        }
     }
 
     public void sendError(){
@@ -144,5 +148,13 @@ public class GameProxy extends Colleague {
     private void outputState(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputState");
         send(message);
+    }
+
+    public void setCheck(int c){
+        this.check = c;
+    }
+
+    public int getCheck() {
+        return check;
     }
 }

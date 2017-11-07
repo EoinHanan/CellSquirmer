@@ -23,9 +23,9 @@ public class GUIProxy extends Colleague implements Interceptor{
     }
 
 
-    public void lookForInput(){
+    public void lookForInput(boolean inCombat){
         InputRequest userInput = takeInput.userinput();
-        execute(userInput);
+        execute(userInput, inCombat);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class GUIProxy extends Colleague implements Interceptor{
         }
     }
 
-    private void execute(InputRequest request){
-        if (request.getCombat()){
+    private void execute(InputRequest request, boolean inCombat){
+        if (inCombat){
             Message message = new Message("CombatParser", this.getColleagueCode(), request.getInput(), "UserInput");
             send(message);
         }

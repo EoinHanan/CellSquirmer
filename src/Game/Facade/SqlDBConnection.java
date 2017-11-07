@@ -10,7 +10,7 @@ public class SqlDBConnection {
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
-    private PreparedStatement preparedStatement;
+
 
     public SqlDBConnection(){
 
