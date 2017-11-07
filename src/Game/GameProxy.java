@@ -116,6 +116,13 @@ public class GameProxy extends Colleague {
         }
     }
 
+    public void sendCombatMessage(){
+        //Content is blank so user can send the attack themselves but we're still put in combat
+        Message message = new Message("Attack", this.getColleagueCode(), "", "UserInput");
+        send(message);
+    }
+
+    private void executeValid(String inText){
     public void executeValid(String inText, Move move){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);

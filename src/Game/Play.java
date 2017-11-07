@@ -9,6 +9,8 @@ import Clock.Clock;
 import Combat.Attack;
 import Combat.AttackProxy;
 import Communication.ConcreteMediator;
+import Communication.Message;
+import Communication.Colleague;
 import Communication.Mediator;
 import GUI.GUIProxy;
 import CommandParser.CommandParserProxy;
@@ -97,6 +99,8 @@ public class Play {
         //System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
             //GUIProxy.inCombat();
+            //Call gameProxy method here
+            gameProxy.sendCombatMessage();
             inCombat = true;
             attackProxy.setCurrentEnemy(myCell.getEnemy());
             myCell.setEnemyCount(myCell.getEnemyCount() - 1);
