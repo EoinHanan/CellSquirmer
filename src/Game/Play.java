@@ -18,6 +18,8 @@ import World.Map;
 import World.Cell;
 import Character.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author Gerry
@@ -40,8 +42,7 @@ public class Play {
     public Play(int sizeOfMap, int x, int y) {
         this.cX = x;
         this.cY = y;
-        map = Map.getInstance();
-        map.createMap(sizeOfMap);
+        map = new Map(sizeOfMap);
 
 
 
@@ -77,18 +78,15 @@ public class Play {
         int state = 0;
         Position myPosition = new Position(cX, cY);
         CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
-        while (state != -1 || state != 1) {
+        while (state != -1 && state != 1) {
             if (!inCombat) {
                 movementLoop(c);
             }
             else{
                 guiProxy.lookForInput(inCombat);
-                inCombat = attackProxy.checkCombat();
             }
-            //if recieved message is go, work through Move Class
-
-            //else if recieved message is investigate, work through State Class
-
+            state = gameProxy.getCheck();
+            inCombat = attackProxy.checkCombat();
         }
 
     }
@@ -99,9 +97,14 @@ public class Play {
         cX = c.getXValue();
         cY = c.getYValue();
         Cell myCell = map.getCell(cX, cY);
+        //System.out.println("Checking the cell" + map.getCell(cX, cY).getEnemy().getHealth());
+
+        //System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
+            GUIProxy.inCombat();
             inCombat = true;
             attackProxy.setCurrentEnemy(myCell.getEnemy());
+            myCell.setEnemyCount(myCell.getEnemyCount() - 1);
         }
         guiProxy.lookForInput(inCombat);
         c.setXValue(cX);

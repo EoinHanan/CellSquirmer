@@ -4,6 +4,8 @@ import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by EoinH on 24/10/2017.
  */
@@ -20,7 +22,7 @@ public class CommandParserProxy extends Colleague {
 
     @Override
     public void receive(Message message) {
-        if (message.getSource().equals("GUI") && message.getAction().equals("UserInput")){
+        if (message.getSource().equals("GUI") &&message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("UserInput")){
             parser.validate(message);
         }
     }
@@ -30,6 +32,11 @@ public class CommandParserProxy extends Colleague {
         //System.out.println("Error pressed");
         message = new Message("GUI",this.getColleagueCode(), "Invalid Input","Error");
         this.send(message);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void executeGo(String direction){

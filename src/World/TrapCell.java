@@ -29,9 +29,10 @@ public class TrapCell extends Cell {
         setType(2);
 
         if (createEnemy) {
-
+            //System.out.println("We're creating an enemy in trap");
             Random rand = new Random();
             int enemyType = rand.nextInt(1) + 1;
+            setEnemyCount(enemyCount);
 
             if (enemyType == 1) {
                 BasicEnemy basicEnemy = new BasicEnemy();

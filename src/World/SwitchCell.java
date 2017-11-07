@@ -20,9 +20,10 @@ public class SwitchCell extends Cell {
         setType(4);
 
         if (createEnemy) {
-
+            //System.out.println("We're creating an enemy in switch");
             Random rand = new Random();
             int enemyType = rand.nextInt(1) + 1;
+            setEnemyCount(enemyCount);
 
             if (enemyType == 1) {
                 BasicEnemy basicEnemy = new BasicEnemy();
