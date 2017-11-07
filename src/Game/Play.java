@@ -101,7 +101,7 @@ public class Play {
 
         //System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
-            GUIProxy.inCombat();
+            //GUIProxy.inCombat();
             inCombat = true;
             attackProxy.setCurrentEnemy(myCell.getEnemy());
             myCell.setEnemyCount(myCell.getEnemyCount() - 1);

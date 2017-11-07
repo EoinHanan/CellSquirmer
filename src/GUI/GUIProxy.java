@@ -3,8 +3,7 @@ package GUI;
 import Communication.Colleague;
 import Communication.Mediator;
 import Communication.Message;
-import Interceptor.Interceptor;
-import Interceptor.Request;
+
 
 import java.util.ArrayList;
 
@@ -13,19 +12,18 @@ import java.util.ArrayList;
  */
 public class GUIProxy extends Colleague{
     private TakeInput takeInput;
-    ArrayList interceptors;
+    private Printer printer;
 
     public GUIProxy(Mediator mediator) {
         super(mediator);
         setColleagueCode("GUI");
         takeInput = new TakeInput();
-        interceptors = new ArrayList();
-
+        printer = new Printer();
     }
 
 
     public void lookForInput(boolean inCombat){
-        InputRequest userInput = takeInput.userinput();
+        String userInput = takeInput.userinput();
         execute(userInput, inCombat);
     }
 
@@ -34,25 +32,21 @@ public class GUIProxy extends Colleague{
         switch (message.getSource()){
             case "CommandParser":
                 if (message.getAction().equals("Error"))
-                    System.out.println("Output through GUI: " + message.getContent());
+                    printer.print("Output through GUI: " + message.getContent());
                 break;
-            case "Game": System.out.println(message.getContent()); break;
-            case "Attack": System.out.println(message.getContent());break;
+            case "Game": printer.print(message.getContent()); break;
+            case "Attack": printer.print(message.getContent());break;
         }
     }
 
-    private void execute(InputRequest request, boolean inCombat){
-        System.out.println("In combat:" + inCombat);
+    private void execute(String input, boolean inCombat){
         if (inCombat){
-            Message message = new Message("Attack", this.getColleagueCode(), request.getInput(), "UserInput");
+            Message message = new Message("Attack", this.getColleagueCode(), input, "UserInput");
             send(message);
         }
         else {
-            Message message = new Message("CommandParser", this.getColleagueCode(), request.getInput(), "UserInput");
+            Message message = new Message("CommandParser", this.getColleagueCode(), input, "UserInput");
             send(message);
         }
-    }
-    public static void inCombat(){
-
     }
 }

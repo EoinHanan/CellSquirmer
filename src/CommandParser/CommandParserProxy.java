@@ -63,4 +63,7 @@ public class CommandParserProxy extends Colleague {
         message = new Message("Game",this.getColleagueCode(), messageText,"load");
         this.send(message);
     }
+    public void executePrint(String secondWord){
+
+    }
 }
