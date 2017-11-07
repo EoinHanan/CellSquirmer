@@ -31,7 +31,7 @@ public class GameProxy extends Colleague {
         FacadeUtility facade = new FacadeUtility();
         String command, direction;
         Boolean valid = true;
-        String DbType, mapName;
+        String mapName;
         if (message.getSource().equals("CommandParser")){
             command = message.getAction();
             switch(command){
