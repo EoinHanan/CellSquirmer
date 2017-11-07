@@ -121,8 +121,7 @@ public class GameProxy extends Colleague {
         Message message = new Message("Attack", this.getColleagueCode(), "", "UserInput");
         send(message);
     }
-
-    private void executeValid(String inText){
+    
     public void executeValid(String inText, Move move){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputMoveResult");
         send(message);

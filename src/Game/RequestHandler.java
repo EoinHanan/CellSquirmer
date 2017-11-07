@@ -13,7 +13,7 @@ class RequestHandler {
     private Command commands[];
 
     public RequestHandler(GameProxy gameProxy){
-        commands = new Command[7];
+        commands = new Command[8];
         commands[0]= new Go(gameProxy);
         commands[1]= new Investigate(gameProxy);
         commands[2]= new Save(gameProxy);
