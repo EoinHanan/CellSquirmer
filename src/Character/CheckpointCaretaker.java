@@ -24,6 +24,8 @@ public class CheckpointCaretaker {
 
     public void undoOperation() {
         Originator o = (Originator)originatorStack.pop();
+        o = (Originator)originatorStack.pop();
+        mementoStack.pop();
         o.restore((Memento)mementoStack.pop());
     }
 
