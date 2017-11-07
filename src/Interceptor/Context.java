@@ -1,6 +1,6 @@
 package Interceptor;
 
-public interface Request {
+public interface Context {
 
     String getErrorMessage();
 
