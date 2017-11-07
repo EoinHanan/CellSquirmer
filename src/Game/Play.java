@@ -36,6 +36,8 @@ public class Play {
 
     private int cX;
     private int cY;
+    private Position myPosition;
+    private CheckpointCaretaker c;
     private static Map map;
     private boolean inCombat;
 
@@ -43,7 +45,8 @@ public class Play {
         this.cX = x;
         this.cY = y;
         map = new Map(sizeOfMap);
-
+        myPosition = new Position(cX, cY);
+        c = new CheckpointCaretaker(myPosition);
 
 
         //Map map = new Map();
@@ -53,6 +56,7 @@ public class Play {
         guiProxy = new GUIProxy(concreteMediator);
         commandParserProxy = new CommandParserProxy(concreteMediator);
         attackProxy = new AttackProxy(concreteMediator);
+
     }
 
 
@@ -72,12 +76,16 @@ public class Play {
         return cY;
     }
 
+    public CheckpointCaretaker getCaretaker(){
+        return c;
+    }
+
 
     public void start() {
         int i = 0;
         int state = 0;
-        Position myPosition = new Position(cX, cY);
-        CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
+//        Position myPosition = new Position(cX, cY);
+//        CheckpointCaretaker c = new CheckpointCaretaker(myPosition);
         while (state != -1 && state != 1) {
             if (!inCombat) {
                 movementLoop(c);
