@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Dispatcher implements Interceptor {
 
-    private static Dispatcher dispatcher;
+    public static Dispatcher dispatcher;
     ArrayList interceptors;
 
-    private Dispatcher() {
+    public Dispatcher() {
         interceptors = new ArrayList();
     }
 
@@ -28,13 +28,13 @@ public class Dispatcher implements Interceptor {
         interceptors.remove(InterceptorObject);
     }
 
-    @Override
-    public void errorMessageReceiver(Request context) {
+//    @Override
+    public void errorMessageReceiver(Context context) {
         ArrayList interceptorList;
 
         interceptorList = (ArrayList) this.interceptors.clone();
         context.setFinalErrorMessage(context.getErrorMessage());
-        Move move = new Move(getClass().getName());
+        MoveRequest move = new MoveRequest(getClass().getName());
 
         context.setFinalErrorMessage(context.getErrorMessage());
         move.printError(context.getFinalErrorMessage());

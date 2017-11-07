@@ -1,9 +1,8 @@
 package Interceptor;
 
-@FunctionalInterface
+//@FunctionalInterface
 public interface Interceptor {
 
-    /*void errorMessageReceiver(Request context);*/
-
-    void errorMessageReceiver(Request context);
+//    @Override
+    void errorMessageReceiver(Context context);
 }

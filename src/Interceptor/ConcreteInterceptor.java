@@ -1,6 +1,6 @@
 package Interceptor;
 
-public class ConcreteMove implements Request {
+public class ConcreteInterceptor implements Context {
 
     private String Errormessage;
 
@@ -8,7 +8,7 @@ public class ConcreteMove implements Request {
     private String finalErrorMessage = "";
 
 
-    public ConcreteMove(String message) {
+    public ConcreteInterceptor(String message) {
         this.Errormessage = message;
     }
 

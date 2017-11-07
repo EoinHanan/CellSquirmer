@@ -1,9 +1,9 @@
 package Interceptor;
 
-public class Move {
+public class MoveRequest {
 
-    public Move(String classname){
-        System.out.println("In Move");
+    public MoveRequest(String classname){
+        System.out.println("In MoveRequest");
     }
 
 
