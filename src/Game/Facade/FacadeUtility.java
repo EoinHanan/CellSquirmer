@@ -1,7 +1,6 @@
 package Game.Facade;
 import World.Map;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public class FacadeUtility {
