@@ -22,7 +22,7 @@ public class CommandParserProxy extends Colleague {
 
     @Override
     public void receive(Message message) {
-        if (message.getSource().equals("GUI") &&message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("UserInput")){
+        if (message.getSource().equals("GUI") && message.getDestination().equals(this.getColleagueCode())){
             parser.validate(message);
         }
     }
@@ -63,7 +63,8 @@ public class CommandParserProxy extends Colleague {
         message = new Message("Game",this.getColleagueCode(), messageText,"load");
         this.send(message);
     }
-    public void executePrint(String secondWord){
-
+    public void executePrint(){
+        message = new Message("Game",this.getColleagueCode(),"" ,"print");
+        this.send(message);
     }
 }

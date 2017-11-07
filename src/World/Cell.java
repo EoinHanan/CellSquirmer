@@ -21,6 +21,7 @@ public abstract class Cell {
     private Enemy enemy;
     private boolean isEnemy;
     private int enemyCount;
+    private String icon;
     
     
     public int getPositionX(){
@@ -85,5 +86,17 @@ public abstract class Cell {
 
     public void setEnemyCount(int enemyCount) {
         this.enemyCount = enemyCount;
+    }
+
+    public String icon(int playerX, int playerY){
+        String icon = " ";
+        if (playerX == positionX && playerY == positionY)
+            icon = "*";
+        else if (enemyCount > 0)
+            icon = "E";
+        else if (state == 1)
+            icon = "G";
+
+        return icon;
     }
 }
