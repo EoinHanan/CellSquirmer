@@ -96,14 +96,16 @@ public class MapMapper {
     public void updateMySqlMap(Map map, String mapName) throws SQLException {
         String query;
         int i, j;
-        query = "SELECT MapId FROM 'maps' WHERE Name = \"" + mapName + "\");";
+        query = "SELECT MapId FROM maps WHERE Name = \"" + mapName + "\";";
         resultSet = statement.executeQuery(query);
+        resultSet.last();
+        int mapId = resultSet.getInt("MapId");
         for (i = 0; i < map.getSize(); i++) {
             for (j = 0; j < map.getSize(); j++) {
                 //query = "UPDATE `cells` SET 'EnemyCount' = \"" + map.getCell(i,j).getEnemyCount() + "\" WHERE 'CellId' = " + resultSet.getInt("MapId") + " AND 'IntX' = " + map.getCell(i, j).getPositionX() + " AND 'IntY' = " + map.getCell(i, j).getPositionY() +";";
-                query = "UPDATE `cells` SET `EnemyCount` = " + map.getCell(i,j).getEnemyCount() + " WHERE `CellId` = (SELECT `CellId` where `MapId` = " + resultSet.getInt("MapId")+ " AND `IntX` = " + map.getCell(i, j).getPositionX()+ " AND `IntY` = " + map.getCell(i, j).getPositionY() +")";
+                query = "UPDATE `cells` SET `EnemyCount` = " + map.getCell(i,j).getEnemyCount() + " WHERE `CellId` = (SELECT `CellId` where `MapId` = " + mapId + " AND `IntX` = " + map.getCell(i, j).getPositionX()+ " AND `IntY` = " + map.getCell(i, j).getPositionY() +")";
                 try {
-                    statement.executeQuery(query);
+                    statement.executeUpdate(query);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -115,7 +117,7 @@ public class MapMapper {
     public void deleteMySqlMap(String mapName) throws SQLException{
         String queryCell, queryMap;
         queryCell = "DELETE FROM `cells` WHERE MapId = (select MapId from maps where Name = \"" + mapName + "\");";
-        queryMap = "DELETE FROM `maps` WHERE MapId = (select MapId from maps where Name = \"" + mapName + "\");";
+        queryMap = "DELETE FROM `maps` WHERE MapId = (select MapId where Name = \"" + mapName + "\");";
 
         statement.executeUpdate(queryCell);
         statement.executeUpdate(queryMap);
