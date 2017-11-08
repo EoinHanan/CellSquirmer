@@ -27,13 +27,12 @@ class RequestHandler {
     public void handle(Message message){
         boolean found = false;
         int i = 0;
-        while(i < commands.length && !found){
+        while(i < commands.length - 1 && !found){
             if (commands[i].getName().equals(message.getAction()))
                 found = true;
             else
                 i++;
         }
-
-        commands[i].execute(message.getContent());
+            commands[i].execute(message.getContent());
     }
 }
