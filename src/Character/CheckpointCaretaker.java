@@ -36,7 +36,6 @@ public class CheckpointCaretaker {
 
     public void setXValue(int value) {
         // push the current state of the widget onto the stack
-        System.out.println("Memento: " + p.getX() + ", " + p.getY());
         mementoStack.push(p.createMemento());
         originatorStack.push(p);
         p.setX(value);
@@ -47,6 +46,7 @@ public class CheckpointCaretaker {
         mementoStack.push(p.createMemento());
         originatorStack.push(p);
         p.setY(value);
+        System.out.println("Memento: " + p.getX() + ", " + p.getY());
     }
 
     public int getXValue() {
