@@ -14,7 +14,7 @@ public class MoveSouth implements MoveCommand {
 
     public MoveSouth(GameProxy gameProxy){
         this.gameProxy = gameProxy;
-        name = "South";
+        name = "south";
     }
 
     @Override

@@ -100,7 +100,8 @@ public class MapMapper {
         resultSet = statement.executeQuery(query);
         for (i = 0; i < map.getSize(); i++) {
             for (j = 0; j < map.getSize(); j++) {
-                query = "UPDATE `cells` SET 'EnemyCount' = \"" + map.getCell(i,j).getEnemyCount() + "\" WHERE 'MapID' = " + resultSet.getInt("MapId") + " AND 'IntX' = " + map.getCell(i, j).getPositionX() + " AND 'IntY' = " + map.getCell(i, j).getPositionY() +";";
+                //query = "UPDATE `cells` SET 'EnemyCount' = \"" + map.getCell(i,j).getEnemyCount() + "\" WHERE 'CellId' = " + resultSet.getInt("MapId") + " AND 'IntX' = " + map.getCell(i, j).getPositionX() + " AND 'IntY' = " + map.getCell(i, j).getPositionY() +";";
+                query = "UPDATE `cells` SET `EnemyCount` = " + map.getCell(i,j).getEnemyCount() + " WHERE `CellId` = (SELECT `CellId` where `MapId` = " + resultSet.getInt("MapId")+ " AND `IntX` = " + map.getCell(i, j).getPositionX()+ " AND `IntY` = " + map.getCell(i, j).getPositionY() +")";
                 try {
                     statement.executeQuery(query);
                 } catch (SQLException e) {
@@ -116,7 +117,7 @@ public class MapMapper {
         queryCell = "DELETE FROM `cells` WHERE MapId = (select MapId from maps where Name = \"" + mapName + "\");";
         queryMap = "DELETE FROM `maps` WHERE MapId = (select MapId from maps where Name = \"" + mapName + "\");";
 
-        statement.executeQuery(queryCell);
-        statement.executeQuery(queryMap);
+        statement.executeUpdate(queryCell);
+        statement.executeUpdate(queryMap);
         }
     }
