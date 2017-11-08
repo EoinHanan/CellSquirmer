@@ -6,14 +6,14 @@ import World.Map;
 
 import java.sql.*;
 
-public class SqlDBConnection {
+public class MapMapper {
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
-    private boolean exists;
 
 
-    public SqlDBConnection() {
+
+    public MapMapper() {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +29,6 @@ public class SqlDBConnection {
 
     public void readMySqlMap(String mapName, Map map) throws SQLException {
         String query;
-        exists = false;
         query = "SELECT * FROM `Cells` WHERE MapId = (select MapId from maps where Name = \"" + mapName + "\");";
         resultSet = statement.executeQuery(query);
         resultSet.last();
@@ -97,7 +96,6 @@ public class SqlDBConnection {
     public void updateMySqlMap(Map map, String mapName) throws SQLException {
         String query;
         int i, j;
-        exists = false;
         query = "SELECT MapId FROM 'maps' WHERE Name = \"" + mapName + "\");";
         resultSet = statement.executeQuery(query);
         for (i = 0; i < map.getSize(); i++) {
