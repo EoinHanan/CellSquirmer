@@ -1,8 +1,7 @@
-package CommandParser;
+package CommandParser.Commands;
 
-/**
- * Created by EoinH on 24/10/2017.
- */
+import CommandParser.CommandParserProxy;
+
 public class Error implements Command {
     private CommandParserProxy commandParserProxy;
     private String name;

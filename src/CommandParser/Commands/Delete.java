@@ -1,20 +1,18 @@
-package CommandParser;
+package CommandParser.Commands;
 
-/**
- * Created by EoinH on 05/11/2017.
- */
-public class Load implements Command {
+import CommandParser.CommandParserProxy;
+
+public class Delete implements Command {
     private CommandParserProxy commandProxy;
     private String name;
 
-    public Load(CommandParserProxy commandProxy){
+    public Delete(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "load";
+        name = "delete";
     }
-
     @Override
     public void execute(String messageText) {
-        commandProxy.executeLoad(messageText);
+        commandProxy.executeDelete(messageText);
     }
 
     @Override

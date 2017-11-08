@@ -1,16 +1,18 @@
-package CommandParser;
+package CommandParser.Commands;
 
-public class Delete implements Command {
+import CommandParser.CommandParserProxy;
+
+public class Update implements Command {
     private CommandParserProxy commandProxy;
     private String name;
 
-    public Delete(CommandParserProxy commandProxy){
+    public Update(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "delete";
+        name = "update";
     }
     @Override
     public void execute(String messageText) {
-        commandProxy.executeDelete(messageText);
+        commandProxy.executeUpdate(messageText);
     }
 
     @Override

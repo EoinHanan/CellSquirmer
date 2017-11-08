@@ -1,9 +1,8 @@
-package CommandParser;
+package CommandParser.Commands;
 
-/**
- * Created by EoinH on 27/09/2017.
- */
-public class Go implements Command  {
+import CommandParser.CommandParserProxy;
+
+public class Go implements Command {
     private CommandParserProxy commandProxy;
     private String name;
 
