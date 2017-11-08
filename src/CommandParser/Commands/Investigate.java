@@ -1,8 +1,7 @@
-package CommandParser;
+package CommandParser.Commands;
 
-/**
- * Created by EoinH on 27/09/2017.
- */
+import CommandParser.CommandParserProxy;
+
 public class Investigate implements Command {
     private CommandParserProxy commandProxy;
     private String name;

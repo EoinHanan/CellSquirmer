@@ -106,6 +106,7 @@ public class Play {
             myCell.setEnemyCount(myCell.getEnemyCount() - 1);
         }
         guiProxy.lookForInput(inCombat);
+        c.setPosition(new Position(cX, cY));
         c.setXValue(cX);
         c.setYValue(cY);
     }

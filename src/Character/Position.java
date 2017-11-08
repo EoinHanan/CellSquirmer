@@ -23,6 +23,10 @@ public class Position implements Originator{
         this.x = x;
     }
     public void setY(int y) { this.y = y; }
+    public void setPosition(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
     public Memento createMemento() {
         PositionMemento m = new PositionMemento();

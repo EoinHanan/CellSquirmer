@@ -20,6 +20,7 @@ public class CheckpointCaretaker {
 
     public void setPosition(Position p) {
         this.p = p;
+
     }
 
     public Position getPosition() {

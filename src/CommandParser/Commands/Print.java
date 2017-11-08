@@ -1,8 +1,8 @@
-package CommandParser;
+package CommandParser.Commands;
 
-/**
- * Created by EoinH on 07/11/2017.
- */
+
+import CommandParser.CommandParserProxy;
+
 public class Print implements Command {
     private String name;
     private CommandParserProxy commandProxy;

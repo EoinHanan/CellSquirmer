@@ -1,16 +1,18 @@
-package CommandParser;
+package CommandParser.Commands;
 
-public class Update implements Command {
+import CommandParser.CommandParserProxy;
+
+public class Save implements Command {
     private CommandParserProxy commandProxy;
     private String name;
 
-    public Update(CommandParserProxy commandProxy){
+    public Save(CommandParserProxy commandProxy){
         this.commandProxy = commandProxy;
-        name = "update";
+        name = "save";
     }
     @Override
     public void execute(String messageText) {
-        commandProxy.executeUpdate(messageText);
+        commandProxy.executeSave(messageText);
     }
 
     @Override
