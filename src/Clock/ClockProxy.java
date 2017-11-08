@@ -6,9 +6,6 @@ import Communication.Message;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by EoinH on 24/10/2017.
- */
 public class ClockProxy extends Colleague {
     Clock clock;
 

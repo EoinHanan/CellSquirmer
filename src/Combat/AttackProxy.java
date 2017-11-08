@@ -5,7 +5,6 @@ import Communication.Mediator;
 import Communication.Message;
 import Communication.Colleague;
 import Prototype.Enemy;
-import World.Cell;
 
 public class AttackProxy extends Colleague{
     private Enemy enemy;
@@ -18,7 +17,6 @@ public class AttackProxy extends Colleague{
         setColleagueCode("Attack");
         inCombat = false;
         parser = new Parser();
-        //currentEnemy = new Attack(enemy);
     }
 
     @Override

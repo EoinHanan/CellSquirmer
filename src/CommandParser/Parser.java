@@ -1,10 +1,9 @@
 package CommandParser;
 
+import CommandParser.Commands.*;
+import CommandParser.Commands.Error;
 import Communication.Message;
 
-/**
- * Created by EoinH on 27/09/2017.
- */
 public class Parser{
     private Command[] commands;
     private String firstWord;

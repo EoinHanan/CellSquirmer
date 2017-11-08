@@ -4,11 +4,6 @@ import Communication.Message;
 import Game.GameCommands.*;
 import Game.GameCommands.Error;
 
-import java.util.Map;
-
-/**
- * Created by EoinH on 07/11/2017.
- */
 class RequestHandler {
     private Command commands[];
 
