@@ -8,7 +8,7 @@ import World.Map;
 public class Main {
     public static void main(String [] args){
 
-        Play play = new Play(10, 1,1);
+        Play play = new Play(10, 2,2);
         play.start();
     }
 }

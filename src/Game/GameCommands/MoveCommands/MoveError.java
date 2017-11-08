@@ -2,6 +2,7 @@ package Game.GameCommands.MoveCommands;
 
 import Game.GameProxy;
 import Game.Move;
+import Game.Play;
 import Character.Position;
 import World.Map;
 
@@ -18,7 +19,7 @@ public class MoveError implements MoveCommand {
     }
 
     @Override
-    public void execute(Position position, Map map) {
+    public void execute(Position position, Map map, Play play) {
         gameProxy.executeInValid("You gave an incorrect input.");
     }
 
