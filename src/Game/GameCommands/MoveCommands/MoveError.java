@@ -19,9 +19,6 @@ public class MoveError implements MoveCommand {
 
     @Override
     public void execute(Position position, Map map) {
-        boolean valid;
-        Move northMove = new Move(0, 1);
-        valid = northMove.validateMove(0, 1, position, map);
         gameProxy.executeInValid("You gave an incorrect input.");
     }
 
