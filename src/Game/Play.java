@@ -100,6 +100,7 @@ public class Play {
     public void movementLoop( CheckpointCaretaker c){
 
         gameProxy.updatePlay(this);
+
         cX = c.getXValue();
         cY = c.getYValue();
         Cell myCell = map.getCell(cX, cY);
@@ -107,17 +108,19 @@ public class Play {
 
         //System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
+            //GUIProxy.inCombat();
+            //Call gameProxy method here
             gameProxy.sendCombatMessage();
             inCombat = true;
             attackProxy.setCurrentEnemy(myCell.getEnemy());
             myCell.setEnemyCount(myCell.getEnemyCount() - 1);
         }
         guiProxy.lookForInput(inCombat);
-        c.setPosition(myPosition);
-        c.setXValue(myPosition.getX());
-        c.setYValue(myPosition.getY());
         autosaver.updateMap(map);
         autosaver.updateMapName(gameProxy.getMapName());
+//        c.setPosition(myPosition);
+//        c.setXValue(myPosition.getX());
+//        c.setYValue(myPosition.getY());
     }
 
     public void setPosition(Position position){

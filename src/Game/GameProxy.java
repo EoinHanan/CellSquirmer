@@ -41,7 +41,7 @@ public class GameProxy extends Colleague {
     }
 
     public void executeGo(String direction){
-        moveRequestHandler.handle(direction, map ,play.getPosition() );
+        moveRequestHandler.handle(direction, map ,play );
 
     }
     public void executeInvestigate(){

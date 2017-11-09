@@ -3,6 +3,7 @@ package CommandParser;
 import CommandParser.Commands.*;
 import CommandParser.Commands.Error;
 import Communication.Message;
+import CommandParser.Commands.*;
 
 public class Parser{
     private Command[] commands;

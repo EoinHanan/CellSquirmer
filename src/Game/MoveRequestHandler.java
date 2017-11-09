@@ -20,7 +20,7 @@ public class MoveRequestHandler {
 
     }
 
-    public void handle(String direction, Map map, Position position){
+    public void handle(String direction, Map map, Play play){
         boolean found = false;
         int i = 0;
         while(i < commands.length - 1 && !found){
@@ -30,6 +30,6 @@ public class MoveRequestHandler {
                 i++;
         }
 
-        commands[i].execute(position,map);
+        commands[i].execute(play.getPosition(),map,play);
     }
 }

@@ -19,7 +19,8 @@ public class CheckpointCaretaker {
     }
 
     public void setPosition(Position p) {
-        this.p = p;
+        if(p != null)
+            this.p = p;
 
     }
 
