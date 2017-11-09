@@ -1,5 +1,6 @@
 package Game.Startup;
 
+import Game.Facade.FacadeUtility;
 import Game.Facade.MapMapper;
 import Game.Play;
 
@@ -16,6 +17,7 @@ public class Menu {
     private Parser parser;
     private ArrayList<String> mapNames;
     private TakeInput takeInput;
+    private FacadeUtility facadeUtility;
 
     public Menu() throws SQLException {
         printer = new Printer();
@@ -26,8 +28,10 @@ public class Menu {
 
     private ArrayList<String> loadMapNames() throws SQLException {
         ArrayList<String> mapNames = new ArrayList<>();
-        MapMapper mapMapper = new MapMapper();
-        mapNames = mapMapper.getMapNames();
+//        MapMapper mapMapper = new MapMapper();
+//        mapNames = mapMapper.getMapNames();
+        facadeUtility = new FacadeUtility();
+        mapNames = facadeUtility.getMapNames();
         return mapNames;
     }
 
@@ -55,6 +59,7 @@ public class Menu {
             if (mapNames.get(i).equals(secondWord))
                 found = true;
         if (found) {
+            mapName = secondWord;
             play = new Play(10, 1, 1, mapName, true);
             play.start();
         }
