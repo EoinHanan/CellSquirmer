@@ -1,4 +1,4 @@
-package Game.Startup.Commands;
+package Game.Startup;
 
 import java.util.Scanner;
 

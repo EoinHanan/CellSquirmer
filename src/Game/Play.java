@@ -47,8 +47,7 @@ public class Play {
         this.cX = x;
         this.cY = y;
         map = new Map(sizeOfMap);
-        if (loaded)
-            gameProxy.executeLoad(mapName);
+
         myPosition = new Position(cX, cY);
         c = new CheckpointCaretaker(myPosition);
         autosaver = new Autosaver(mapName);
@@ -59,6 +58,11 @@ public class Play {
         guiProxy = new GUIProxy(concreteMediator);
         commandParserProxy = new CommandParserProxy(concreteMediator);
         attackProxy = new AttackProxy(concreteMediator);
+
+        if (loaded)
+            gameProxy.executeLoad(mapName);
+        else
+            gameProxy.executeSave(mapName);
     }
 
     public int getcX(){
