@@ -71,7 +71,6 @@ public class Play {
 
 
     public void start() {
-        int i = 0;
         int state = 0;
 //        Position myPosition = new Position(cX, cY);
 //        CheckpointCaretaker c = new CheckpointCaretaker(myPosition);

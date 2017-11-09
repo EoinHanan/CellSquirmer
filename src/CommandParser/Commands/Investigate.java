@@ -14,7 +14,6 @@ public class Investigate implements Command {
     @Override
     public void execute(String secondWord) {
        commandProxy.executeInvestigate();
-       name="Investigate";
     }
 
     @Override

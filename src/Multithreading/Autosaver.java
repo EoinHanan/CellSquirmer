@@ -1,5 +1,6 @@
 package Multithreading;
 
+import Facade.FacadeUtility;
 import Facade.MapMapper;
 import World.Map;
 
@@ -14,9 +15,11 @@ public class Autosaver extends Thread{
     private Map map;
     private String mapName;
     boolean isStarted;
+    private FacadeUtility facadeUtility;
 
     public Autosaver(String mapName){
         mapper = new MapMapper();
+        facadeUtility = new FacadeUtility();
         this.mapName = mapName;
     }
 
@@ -37,7 +40,7 @@ public class Autosaver extends Thread{
         {
             try {
                 TimeUnit.SECONDS.sleep(60);
-                mapper.updateMySqlMap(map,mapName);
+                facadeUtility.
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
