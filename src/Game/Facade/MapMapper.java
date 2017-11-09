@@ -5,6 +5,7 @@ import World.CellFactory;
 import World.Map;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MapMapper {
     private Connection connection;
@@ -121,5 +122,17 @@ public class MapMapper {
 
         statement.executeUpdate(queryCell);
         statement.executeUpdate(queryMap);
-        }
     }
+
+    public ArrayList<String> getMapNames() throws SQLException {
+        ArrayList<String> mapNames = new ArrayList<>();
+        String query;
+        query = "SELECT Name FROM maps;";
+        resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+            mapNames.add(resultSet.getString("Name"));
+        }
+
+        return mapNames;
+    }
+}

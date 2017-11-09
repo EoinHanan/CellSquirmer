@@ -5,6 +5,7 @@
  */
 package Game;
 
+import Autosaver.Autosaver;
 import Clock.Clock;
 import Combat.Attack;
 import Combat.AttackProxy;
@@ -33,6 +34,7 @@ public class Play {
     private static AttackProxy attackProxy;
     private static GUIProxy guiProxy;
     private static ConcreteMediator concreteMediator;
+    private static Autosaver autosaver;
 
     private int cX;
     private int cY;
@@ -41,12 +43,15 @@ public class Play {
     private static Map map;
     private boolean inCombat;
 
-    public Play(int sizeOfMap, int x, int y) {
+    public Play(int sizeOfMap, int x, int y, String mapName, boolean loaded) {
         this.cX = x;
         this.cY = y;
         map = new Map(sizeOfMap);
+        if (loaded)
+            gameProxy.executeLoad(mapName);
         myPosition = new Position(cX, cY);
         c = new CheckpointCaretaker(myPosition);
+        autosaver = new Autosaver(mapName);
 
         concreteMediator = new ConcreteMediator();
         clockProxy = new ClockProxy(concreteMediator);
@@ -54,7 +59,6 @@ public class Play {
         guiProxy = new GUIProxy(concreteMediator);
         commandParserProxy = new CommandParserProxy(concreteMediator);
         attackProxy = new AttackProxy(concreteMediator);
-
     }
 
     public int getcX(){
@@ -85,6 +89,7 @@ public class Play {
             state = gameProxy.getCheck();
             inCombat = attackProxy.checkCombat();
         }
+        end();
 
     }
 
@@ -109,6 +114,8 @@ public class Play {
         c.setPosition(myPosition);
         c.setXValue(myPosition.getX());
         c.setYValue(myPosition.getY());
+        autosaver.updateMap(map);
+        autosaver.updateMapName(gameProxy.getMapName());
     }
 
     public void setPosition(Position position){
@@ -117,5 +124,10 @@ public class Play {
 
     public Position getPosition(){
         return c.getPosition();
+    }
+    protected void end(){
+        autosaver.stopThread();
+        clockProxy.stop();
+        System.exit(0);
     }
 }

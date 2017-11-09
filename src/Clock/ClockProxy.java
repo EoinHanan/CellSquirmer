@@ -27,4 +27,7 @@ public class ClockProxy extends Colleague {
         }
 
     }
+    public void stop(){
+        clock.stopThread();
+    }
 }

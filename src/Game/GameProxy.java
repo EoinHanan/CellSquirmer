@@ -18,6 +18,7 @@ public class GameProxy extends Colleague {
     private RequestHandler requestHandler;
     private MoveRequestHandler moveRequestHandler;
     private FacadeUtility facade;
+    private String mapName;
 
     public GameProxy(Mediator mediator, Map map) {
         super(mediator);
@@ -70,6 +71,7 @@ public class GameProxy extends Colleague {
         {
             System.out.print(e);
         }
+        this.mapName = mapName;
     }
 
     public void executeUpdate(String mapName){
@@ -155,5 +157,9 @@ public class GameProxy extends Colleague {
 
     public int getCheck() {
         return check;
+    }
+
+    public String getMapName(){
+        return mapName;
     }
 }
