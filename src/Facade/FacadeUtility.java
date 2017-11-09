@@ -2,6 +2,7 @@ package Facade;
 import World.Map;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FacadeUtility {
 
@@ -28,6 +29,10 @@ public class FacadeUtility {
     public static void deleteMap(String mapName) throws SQLException{
                 MapMapper DBcon = new MapMapper();
                 DBcon.deleteMySqlMap(mapName);
+    }
+    public static ArrayList<String> getMapNames() throws SQLException {
+        MapMapper DBcon = new MapMapper();
+        return DBcon.getMapNames();
     }
 }
 

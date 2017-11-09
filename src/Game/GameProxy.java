@@ -39,7 +39,7 @@ public class GameProxy extends Colleague {
     }
 
     public void executeGo(String direction){
-        moveRequestHandler.handle(direction, map ,play.getPosition() );
+        moveRequestHandler.handle(direction, map ,play );
 
     }
     public void executeInvestigate(){
@@ -118,7 +118,7 @@ public class GameProxy extends Colleague {
 
     public void sendCombatMessage(){
         //Content is blank so user can send the attack themselves but we're still put in combat
-        Message message = new Message("Attack", this.getColleagueCode(), "You have encountered an enemy", "UserInput");
+        Message message = new Message("Attack", this.getColleagueCode(), "You have encountered an enemy", "In combat");
         send(message);
     }
 

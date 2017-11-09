@@ -19,7 +19,8 @@ public class CheckpointCaretaker {
     }
 
     public void setPosition(Position p) {
-        this.p = p;
+        if(p != null)
+            this.p = p;
 
     }
 
@@ -46,7 +47,7 @@ public class CheckpointCaretaker {
         mementoStack.push(p.createMemento());
         originatorStack.push(p);
         p.setY(value);
-        System.out.println("Memento: " + p.getX() + ", " + p.getY());
+        //System.out.println("Memento: " + p.getX() + ", " + p.getY());
     }
 
     public int getXValue() {

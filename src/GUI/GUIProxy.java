@@ -41,7 +41,7 @@ public class GUIProxy extends Colleague{
 
     private void execute(String input, boolean inCombat){
         if (inCombat){
-            Message message = new Message("Attack", this.getColleagueCode(), input, "UserInput");
+            Message message = new Message("Attack", this.getColleagueCode(), input, "InCombat");
             send(message);
         }
         else {
