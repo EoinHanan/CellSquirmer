@@ -21,7 +21,7 @@ public class AttackProxy extends Colleague{
 
     @Override
     public void receive(Message message) {
-        if(message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("UserInput")) {
+        if(message.getDestination().equals(this.getColleagueCode()) && message.getAction().equals("InCombat")) {
             if (parser.validate(message)) {
                 enemy.setHealth(enemy.getHealth() - 1);
                 this.send(new Message("GUI", this.getColleagueCode(), "Damage done, enemy has " + enemy.getHealth(), "Attack Print"));

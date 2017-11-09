@@ -48,5 +48,4 @@ public class Autosaver extends Thread{
         this.isStarted = false;
 
     }
-
 }

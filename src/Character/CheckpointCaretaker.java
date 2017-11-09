@@ -46,7 +46,7 @@ public class CheckpointCaretaker {
         mementoStack.push(p.createMemento());
         originatorStack.push(p);
         p.setY(value);
-        System.out.println("Memento: " + p.getX() + ", " + p.getY());
+        //System.out.println("Memento: " + p.getX() + ", " + p.getY());
     }
 
     public int getXValue() {

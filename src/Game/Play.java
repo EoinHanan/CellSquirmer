@@ -107,8 +107,6 @@ public class Play {
 
         //System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
-            //GUIProxy.inCombat();
-            //Call gameProxy method here
             gameProxy.sendCombatMessage();
             inCombat = true;
             attackProxy.setCurrentEnemy(myCell.getEnemy());
