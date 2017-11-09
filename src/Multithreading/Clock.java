@@ -1,4 +1,4 @@
-package Clock;
+package Multithreading;
 
 public class Clock extends Thread{
     private long startTime;

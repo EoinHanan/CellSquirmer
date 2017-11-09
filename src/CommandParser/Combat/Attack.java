@@ -1,4 +1,4 @@
-package Combat;
+package CommandParser.Combat;
 import Prototype.Enemy;
 
 public class Attack {

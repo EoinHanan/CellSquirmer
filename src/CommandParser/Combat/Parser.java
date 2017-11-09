@@ -1,6 +1,5 @@
-package Combat.AttackParser;
+package CommandParser.Combat;
 
-import Combat.Attack;
 import Communication.Message;
 
 public class Parser {

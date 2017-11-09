@@ -1,4 +1,4 @@
-package Clock;
+package Multithreading;
 
 import Communication.Colleague;
 import Communication.Mediator;

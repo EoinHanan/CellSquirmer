@@ -1,6 +1,5 @@
-package Combat;
+package CommandParser.Combat;
 
-import Combat.AttackParser.Parser;
 import Communication.Mediator;
 import Communication.Message;
 import Communication.Colleague;
@@ -27,7 +26,7 @@ public class AttackProxy extends Colleague{
                 this.send(new Message("GUI", this.getColleagueCode(), "Damage done, enemy has " + enemy.getHealth(), "Attack Print"));
 
                 if (enemy.getHealth() == 0) {
-                    this.send(new Message("Game", this.getColleagueCode(), "Enemy Defeated", "Combat End"));
+                    this.send(new Message("Game", this.getColleagueCode(), "Enemy Defeated", "CommandParser.Combat End"));
                     inCombat = false;
                 }
             }

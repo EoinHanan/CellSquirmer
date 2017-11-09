@@ -1,6 +1,6 @@
-package Autosaver;
+package Multithreading;
 
-import Game.Facade.MapMapper;
+import Facade.MapMapper;
 import World.Map;
 
 import java.sql.SQLException;

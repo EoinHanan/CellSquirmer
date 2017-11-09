@@ -5,23 +5,15 @@
  */
 package Game;
 
-import Autosaver.Autosaver;
-import Clock.Clock;
-import Combat.Attack;
-import Combat.AttackProxy;
+import Multithreading.Autosaver;
+import CommandParser.Combat.AttackProxy;
 import Communication.ConcreteMediator;
-import Communication.Message;
-import Communication.Colleague;
-import Communication.Mediator;
 import GUI.GUIProxy;
 import CommandParser.CommandParserProxy;
-import Clock.ClockProxy;
-import Communication.ConcreteMediator;
+import Multithreading.ClockProxy;
 import World.Map;
 import World.Cell;
 import Character.*;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  *

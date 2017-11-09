@@ -1,4 +1,4 @@
-package Game.Facade;
+package Facade;
 import World.Map;
 
 import java.sql.SQLException;
