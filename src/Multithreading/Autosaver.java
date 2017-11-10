@@ -1,4 +1,4 @@
-package Autosaver;
+package Multithreading;
 
 import Facade.FacadeUtility;
 import World.Map;
@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
  * Created by EoinH on 08/11/2017.
  */
 public class Autosaver extends Thread{
-    private MapMapper mapper;
     private Map map;
     private String mapName;
     private FacadeUtility facade;
