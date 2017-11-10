@@ -38,8 +38,6 @@ public class Autosaver extends Thread{
                 facade.updateMap(map,mapName);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
     }

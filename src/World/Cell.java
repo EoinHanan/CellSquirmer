@@ -6,7 +6,6 @@
 package World;
 
 import Prototype.Enemy;
-import Prototype.EnemyDB;
 
 /**
  *

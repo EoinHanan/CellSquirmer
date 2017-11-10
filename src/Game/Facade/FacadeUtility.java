@@ -4,35 +4,57 @@ import World.Map;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FacadeUtility {
+public class FacadeUtility implements Facade {
 
     public FacadeUtility(){
 
     }
 
-    public static void readMap(Map map, String mapName) throws SQLException {
+    public void readMap(Map map, String mapName) {
                 MapMapper DBcon = new MapMapper();
-                DBcon.readMySqlMap(mapName, map);
+        try {
+            DBcon.readMySqlMap(mapName, map);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public static void writeMap(Map map, String mapName) throws SQLException {
+    public void writeMap(Map map, String mapName) {
                 MapMapper DBcon = new MapMapper();
-                DBcon.writeMySqlMap(map, mapName);
+        try {
+            DBcon.writeMySqlMap(map, mapName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void updateMap(Map map, String mapName)throws SQLException{
+    public void updateMap(Map map, String mapName){
                     MapMapper DBcon = new MapMapper();
-                    DBcon.updateMySqlMap(map, mapName);
+        try {
+            DBcon.updateMySqlMap(map, mapName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void deleteMap(String mapName) throws SQLException{
+    public void deleteMap(String mapName){
                 MapMapper DBcon = new MapMapper();
-                DBcon.deleteMySqlMap(mapName);
+        try {
+            DBcon.deleteMySqlMap(mapName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-    public static ArrayList<String> getMapNames() throws SQLException {
+    public ArrayList<String> getMapNames() {
+        ArrayList<String> names = new ArrayList<>();
         MapMapper DBcon = new MapMapper();
-        return DBcon.getMapNames();
+        try {
+            names = DBcon.getMapNames();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return names;
     }
 }
 
