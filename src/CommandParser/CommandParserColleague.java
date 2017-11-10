@@ -9,11 +9,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by EoinH on 24/10/2017.
  */
-public class CommandParserProxy extends Colleague {
+public class CommandParserColleague extends Colleague {
     private Message message;
     private Parser parser;
 
-    public CommandParserProxy(Mediator mediator){
+    public CommandParserColleague(Mediator mediator){
         super(mediator);
 
         setColleagueCode("CommandParser");
@@ -27,9 +27,7 @@ public class CommandParserProxy extends Colleague {
         }
     }
 
-        //message = new Message("To","From", "Content","Action");
     public void sendError(){
-        //System.out.println("Error pressed");
         message = new Message("GUI",this.getColleagueCode(), "Invalid Input","Error");
         this.send(message);
         try {
@@ -40,26 +38,21 @@ public class CommandParserProxy extends Colleague {
     }
 
     public void executeGo(String direction){
-        //System.out.println("Go pressed");
         message = new Message("Game",this.getColleagueCode(), direction,"go");
         this.send(message);
     }
     public void executeTake(){
-        //System.out.println("Take pressed");
         message = new Message("Game",this.getColleagueCode(), "NULL","take");
         this.send(message);
     }
     public void executeInvestigate(){
-        //System.out.println("Execute pressed");
         message = new Message("Game",this.getColleagueCode(), "NULL","investigate");
         this.send(message);
     }
     public void executeSave(String messageText){
-        //System.out.println("Execute pressed");
         message = new Message("Game",this.getColleagueCode(), messageText,"save");
         this.send(message);
     }public void executeLoad(String messageText){
-        //System.out.println("Execute pressed");
         message = new Message("Game",this.getColleagueCode(), messageText,"load");
         this.send(message);
     }
@@ -68,12 +61,10 @@ public class CommandParserProxy extends Colleague {
         this.send(message);
     }
     public void executeUpdate(String messageText){
-        //System.out.println("Execute pressed");
         message = new Message("Game",this.getColleagueCode(), messageText,"update");
         this.send(message);
     }
     public void executeDelete(String messageText){
-        //System.out.println("Execute pressed");
         message = new Message("Game",this.getColleagueCode(), messageText,"delete");
         this.send(message);
     }

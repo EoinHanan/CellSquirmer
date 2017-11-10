@@ -1,7 +1,6 @@
 package Game.GameCommands.MoveCommands;
 
-import Game.GameProxy;
-import Game.Move;
+import Game.GameColleague;
 import Game.Play;
 import Character.Position;
 import World.Map;
@@ -11,9 +10,9 @@ import World.Map;
  */
 public class MoveError implements MoveCommand {
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
-    public MoveError (GameProxy gameProxy){
+    public MoveError (GameColleague gameProxy){
         name = "Error";
         this.gameProxy = gameProxy;
     }

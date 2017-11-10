@@ -25,6 +25,9 @@ public class Menu {
         parser = new Parser(this);
         takeInput = new TakeInput();
         mapNames = loadMapNames();
+
+        printer.print("Welcome to Cellsquirmer" +
+                "To begin type in either newgame or loadgame  followed by the name of your the game\n");
     }
 
     private ArrayList<String> loadMapNames() throws SQLException {
@@ -65,6 +68,6 @@ public class Menu {
             play.start();
         }
         else
-            sendError("No save by that name exists");
+            sendError("No save by that name exists\n");
     }
 }

@@ -8,9 +8,9 @@ package Game;
 import Multithreading.Autosaver;
 import CommandParser.Combat.AttackProxy;
 import Communication.ConcreteMediator;
-import GUI.GUIProxy;
-import CommandParser.CommandParserProxy;
-import Multithreading.ClockProxy;
+import GUI.GUIColleague;
+import CommandParser.CommandParserColleague;
+import Multithreading.ClockColleague;
 import World.Map;
 import World.Cell;
 import Character.*;
@@ -20,11 +20,11 @@ import Character.*;
  * @author Gerry
  */
 public class Play {
-    private static ClockProxy clockProxy;
-    private static GameProxy gameProxy;
-    private static CommandParserProxy commandParserProxy;
+    private static ClockColleague clockProxy;
+    private static GameColleague gameProxy;
+    private static CommandParserColleague commandParserProxy;
     private static AttackProxy attackProxy;
-    private static GUIProxy guiProxy;
+    private static GUIColleague guiProxy;
     private static ConcreteMediator concreteMediator;
     private static Autosaver autosaver;
 
@@ -45,16 +45,19 @@ public class Play {
         autosaver = new Autosaver(mapName);
 
         concreteMediator = new ConcreteMediator();
-        clockProxy = new ClockProxy(concreteMediator);
-        gameProxy = new GameProxy(concreteMediator, map);
-        guiProxy = new GUIProxy(concreteMediator);
-        commandParserProxy = new CommandParserProxy(concreteMediator);
+        clockProxy = new ClockColleague(concreteMediator);
+        gameProxy = new GameColleague(concreteMediator, map);
+        guiProxy = new GUIColleague(concreteMediator);
+        commandParserProxy = new CommandParserColleague(concreteMediator);
         attackProxy = new AttackProxy(concreteMediator);
 
-        if (loaded)
+        if (loaded){
             gameProxy.executeLoad(mapName);
-        else
+        }
+
+        else {
             gameProxy.executeSave(mapName);
+        }
     }
 
     public int getcX(){
@@ -99,7 +102,7 @@ public class Play {
 
         //System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
-            //GUIProxy.inCombat();
+            //GUIColleague.inCombat();
             //Call gameProxy method here
             gameProxy.sendCombatMessage();
             inCombat = true;

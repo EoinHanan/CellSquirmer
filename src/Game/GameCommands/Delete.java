@@ -1,12 +1,12 @@
 package Game.GameCommands;
 
-import Game.GameProxy;
+import Game.GameColleague;
 
 public class Delete implements Command {
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
-    public Delete(GameProxy gameProxy){
+    public Delete(GameColleague gameProxy){
         name = "delete";
         this.gameProxy = gameProxy;
     }

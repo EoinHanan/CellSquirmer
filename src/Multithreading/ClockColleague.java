@@ -6,11 +6,9 @@ import Communication.Message;
 
 import java.util.concurrent.TimeUnit;
 
-public class ClockProxy extends Colleague {
+public class ClockColleague extends Colleague {
     Clock clock;
-
-
-    public ClockProxy (Mediator mediator){
+    public ClockColleague(Mediator mediator){
         super(mediator);
         clock = new Clock();
         setColleagueCode("Clock");
@@ -25,7 +23,6 @@ public class ClockProxy extends Colleague {
                 e.printStackTrace();
             }
         }
-
     }
     public void stop(){
         clock.stopThread();

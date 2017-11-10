@@ -2,9 +2,6 @@ package Communication;
 
 import java.util.ArrayList;
 
-/**
- * Created by EoinH on 11/10/2017.
- */
 public class ConcreteMediator implements Mediator{
     private ArrayList<Colleague> colleagues;
     public ConcreteMediator() {

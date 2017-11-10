@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Error implements Command {
-    private CommandParserProxy commandParserProxy;
+    private CommandParserColleague commandParserProxy;
     private String name;
 
-    public Error(CommandParserProxy commandProxy) {
+    public Error(CommandParserColleague commandProxy) {
         this.commandParserProxy = commandProxy;
         name = "error";
     }

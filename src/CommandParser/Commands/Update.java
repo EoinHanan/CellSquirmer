@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Update implements Command {
-    private CommandParserProxy commandProxy;
+    private CommandParserColleague commandProxy;
     private String name;
 
-    public Update(CommandParserProxy commandProxy){
+    public Update(CommandParserColleague commandProxy){
         this.commandProxy = commandProxy;
         name = "update";
     }

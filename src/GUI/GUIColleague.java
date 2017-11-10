@@ -7,14 +7,11 @@ import Communication.Message;
 
 import java.util.ArrayList;
 
-/**
- * Created by Patrick on 18/10/2017.
- */
-public class GUIProxy extends Colleague{
+public class GUIColleague extends Colleague{
     private TakeInput takeInput;
     private Printer printer;
 
-    public GUIProxy(Mediator mediator) {
+    public GUIColleague(Mediator mediator) {
         super(mediator);
         setColleagueCode("GUI");
         takeInput = new TakeInput();

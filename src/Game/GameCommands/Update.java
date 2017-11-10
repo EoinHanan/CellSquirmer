@@ -1,12 +1,12 @@
 package Game.GameCommands;
 
-import Game.GameProxy;
+import Game.GameColleague;
 
 public class Update implements Command {
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
-    public Update(GameProxy gameProxy){
+    public Update(GameColleague gameProxy){
         name = "update";
         this.gameProxy = gameProxy;
     }

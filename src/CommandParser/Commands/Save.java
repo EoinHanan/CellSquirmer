@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Save implements Command {
-    private CommandParserProxy commandProxy;
+    private CommandParserColleague commandProxy;
     private String name;
 
-    public Save(CommandParserProxy commandProxy){
+    public Save(CommandParserColleague commandProxy){
         this.commandProxy = commandProxy;
         name = "save";
     }

@@ -1,8 +1,5 @@
 package Communication;
 
-/**
- * Created by EoinH on 04/10/2017.
- */
 public abstract class Colleague{
     private Mediator mediator;
     private String colleagueCode;
@@ -16,8 +13,6 @@ public abstract class Colleague{
     public void send(Message message) {
         mediator.send(message,this);
     }
-
-    public Mediator getMediator() {return mediator;}
 
     public abstract void receive(Message message);
 

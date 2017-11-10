@@ -1,15 +1,15 @@
 package Game.GameCommands;
 
-import Game.GameProxy;
+import Game.GameColleague;
 
 /**
  * Created by EoinH on 07/11/2017.
  */
 public class Error implements Command {
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
-    public Error(GameProxy gameProxy){
+    public Error(GameColleague gameProxy){
         name = "error";
         this.gameProxy=gameProxy;
     }

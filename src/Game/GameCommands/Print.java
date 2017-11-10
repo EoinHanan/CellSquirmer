@@ -1,15 +1,15 @@
 package Game.GameCommands;
 
-import Game.GameProxy;
+import Game.GameColleague;
 
 /**
  * Created by EoinH on 07/11/2017.
  */
 public class Print implements Command {
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
-    public Print(GameProxy gameProxy){
+    public Print(GameColleague gameProxy){
         name = "print";
         this.gameProxy = gameProxy;
     }

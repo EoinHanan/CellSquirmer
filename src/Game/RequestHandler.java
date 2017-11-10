@@ -7,7 +7,7 @@ import Game.GameCommands.Error;
 class RequestHandler {
     private Command commands[];
 
-    public RequestHandler(GameProxy gameProxy){
+    public RequestHandler(GameColleague gameProxy){
         commands = new Command[8];
         commands[0]= new Go(gameProxy);
         commands[1]= new Investigate(gameProxy);

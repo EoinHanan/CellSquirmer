@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Load implements Command {
-    private CommandParserProxy commandProxy;
+    private CommandParserColleague commandProxy;
     private String name;
 
-    public Load(CommandParserProxy commandProxy){
+    public Load(CommandParserColleague commandProxy){
         this.commandProxy = commandProxy;
         name = "load";
     }

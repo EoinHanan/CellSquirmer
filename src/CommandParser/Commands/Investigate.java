@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Investigate implements Command {
-    private CommandParserProxy commandProxy;
+    private CommandParserColleague commandProxy;
     private String name;
 
-    public Investigate(CommandParserProxy commandProxy) {
+    public Investigate(CommandParserColleague commandProxy) {
         this.commandProxy = commandProxy;
         name = "investigate";
     }

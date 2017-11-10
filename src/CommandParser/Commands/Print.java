@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Print implements Command {
     private String name;
-    private CommandParserProxy commandProxy;
-    public Print(CommandParserProxy commandProxy) {
+    private CommandParserColleague commandProxy;
+    public Print(CommandParserColleague commandProxy) {
         this.commandProxy = commandProxy;
         name = "print";
     }

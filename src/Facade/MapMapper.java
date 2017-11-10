@@ -72,7 +72,6 @@ public class MapMapper {
         query = "SELECT * FROM `maps` WHERE Name = \"" + mapName + "\"";
 
         resultSet = statement.executeQuery(query);
-        System.out.println("Getting here");
         resultSet.next();
         mapId = resultSet.getInt("MapId");
         int boolToTiny = 0;

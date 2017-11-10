@@ -8,7 +8,7 @@ import World.Map;
 
 import java.util.concurrent.TimeUnit;
 
-public class GameProxy extends Colleague {
+public class GameColleague extends Colleague {
     private Message message;
     private Play play;
     private Map map;
@@ -18,7 +18,7 @@ public class GameProxy extends Colleague {
     private FacadeUtility facade;
     private String mapName;
 
-    public GameProxy(Mediator mediator, Map map) {
+    public GameColleague(Mediator mediator, Map map) {
         super(mediator);
         this.map = map;
         setColleagueCode("Game");

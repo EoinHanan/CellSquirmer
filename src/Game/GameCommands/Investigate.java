@@ -1,15 +1,15 @@
 package Game.GameCommands;
 
-import Game.GameProxy;
+import Game.GameColleague;
 
 /**
  * Created by EoinH on 07/11/2017.
  */
 public class Investigate implements Command {
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
-    public Investigate(GameProxy gameProxy){
+    public Investigate(GameColleague gameProxy){
         name = "investigate";
         this.gameProxy = gameProxy;
     }

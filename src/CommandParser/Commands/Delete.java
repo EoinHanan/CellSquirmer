@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Delete implements Command {
-    private CommandParserProxy commandProxy;
+    private CommandParserColleague commandProxy;
     private String name;
 
-    public Delete(CommandParserProxy commandProxy){
+    public Delete(CommandParserColleague commandProxy){
         this.commandProxy = commandProxy;
         name = "delete";
     }

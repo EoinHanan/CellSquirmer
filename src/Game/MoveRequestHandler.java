@@ -2,7 +2,6 @@ package Game;
 
 import Game.GameCommands.MoveCommands.*;
 import World.Map;
-import Character.Position;
 
 /**
  * Created by EoinH on 07/11/2017.
@@ -10,7 +9,7 @@ import Character.Position;
 public class MoveRequestHandler {
     private MoveCommand commands[];
 
-    public MoveRequestHandler(GameProxy gameProxy){
+    public MoveRequestHandler(GameColleague gameProxy){
         commands = new MoveCommand[5];
         commands[0]= new MoveNorth(gameProxy);
         commands[1]= new MoveEast(gameProxy);

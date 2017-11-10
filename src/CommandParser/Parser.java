@@ -3,14 +3,13 @@ package CommandParser;
 import CommandParser.Commands.*;
 import CommandParser.Commands.Error;
 import Communication.Message;
-import CommandParser.Commands.*;
 
 public class Parser{
     private Command[] commands;
     private String firstWord;
     private String secondWord;
 
-    public Parser (CommandParserProxy commandParserProxy){
+    public Parser (CommandParserColleague commandParserProxy){
         commands = new Command[9];
         commands[0]= new Go(commandParserProxy);
         commands[1]= new Take(commandParserProxy);

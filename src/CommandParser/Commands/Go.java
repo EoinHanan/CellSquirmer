@@ -1,12 +1,12 @@
 package CommandParser.Commands;
 
-import CommandParser.CommandParserProxy;
+import CommandParser.CommandParserColleague;
 
 public class Go implements Command {
-    private CommandParserProxy commandProxy;
+    private CommandParserColleague commandProxy;
     private String name;
 
-    public Go(CommandParserProxy commandProxy) {
+    public Go(CommandParserColleague commandProxy) {
         this.commandProxy = commandProxy;
         name = "go";
     }

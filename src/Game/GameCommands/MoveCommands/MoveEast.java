@@ -1,18 +1,17 @@
 package Game.GameCommands.MoveCommands;
 
-import Game.GameProxy;
+import Game.GameColleague;
 import Game.Move;
 import Game.Play;
 import World.Map;
 import Character.Position;
-import Character.CheckpointCaretaker;
 import Interceptor.*;
 /**
  * Created by EoinH on 07/11/2017.
  */
 public class MoveEast implements MoveCommand{
     private String name;
-    private GameProxy gameProxy;
+    private GameColleague gameProxy;
 
     Interceptor interceptor = new Interceptor() {
         MoveRequest request = new MoveRequest(getClass().getName());
@@ -27,7 +26,7 @@ public class MoveEast implements MoveCommand{
         }
     };
 
-    public MoveEast(GameProxy gameProxy){
+    public MoveEast(GameColleague gameProxy){
         name = "east";
         this.gameProxy = gameProxy;
     }
