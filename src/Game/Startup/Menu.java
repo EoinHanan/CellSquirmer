@@ -1,7 +1,6 @@
 package Game.Startup;
 
-import Game.Facade.FacadeUtility;
-import Game.Facade.MapMapper;
+import Facade.FacadeUtility;
 import Game.Play;
 
 import java.sql.SQLException;

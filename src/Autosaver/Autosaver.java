@@ -1,9 +1,8 @@
 package Autosaver;
 
-import Game.Facade.FacadeUtility;
+import Facade.FacadeUtility;
 import World.Map;
 
-import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 
