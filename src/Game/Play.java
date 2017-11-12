@@ -6,7 +6,7 @@
 package Game;
 
 import Multithreading.Autosaver;
-import CommandParser.Combat.AttackProxy;
+import CommandParser.Combat.AttackColleague;
 import Communication.ConcreteMediator;
 import GUI.GUIColleague;
 import CommandParser.CommandParserColleague;
@@ -23,7 +23,7 @@ public class Play {
     private static ClockColleague clockProxy;
     private static GameColleague gameProxy;
     private static CommandParserColleague commandParserProxy;
-    private static AttackProxy attackProxy;
+    private static AttackColleague attackProxy;
     private static GUIColleague guiProxy;
     private static ConcreteMediator concreteMediator;
     private static Autosaver autosaver;
@@ -49,7 +49,7 @@ public class Play {
         gameProxy = new GameColleague(concreteMediator, map);
         guiProxy = new GUIColleague(concreteMediator);
         commandParserProxy = new CommandParserColleague(concreteMediator);
-        attackProxy = new AttackProxy(concreteMediator);
+        attackProxy = new AttackColleague(concreteMediator);
 
         if (loaded){
             gameProxy.executeLoad(mapName);
@@ -123,6 +123,10 @@ public class Play {
 
     public Position getPosition(){
         return c.getPosition();
+    }
+
+    public void undo(){
+        c.undoOperation();
     }
     protected void end(){
         autosaver.stopThread();

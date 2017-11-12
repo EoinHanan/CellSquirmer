@@ -5,13 +5,13 @@ import Communication.Message;
 import Communication.Colleague;
 import Prototype.Enemy;
 
-public class AttackProxy extends Colleague{
+public class AttackColleague extends Colleague{
     private Enemy enemy;
     private Parser parser;
     private boolean inCombat;
 
 
-    public AttackProxy (Mediator mediator){
+    public AttackColleague(Mediator mediator){
         super(mediator);
         setColleagueCode("Attack");
         inCombat = false;

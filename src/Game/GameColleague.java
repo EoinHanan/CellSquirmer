@@ -143,6 +143,10 @@ public class GameColleague extends Colleague {
         }
     }
 
+    public void executeUndo(String secondWord){
+        play.undo();
+    }
+
     private void outputState(String inText){
         Message message = new Message("Output", this.getColleagueCode(), inText, "OutputState");
         send(message);

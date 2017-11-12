@@ -68,4 +68,9 @@ public class CommandParserColleague extends Colleague {
         message = new Message("Game",this.getColleagueCode(), messageText,"delete");
         this.send(message);
     }
+    public void executeUndo(String messageText){
+        message = new Message("Game",this.getColleagueCode(), messageText,"undo");
+        this.send(message);
+    }
+
 }

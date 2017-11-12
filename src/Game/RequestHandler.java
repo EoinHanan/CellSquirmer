@@ -8,7 +8,7 @@ class RequestHandler {
     private Command commands[];
 
     public RequestHandler(GameColleague gameProxy){
-        commands = new Command[8];
+        commands = new Command[9];
         commands[0]= new Go(gameProxy);
         commands[1]= new Investigate(gameProxy);
         commands[2]= new Save(gameProxy);
@@ -16,7 +16,8 @@ class RequestHandler {
         commands[4] = new Print(gameProxy);
         commands[5] = new Update(gameProxy);
         commands[6] = new Delete(gameProxy);
-        commands[7] = new Error(gameProxy);
+        commands[7] = new Undo(gameProxy);
+        commands[8] = new Error(gameProxy);
 }
 
     public void handle(Message message){
