@@ -9,22 +9,14 @@ import Game.Play;
  */
 public interface ContextMomento {
 
-    Play getErrorMessage();
-
-    void setFinalErrorMessage(String finalMessage);
-
     CheckpointCaretaker getCheckpointCaretaker();
 
     Position getPosition();
 
-    void setPosition(Position play,CheckpointCaretaker c);
+    void setPosition(Position play, CheckpointCaretaker c);
 
 
-    void setX(int X);
+    void setX(int X, CheckpointCaretaker c);
 
-    void setY(int Y);
-
-    int getX();
-
-    int getY();
+    void setY(int Y, CheckpointCaretaker c);
 }

@@ -22,17 +22,17 @@ public class Dispatcher implements Interceptor {
         return dispatcher;
     }
 
-    public void registerErrorMessageInterceptor(Interceptor InterceptorObject) {
+    public void registerInterceptor(Interceptor InterceptorObject) {
         interceptors.add(InterceptorObject);
 
     }
 
-    public  void unregisterErrorMessageInterceptor(Interceptor InterceptorObject) {
+    public  void unregisterInterceptor(Interceptor InterceptorObject) {
 
         interceptors.remove(InterceptorObject);
     }
 
-//    @Override
+    //    @Override
     public void errorMessageReceiver(Context context) {
         ArrayList interceptorList;
 
@@ -47,14 +47,11 @@ public class Dispatcher implements Interceptor {
     }
 
     public void updateMomento(ConcreteMomentoInterceptor play){
-//        System.out.println("update Momento");
         CheckpointCaretaker c = play.getCheckpointCaretaker();
         Position myPosition = play.getPosition();
-        play.setX(myPosition.getX());
-        play.setX(myPosition.getY());
-        c.setXValue(myPosition.getX());
-        c.setYValue(myPosition.getY());
-        c.setPosition(myPosition);
+        play.setX(myPosition.getX(),c);
+        play.setY(myPosition.getY(),c);
+        play.setPosition(myPosition,c);
 
     }
 

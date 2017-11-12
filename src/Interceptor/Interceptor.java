@@ -5,7 +5,7 @@ import Game.Play;
 //@FunctionalInterface
 public interface Interceptor {
 
-//    @Override
+    //    @Override
     void errorMessageReceiver(Context context);
 
     void updateMomento(ConcreteMomentoInterceptor play);

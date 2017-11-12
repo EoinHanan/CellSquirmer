@@ -5,7 +5,6 @@ import Game.Move;
 import Game.Play;
 import World.Map;
 import Character.Position;
-import Character.CheckpointCaretaker;
 import Interceptor.*;
 
 /**
@@ -28,6 +27,7 @@ public class MoveNorth implements MoveCommand {
         }
     };
 
+
     public MoveNorth (GameProxy gameProxy){
         name = "north";
         this.gameProxy = gameProxy;
@@ -35,6 +35,7 @@ public class MoveNorth implements MoveCommand {
 
     @Override
     public void execute(Position position, Map map, Play play) {
+        Dispatcher.getInstance().registerInterceptor(interceptor);
         boolean valid;
         Move northMove = new Move(0, 1);
         Position myPosition = play.getPosition();
@@ -49,6 +50,8 @@ public class MoveNorth implements MoveCommand {
             Dispatcher.getInstance().updateMomento(testcare);
             gameProxy.executeValid("You moved north.",northMove);
         }
+        Dispatcher.getInstance().unregisterInterceptor(interceptor);
+
     }
 
     @Override
