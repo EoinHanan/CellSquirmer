@@ -10,17 +10,16 @@ public class Parser{
     private String secondWord;
 
     public Parser (CommandParserColleague commandParserProxy){
-        commands = new Command[10];
+        commands = new Command[9];
         commands[0]= new Go(commandParserProxy);
-        commands[1]= new Take(commandParserProxy);
-        commands[2]= new Investigate(commandParserProxy);
-        commands[3]= new Save(commandParserProxy);
-        commands[4]= new Load(commandParserProxy);
-        commands[5]= new Update(commandParserProxy);
-        commands[6]= new Delete(commandParserProxy);
-        commands[7]= new Print(commandParserProxy);
-        commands[8]= new Print(commandParserProxy);
-        commands[9]= new Error(commandParserProxy);
+        commands[1]= new Investigate(commandParserProxy);
+        commands[2]= new Save(commandParserProxy);
+        commands[3]= new Load(commandParserProxy);
+        commands[4]= new Update(commandParserProxy);
+        commands[5]= new Delete(commandParserProxy);
+        commands[6]= new Print(commandParserProxy);
+        commands[7]= new Undo(commandParserProxy);
+        commands[8]= new Error(commandParserProxy);
     }
 
     public void validate(Message message){

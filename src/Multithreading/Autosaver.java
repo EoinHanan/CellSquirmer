@@ -3,6 +3,7 @@ package Multithreading;
 import Facade.FacadeUtility;
 import World.Map;
 
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -37,7 +38,7 @@ public class Autosaver extends Thread{
             try {
                 TimeUnit.SECONDS.sleep(60);
                 facade.updateMap(map,mapName);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | SQLException e) {
                 e.printStackTrace();
             }
         }

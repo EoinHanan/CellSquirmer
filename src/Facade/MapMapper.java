@@ -94,6 +94,7 @@ public class MapMapper {
     }
 
     public void updateMySqlMap(Map map, String mapName) throws SQLException {
+        System.out.println(mapName);
         String query;
         int i, j;
         query = "SELECT MapId FROM maps WHERE Name = \"" + mapName + "\";";

@@ -18,6 +18,9 @@ public class GUIColleague extends Colleague{
         printer = new Printer();
     }
 
+    public void print(String text){
+        printer.print(text);
+    }
 
     public void lookForInput(boolean inCombat){
         String userInput = takeInput.userinput();

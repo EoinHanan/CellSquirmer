@@ -46,7 +46,7 @@ public class MoveNorth implements MoveCommand {
         else{
             ConcreteMomentoInterceptor testcare = new ConcreteMomentoInterceptor(play,myPosition);
             Dispatcher.getInstance().updateMomento(testcare);
-            gameProxy.executeValid("You moved north.",northMove);
+            gameProxy.executeValid("You moved North.",northMove);
         }
     }
 

@@ -53,10 +53,12 @@ public class Play {
 
         if (loaded){
             gameProxy.executeLoad(mapName);
+            guiProxy.print("Game \"" + mapName + "\" was loaded");
         }
 
         else {
             gameProxy.executeSave(mapName);
+            guiProxy.print("New game \"" + mapName + "\" was created");
         }
     }
 
@@ -100,7 +102,7 @@ public class Play {
         Cell myCell = map.getCell(cX, cY);
         //System.out.println("Checking the cell" + map.getCell(cX, cY).getEnemy().getHealth());
 
-        //System.out.println(myCell.getEnemyCount());
+        System.out.println(myCell.getEnemyCount());
         if(myCell.getEnemyCount() > 0){
             //GUIColleague.inCombat();
             //Call gameProxy method here

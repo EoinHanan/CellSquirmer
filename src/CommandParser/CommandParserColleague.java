@@ -6,9 +6,6 @@ import Communication.Message;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by EoinH on 24/10/2017.
- */
 public class CommandParserColleague extends Colleague {
     private Message message;
     private Parser parser;
@@ -41,10 +38,6 @@ public class CommandParserColleague extends Colleague {
         message = new Message("Game",this.getColleagueCode(), direction,"go");
         this.send(message);
     }
-    public void executeTake(){
-        message = new Message("Game",this.getColleagueCode(), "NULL","take");
-        this.send(message);
-    }
     public void executeInvestigate(){
         message = new Message("Game",this.getColleagueCode(), "NULL","investigate");
         this.send(message);
@@ -72,5 +65,4 @@ public class CommandParserColleague extends Colleague {
         message = new Message("Game",this.getColleagueCode(), messageText,"undo");
         this.send(message);
     }
-
 }

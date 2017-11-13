@@ -25,7 +25,7 @@ public class Menu {
         takeInput = new TakeInput();
         mapNames = loadMapNames();
 
-        printer.print("Welcome to Cellsquirmer" +
+        printer.print("Welcome to Cellsquirmer\n" +
                 "To begin type in either newgame or loadgame  followed by the name of your the game\n");
     }
 

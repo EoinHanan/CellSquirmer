@@ -6,7 +6,7 @@ public class TakeInput {
 
     public String userinput (){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Command");
+        System.out.println("\nEnter Command:");
         String command = sc.nextLine();
 
         return command;
