@@ -3,7 +3,6 @@ package Game.Startup;
 import Facade.FacadeUtility;
 import Facade.MapMapper;
 import Game.Play;
-import Game.Startup.TakeInput;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

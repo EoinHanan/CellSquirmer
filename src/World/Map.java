@@ -1,7 +1,6 @@
 
 package World;
 import java.util.Random;
-import Prototype.EnemyDB;
 
 public class Map {
     private Cell cells[][];
