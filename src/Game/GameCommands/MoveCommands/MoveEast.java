@@ -22,7 +22,7 @@ public class MoveEast implements MoveCommand{
         }
 
         public void updateMomento(ConcreteMomentoInterceptor play){
-            System.out.print("in top of game proxy");
+            System.out.print("updateMomento");
         }
     };
 
@@ -33,21 +33,24 @@ public class MoveEast implements MoveCommand{
 
     @Override
     public void execute(Position position, Map map, Play play) {
+        Dispatcher.getInstance().registerInterceptor(interceptor);
         boolean valid;
         Move eastMove = new Move(1, 0);
         Position myPosition = play.getPosition();
         valid = eastMove.validateMove(1, 0, position, map);
         if (!valid){
             gameProxy.executeInValid("This is not a valid move. Choose another direction.");
-            ConcreteInterceptor testint = new ConcreteInterceptor("Invalid direction Input, cannot move East");
+            ConcreteInterceptor interceptorObject = new ConcreteInterceptor("Invalid direction Input, cannot move East");
             gameProxy.executeInValid("This is not a valid move. Choose another direction.");
         }
         else {
-            ConcreteMomentoInterceptor testcare = new ConcreteMomentoInterceptor(play, myPosition);
-            Dispatcher.getInstance().updateMomento(testcare);
+            ConcreteMomentoInterceptor ConcreteMomentoObject = new ConcreteMomentoInterceptor(play, myPosition);
+            Dispatcher.getInstance().updateMomento(ConcreteMomentoObject);
 
             gameProxy.executeValid("You moved East.", eastMove);
         }
+        Dispatcher.getInstance().unregisterInterceptor(interceptor);
+
     }
 
     @Override

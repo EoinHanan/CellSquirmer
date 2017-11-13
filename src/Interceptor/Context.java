@@ -8,15 +8,4 @@ public interface Context {
 
     String getFinalErrorMessage();
 
-    void setX(int X);
-
-    void setY(int Y);
-
-    int getX();
-
-    int getY();
-
-
-
-
 }

@@ -34,6 +34,7 @@ public class MoveWest implements MoveCommand {
 
     @Override
     public void execute(Position position, Map map, Play play) {
+        Dispatcher.getInstance().registerInterceptor(interceptor);
         boolean valid;
         Move westMove = new Move(-1, 0);
         Position myPosition = play.getPosition();
@@ -48,6 +49,8 @@ public class MoveWest implements MoveCommand {
             ConcreteMomentoInterceptor testcare = new ConcreteMomentoInterceptor(play, myPosition);
             Dispatcher.getInstance().updateMomento(testcare);
         }
+        Dispatcher.getInstance().unregisterInterceptor(interceptor);
+
 
     }
 
